@@ -22,7 +22,7 @@ public class GridManager : MonoBehaviour
     }
     
     [ContextMenu("Generate Nodes")]
-    public void GenerateNodes(int size)
+    public void GenerateNodes()
     { 
         map = new Dictionary<Vector2, Tile>();
         _grids = new Dictionary<Vector2, GameObject>();
@@ -34,12 +34,14 @@ public class GridManager : MonoBehaviour
             {
                 Vector2 position = new Vector2(x, y);
                 GameObject tile = Instantiate(tilePrefab, parentNode.transform, true);
-                tile.transform.position = new Vector3(x, y, 10);
+                tile.transform.position = new Vector3(i, p, 10);
                 _grids.Add(position, tile);
                 map[position] = new Tile(tile, position);
                 y++;
+                Debug.Log($"Tile position: {x},{y}");
             }
-            x++;
+            y = 0;
+            x++; 
         }
         
     }
