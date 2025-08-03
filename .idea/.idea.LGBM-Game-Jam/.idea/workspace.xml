@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/PathFinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/PathFinding.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/GridManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/Tile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Enemies.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1754193985976</updated>
       <workItem from="1754193987684" duration="840000" />
+      <workItem from="1754210627369" duration="4770000" />
     </task>
     <servers />
   </component>

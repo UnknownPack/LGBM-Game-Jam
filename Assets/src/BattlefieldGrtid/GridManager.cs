@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GridManager : MonoBehaviour
 {
     public GameObject tilePrefab;
-    [SerializeField] private int gridSize = 15;
+    [SerializeField] private int GridRadius = 15;
+    private Dictionary<Vector2Int , Node> Grid_Nodes = new Dictionary<Vector2Int , Node>();
     
-    private new Dictionary<Vector2, Tile> map = new Dictionary<Vector2, Tile>();
-    private new Dictionary<Vector2, GameObject> _grids = new Dictionary<Vector2, GameObject>();
+    
+    private PathFinding pathFinding = new PathFinding();
+
+    [SerializeField] private GameObject parentNode;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -20,29 +23,61 @@ public class GridManager : MonoBehaviour
     {
         
     }
-    
-    [ContextMenu("Generate Nodes")]
-    public void GenerateNodes()
-    { 
-        map = new Dictionary<Vector2, Tile>();
-        _grids = new Dictionary<Vector2, GameObject>();
-        GameObject parentNode =  new GameObject(" --- Nodes --- ");
-        int x = 0, y = 0;
-        for (int i = -gridSize; i <= gridSize; i++)
+
+
+    [ContextMenu("Test Grid Nodes")]
+    public void TestGridNodeFunctinality()
+    {
+        if (parentNode != null)
         {
-            for (int p = -gridSize; p <= gridSize; p++)
+            DestroyImmediate(parentNode);
+            parentNode = null;  
+        } 
+        GenerateMap();
+        TestPathfinding();
+    }
+    
+    public void GenerateMap()
+    { 
+        Grid_Nodes = new Dictionary<Vector2Int , Node>(); 
+        parentNode =  new GameObject(" --- Nodes --- ");
+        int xCord = 0;
+        for (int i = -GridRadius; i <= GridRadius; i++)
+        {
+            var yCord = 0;
+            for (int p = -GridRadius; p <= GridRadius; p++)
             {
-                Vector2 position = new Vector2(x, y);
+                Vector2Int RealPosition = new Vector2Int(i, p);
+                Vector2Int GridPostion = new Vector2Int(xCord, yCord);
                 GameObject tile = Instantiate(tilePrefab, parentNode.transform, true);
                 tile.transform.position = new Vector3(i, p, 10);
-                _grids.Add(position, tile);
-                map[position] = new Tile(tile, position);
-                y++;
-                Debug.Log($"Tile position: {x},{y}");
+                Grid_Nodes[GridPostion] = new Node(GridPostion, RealPosition, tile, true);
+                yCord++;
+                Debug.Log($"Tile's Real position: {GridPostion} \n Grid Position: {RealPosition}");
+            } 
+            xCord++; 
+        }
+        pathFinding.SetGrid(Grid_Nodes);
+    }
+
+    public void TestPathfinding()
+    {
+        Vector2Int startPosition = new Vector2Int(Random.Range(0, 7), 0);
+        Vector2Int goalPosition = new Vector2Int(Random.Range(0, 7), Random.Range(1, 7));
+        
+        List<Node> path = pathFinding.GetPath(Grid_Nodes[startPosition], Grid_Nodes[goalPosition]);
+        if (path != null)
+        { 
+            foreach (var node in path)
+            { 
+                if (node.GetGridPosition == goalPosition)
+                    Debug.LogWarning($"Reached Goal Node: {node.GetGridPosition}!");
             }
-            y = 0;
-            x++; 
         }
         
+        else
+            Debug.LogWarning("No path found.");
     }
+
+
 }

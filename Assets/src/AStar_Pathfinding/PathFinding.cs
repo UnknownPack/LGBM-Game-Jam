@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class PathFinding
 {
-        public Dictionary<Vector2, Node> Grid = new Dictionary<Vector2, Node>();
+    public Dictionary<Vector2Int , Node> Grid = new Dictionary<Vector2Int , Node>();
     public Vector2 _gridSize;
 
 
     #region Public Methods
-        public Dictionary<Vector2, Node> GetGrid()
+        public Dictionary<Vector2Int , Node> GetGrid()
         {
             return Grid;
         }
         
-        public void SetGrid(Dictionary<Vector2, Node> grid)
+        public void SetGrid(Dictionary<Vector2Int , Node> grid)
         {
             Grid = grid;
         }
@@ -57,10 +57,10 @@ public class PathFinding
             return null;
         }
         
-        public (Node, Node) TranslatePosition_ToNodes(Vector2 StartPostion, Vector2 GoalPosition)
+        public (Node, Node) TranslatePosition_ToNodes(Vector2 StartPostion, Vector2 GoalPosition, Dictionary<Vector2, Node> grid)
         {
-            Node startNode = Grid.TryGetValue(StartPostion, out var value1) ? value1 : null;
-            Node goalNode = Grid.TryGetValue(GoalPosition, out var value2) ? value2 : null;
+            Node startNode = grid.TryGetValue(StartPostion, out var value1) ? value1 : null;
+            Node goalNode = grid.TryGetValue(GoalPosition, out var value2) ? value2 : null;
 
             if (startNode == null || goalNode == null)
             {
@@ -78,12 +78,15 @@ public class PathFinding
         private List<Node> GetNeighbours(Node node)
         {
             List<Node> neighbours = new List<Node>();
-
-            for (int x = -1; x <= 1; x++)
+            int ParentNode_xCord = node.gridPosition.x;
+            int ParentNode_yCord = node.gridPosition.y;
+            for (int x = ParentNode_xCord - 1; x <= ParentNode_xCord + 1; x++)
             {
-                for (int y = -1; y <= 1; y++)
+                for (int y = ParentNode_yCord - 1; y <= ParentNode_yCord + 1; y++)
                 {
-                    neighbours.Add(Grid[node._position]);
+                    Vector2Int key = new Vector2Int(x, y);
+                    if(Grid.ContainsKey(key))
+                        neighbours.Add(Grid[new Vector2Int(x, y)]);
                 }
             }
             return neighbours;
@@ -105,13 +108,13 @@ public class PathFinding
 
         private float Get_GCost(Node startNode, Node currentNode)
         {
-            return Mathf.Abs(Vector2.Distance(startNode._position, currentNode._position));
+            return Mathf.Abs(Vector2.Distance(startNode.GetGridPosition, currentNode.GetGridPosition));
         }
 
         private float Get_HCost(Node currentNode, Node goalNode)
         {
-            return Mathf.Abs(currentNode._position.x - goalNode._position.x) + 
-                   Mathf.Abs(currentNode._position.y - goalNode._position.y);
+            return Mathf.Abs(currentNode.GetGridPosition.x - goalNode.GetGridPosition.x) + 
+                   Mathf.Abs(currentNode.GetGridPosition.y - goalNode.GetGridPosition.y);
         }
     #endregion
 

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Node
 {
-    public Vector2 _position;
+    public Vector2Int gridPosition;
+    public Vector2Int realPosition;
+    private GameObject _tileObject;
     public bool _canNavigateTo;
 
     public float GCost;
@@ -11,11 +13,22 @@ public class Node
     
     public Node Parent;
     
-    public Node(Vector2 position, bool canNavigateTo)
+    public Node(Vector2Int gridPosition, Vector2Int realPosition, GameObject obj, bool canNavigateTo)
     {
-        _position = position;
+        this.gridPosition = gridPosition;
+        this.realPosition = realPosition;
+        _tileObject = obj;
         _canNavigateTo = canNavigateTo;
         Parent = null;
-        //Debug.Log($"Node created at: {_position}. Can navigate: {_canNavigateTo}");
     }
+    
+    public void SetWalkableState(bool state)
+    {
+        _canNavigateTo = state;
+    }
+
+    public GameObject GetTileObject => _tileObject;
+    public Vector2 GetRealPosition => realPosition;
+    public Vector2 GetGridPosition => gridPosition;
+    public bool CanNavigate => _canNavigateTo;
 }
