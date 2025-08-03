@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/Node.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/PathFinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/PathFinding.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/GridManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Enemies.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
