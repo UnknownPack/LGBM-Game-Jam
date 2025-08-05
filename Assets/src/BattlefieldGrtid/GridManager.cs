@@ -16,6 +16,13 @@ public class GridManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (parentNode != null)
+        {
+            DestroyImmediate(parentNode);
+            parentNode = null;  
+        } 
+        GenerateMap();
+        Debug.Log($"Number of tiles in grid: {Grid_Nodes.Count}");
     }
 
     // Update is called once per frame
@@ -37,7 +44,7 @@ public class GridManager : MonoBehaviour
         TestPathfinding();
     }
     
-    public void GenerateMap()
+    private void GenerateMap()
     { 
         Grid_Nodes = new Dictionary<Vector2Int , Node>(); 
         parentNode =  new GameObject(" --- Nodes --- ");
@@ -60,6 +67,33 @@ public class GridManager : MonoBehaviour
         pathFinding.SetGrid(Grid_Nodes);
     }
 
+    #region Public Helper Methods
+
+    public List<Node> GetNodesWithinRadius(Vector3 origin, int radius)
+    {
+        List<Node> Output = new List<Node>();
+        Vector2Int OriginGirdPosition = new Vector2Int(Mathf.RoundToInt(origin.x),
+            Mathf.RoundToInt(origin.y));
+        int xCord = OriginGirdPosition.x, yCord = OriginGirdPosition.y;
+        for (int i = xCord - radius; i <= xCord + radius; i++)
+        {
+            for (int j = yCord - radius; j <= yCord + radius; j++)
+            {
+                Vector2Int vector = new Vector2Int(i, j);
+                if(Grid_Nodes.TryGetValue(vector, out var node))
+                    Output.Add(node);
+            }
+        }
+        return Output;
+    }
+
+    public Dictionary<Vector2Int, Node> GetGridNodes => Grid_Nodes;
+
+    #endregion
+    
+    #region Testing Functions
+
+    
     public void TestPathfinding()
     {
         Vector2Int startPosition = new Vector2Int(Random.Range(0, 7), 0);
@@ -78,6 +112,8 @@ public class GridManager : MonoBehaviour
         else
             Debug.LogWarning("No path found.");
     }
+
+    #endregion 
 
 
 }

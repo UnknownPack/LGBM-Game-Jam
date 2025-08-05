@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,8 +9,17 @@ public class ActionBase
 
     public virtual void Init(GameObject parentObject) => ParentObject = parentObject;
 
-    public virtual IEnumerator Action()
+    public virtual void SetVariables()
+    {}
+
+    public virtual IEnumerator Action(GameObject targert)
     {
         yield return null;
     }
+}
+
+public enum ActionType
+{
+    MovePoint,
+    ActionPoint
 }
