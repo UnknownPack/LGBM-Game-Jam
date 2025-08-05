@@ -3,7 +3,7 @@ using UnityEngine;
 public class Node
 {
     public Vector2Int gridPosition;
-    public Vector2Int realPosition;
+    public Vector2 realPosition;
     private GameObject _tileObject;
     public bool _canNavigateTo;
 
@@ -13,7 +13,7 @@ public class Node
     
     public Node Parent;
     
-    public Node(Vector2Int gridPosition, Vector2Int realPosition, GameObject obj, bool canNavigateTo)
+    public Node(Vector2Int gridPosition, Vector3 realPosition, GameObject obj, bool canNavigateTo)
     {
         this.gridPosition = gridPosition;
         this.realPosition = realPosition;

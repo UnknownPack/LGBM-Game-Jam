@@ -47,7 +47,7 @@ public class GridManager : MonoBehaviour
             var yCord = 0;
             for (int p = -GridRadius; p <= GridRadius; p++)
             {
-                Vector2Int RealPosition = new Vector2Int(i, p);
+                Vector3 RealPosition = new Vector3(i, p);
                 Vector2Int GridPostion = new Vector2Int(xCord, yCord);
                 GameObject tile = Instantiate(tilePrefab, parentNode.transform, true);
                 tile.transform.position = new Vector3(i, p, 10);
