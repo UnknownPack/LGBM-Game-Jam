@@ -56,7 +56,7 @@ public class GridManager : MonoBehaviour
         for (int i = -GridRadius; i <= GridRadius; i++)
         {
             var yCord = 0;
-            for (int p = -GridRadius; p <= GridRadius; p++)
+            for (int p = GridRadius; p >= -GridRadius; p--)
             {
                 Vector3 RealPosition = new Vector3(i, p);
                 Vector2Int GridPostion = new Vector2Int(xCord, yCord);

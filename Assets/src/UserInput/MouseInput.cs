@@ -73,9 +73,11 @@ public class MouseInput : MonoBehaviour
             
             if (hit.collider.CompareTag("Tile"))
             {
-                ActionBase action = battleEntity.GetAbilityList[0];
+                Node node = _gridManager.GetNodeFromPosition(mouseWorldPos);
+                //Debug.Log($"{hit.collider.name}: {node.GetGridPosition} \n {battleEntity.gameObject.name} \n {_gridManager.GetNodeFromPosition(battleEntity.transform.localPosition).GetGridPosition}");
+                MoveAction action = (MoveAction)battleEntity.GetAbilityList[0];
                 Debug.LogWarning($"Executing Action!");
-                StartCoroutine(action.Action(SelectedUnit));
+                StartCoroutine(action.Action(node.GetTileObject));
             }
         }
     }
