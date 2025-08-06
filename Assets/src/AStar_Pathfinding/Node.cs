@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Node
 {
-    public Vector2Int gridPosition;
-    public Vector2 realPosition;
+    private Vector2Int gridPosition;
+    private Vector3 realPosition;
     private GameObject _tileObject;
-    public bool _canNavigateTo;
+    private bool _canNavigateTo;
 
     public float GCost;
     public float HCost;
@@ -28,7 +28,7 @@ public class Node
     }
 
     public GameObject GetTileObject => _tileObject;
-    public Vector2 GetRealPosition => realPosition;
-    public Vector2 GetGridPosition => gridPosition;
+    public Vector3 GetRealPosition => realPosition;
+    public Vector2Int GetGridPosition => gridPosition;
     public bool CanNavigate => _canNavigateTo;
 }

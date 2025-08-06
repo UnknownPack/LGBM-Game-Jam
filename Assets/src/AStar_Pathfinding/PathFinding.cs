@@ -38,7 +38,7 @@ public class PathFinding
 
                 foreach (Node neighbour in GetNeighbours(currentNode))
                 {
-                    if(!neighbour._canNavigateTo || ClosedSet.Contains(neighbour))                
+                    if(!neighbour.CanNavigate || ClosedSet.Contains(neighbour))                
                         continue;   
                     
                     float tentativeGCost = currentNode.GCost + Get_GCost(startNode, neighbour);
@@ -78,8 +78,8 @@ public class PathFinding
         private List<Node> GetNeighbours(Node node)
         {
             List<Node> neighbours = new List<Node>();
-            int ParentNode_xCord = node.gridPosition.x;
-            int ParentNode_yCord = node.gridPosition.y;
+            int ParentNode_xCord = node.GetGridPosition.x;
+            int ParentNode_yCord = node.GetGridPosition.y;
             for (int x = ParentNode_xCord - 1; x <= ParentNode_xCord + 1; x++)
             {
                 for (int y = ParentNode_yCord - 1; y <= ParentNode_yCord + 1; y++)

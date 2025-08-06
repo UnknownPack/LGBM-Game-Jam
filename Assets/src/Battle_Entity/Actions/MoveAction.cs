@@ -6,38 +6,34 @@ public class MoveAction : ActionBase
 {
     private PathFinding PathFinder;
     private Dictionary<Vector2Int, Node> Grid_Nodes;
-    private Node TargetNode;
+    private GridManager _gridManager;
 
-    public void SetVariables(PathFinding _pathFinding, Node TargetNode, Dictionary<Vector2Int, Node> Grid)
+    public MoveAction(GridManager gridManager)
     {
-        this.PathFinder = _pathFinding;
-        this.TargetNode = TargetNode;
-        this.Grid_Nodes = Grid;
+        
+        this._gridManager = gridManager;
+        this.PathFinder = _gridManager.GetPathFinding;
+        this.Grid_Nodes = _gridManager.GetGridNodes;
     }
-    
-    public IEnumerator Action(GameObject targert)
+    public override IEnumerator Action(GameObject targert)
     {
-        Vector3 CurrentUnitPosition = ParentObject.transform.position, TargetPos = TargetNode.GetRealPosition;
+        Node CurrentNode = _gridManager.GetNodeFromPosition(ParentObject.transform.position);
+        Node TargetNode = _gridManager.GetNodeFromPosition(targert.transform.position); 
 
-        Vector2Int currentGridPosition = new Vector2Int(Mathf.RoundToInt(CurrentUnitPosition.x),
-            Mathf.RoundToInt(CurrentUnitPosition.y));
-            
-        Vector2Int goalPositionGrid = new Vector2Int(Mathf.RoundToInt(TargetPos.x),
-            Mathf.RoundToInt(TargetPos.y));
-
-        List<Node> path = PathFinder.GetPath(Grid_Nodes[currentGridPosition], Grid_Nodes[goalPositionGrid]);
-
+        List<Node> path = PathFinder.GetPath(CurrentNode, TargetNode);
+        
         if (path == null || path.Count <= 0)
         {
+            Debug.Log($"Start Node Position: {CurrentNode.GetGridPosition} \n Goal Node Position: {TargetNode.GetGridPosition}");
             Debug.LogError("Path is null or empty!");
             yield break;
         }
             
         foreach (var node in path)
-            yield return Move(node);
+            yield return Move(ParentObject.transform.position, node);
     }
 
-    private IEnumerator Move(Node TargetNode)
+    private IEnumerator Move(Vector3 startPosition, Node TargetNode)
     { 
         float duration = 1f, elapsedTIme = 0;
         Vector3 StartPosition = ParentObject.transform.position,

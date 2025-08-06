@@ -15,20 +15,24 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GameObject parentNode;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        if (parentNode != null)
-        {
-            DestroyImmediate(parentNode);
-            parentNode = null;  
-        } 
-        GenerateMap();
-        Debug.Log($"Number of tiles in grid: {Grid_Nodes.Count}");
+    { 
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    
+    public void InitaliseMap()
+    {
+        
+        if (parentNode != null)
+        {
+            DestroyImmediate(parentNode);
+            parentNode = null;  
+        } 
+        GenerateMap(); 
     }
 
 
@@ -60,7 +64,7 @@ public class GridManager : MonoBehaviour
                 tile.transform.position = new Vector3(i, p, 10);
                 Grid_Nodes[GridPostion] = new Node(GridPostion, RealPosition, tile, true);
                 yCord++;
-                Debug.Log($"Tile's Real position: {GridPostion} \n Grid Position: {RealPosition}");
+                Debug.Log($"Tile's Real position: {RealPosition} \n Grid Position: {GridPostion}");
             } 
             xCord++; 
         }
@@ -86,6 +90,24 @@ public class GridManager : MonoBehaviour
         }
         return Output;
     }
+
+    public Node GetNodeFromPosition(Vector3 position)
+    {
+        Node closestNode = null;
+        float closestDistance = float.MaxValue;
+        foreach (var node in Grid_Nodes)
+        {
+            float distance = Vector3.Distance(position, node.Value.GetRealPosition);
+            if (distance <= closestDistance)
+            {
+                closestNode = node.Value;
+                closestDistance = distance;
+            }
+        }
+        return closestNode;
+    }
+    
+    public PathFinding GetPathFinding => pathFinding;
 
     public Dictionary<Vector2Int, Node> GetGridNodes => Grid_Nodes;
 
