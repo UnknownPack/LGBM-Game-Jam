@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="" />
+    <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/ActionBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/ActionBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/MoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/MoveAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/TurnSystem/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/TurnSystem/TurnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/MouseInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/UserInput/MouseInput.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,7 +120,7 @@
       <workItem from="1754360417601" duration="2828000" />
       <workItem from="1754487483652" duration="3216000" />
       <workItem from="1754492635393" duration="3232000" />
-      <workItem from="1754496584525" duration="4317000" />
+      <workItem from="1754496584525" duration="6113000" />
     </task>
     <servers />
   </component>

@@ -5,27 +5,36 @@ using UnityEngine;
 public class BaseBattleEntity : MonoBehaviour
 {
     [Header("Entity Stats")]
-    [SerializeField] private float Health;
-    [SerializeField] private float Damage;
-    [SerializeField] private float Defence;
+    [SerializeField] protected float Health;
+    [SerializeField] protected float Damage;
+    [SerializeField] protected float Defence;
     [SerializeField, Tooltip("Dictates the amount of tiles the entity can travel")] private int MoveSpeed;
 
-    private int ActionPoint = 1, MovePoint = 1, AvailablePoints;
-    
-    [Header("Entity Abilities")]
-    private List<ActionBase> Abilities = new List<ActionBase>();
+    [Header("Entity Action Points")] 
+    [SerializeField]protected int MovePoint_MaxCount = 1;
+    [SerializeField]protected int MovePoint_Cost = 1;
+    [SerializeField]protected int ActionPoint_MaxCount = 1;
+    [SerializeField]protected int ActionPoint_Cost = 1;
 
-    [Header("Environment Variables")] 
-    [SerializeField] private Dictionary<Vector2Int, Node> Grid;
-    [SerializeField] private Node CurrentNode;
+    [Header("Entity Alligence")]
+    [SerializeField]protected UnitOwnership UnitOwner;
+    
+    private Dictionary<ActionType, int> ActionPoints = new Dictionary<ActionType, int>
+    {
+        { ActionType.MovePoint, 1},{ ActionType.ActionPoint, 1 },
+    };
+    private List<ActionBase> Abilities = new List<ActionBase>();
+    private Dictionary<Vector2Int, Node> Grid;
+     private Node CurrentNode;
+ 
     
     private Animator EntityAnimtor;
     private GridManager _gridManager;
     private PathFinding _pathFinding;
 
-    public virtual void InitActions(ActionBase action, float ActionRange)
+    public virtual void InitActions(ActionBase action, float ActionRange, int CostOfAction)
     {
-        action.Init(gameObject, ActionRange, _gridManager);
+        action.Init(gameObject, this, ActionRange, CostOfAction,  ActionType.MovePoint, _gridManager);
         Abilities.Add(action);
         Debug.Log("Ability Initialized");
     }
@@ -33,19 +42,22 @@ public class BaseBattleEntity : MonoBehaviour
     void Start()
     {
         EntityAnimtor = GetComponent<Animator>();
+        
     }
 
     void Update()
     {
         
     }
-    
-    public float GetHealth => Health;
-    public float GetDamage => Damage;
-    public float GetDefence => Defence;
-    public float GetMoveSpeed => MoveSpeed;
-    public Animator GetAnimator => EntityAnimtor;
-    public List<ActionBase> GetAbilityList => Abilities;
+
+    #region Public Getters
+        public float GetHealth => Health;
+        public float GetDamage => Damage;
+        public float GetDefence => Defence;
+        public float GetMoveSpeed => MoveSpeed;
+        public Animator GetAnimator => EntityAnimtor;
+        public List<ActionBase> GetAbilityList => Abilities;
+    #endregion
     public void InjectGridManager(GridManager gridManager)
     {
         _gridManager = gridManager;
@@ -58,7 +70,24 @@ public class BaseBattleEntity : MonoBehaviour
         _pathFinding = _gridManager.GetPathFinding;
         Grid = _gridManager.GetGridNodes;
         
-        //Action specfic initialisation
-        InitActions(new MoveAction(), MoveSpeed);
+        InitActions(new MoveAction(), MoveSpeed, MovePoint_Cost);
     }
+
+    public void ResetActionPoints()
+    {
+        ActionPoints[ActionType.MovePoint] = MovePoint_MaxCount;
+        ActionPoints[ActionType.ActionPoint] = ActionPoint_MaxCount;
+    }
+
+    public bool isActionPointAvailable(ActionType actionType) => ActionPoints[actionType] > 0;
+
+    public void RemoveActionPoint(ActionType actionType, int amount) => ActionPoints[actionType] -= amount;
+}
+
+[System.Serializable]
+public enum UnitOwnership
+{
+    Player,
+    Ally,
+    Enemy
 }

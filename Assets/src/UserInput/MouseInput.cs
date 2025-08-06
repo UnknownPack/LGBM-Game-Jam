@@ -70,11 +70,13 @@ public class MouseInput : MonoBehaviour
         }
 
         currentSelectedAction = battleEntity.GetAbilityList[0];
-        
-        if(Input.GetKey(KeyCode.LeftShift))
-            currentSelectedAction.ShowActionRange();
-        else
-            _gridManager.ResetColourTiles();
+        if(!battleEntity.isActionPointAvailable(currentSelectedAction.GetActionType))
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+                currentSelectedAction.ShowActionRange();
+            else
+                _gridManager.ResetColourTiles();
+        }
         
         
         //TODO: Implement logic for managing the selected unit and selecting actions

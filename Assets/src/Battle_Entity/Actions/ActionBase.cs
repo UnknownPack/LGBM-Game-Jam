@@ -7,15 +7,19 @@ public class ActionBase
 {
     protected GameObject ParentObject;
     protected float ActionRange;
-    protected int ActionCost = 1; 
+    protected ActionType _actionType;
+    protected int ActionCost; 
     protected PathFinding PathFinder;
     protected Dictionary<Vector2Int, Node> Grid_Nodes;
     protected GridManager _gridManager;
+    protected BaseBattleEntity _baseBattleEntity;
 
-    public virtual void Init(GameObject parentObject, float actionRange, GridManager gridManager)
+    public virtual void Init(GameObject parentObject, BaseBattleEntity _baseBattleEntity, float actionRange, int ActionCost, ActionType _actionType, GridManager gridManager)
     { 
         ParentObject = parentObject;
         ActionRange  = actionRange;
+        this.ActionCost = ActionCost;
+        this._actionType = _actionType;
         this._gridManager = gridManager;
         this.PathFinder = _gridManager.GetPathFinding;
         this.Grid_Nodes = _gridManager.GetGridNodes;
@@ -23,7 +27,11 @@ public class ActionBase
 
     public virtual void SetVariables(){}
 
-    public virtual IEnumerator Action(GameObject target){yield return null;}
+    public virtual IEnumerator Action(GameObject target)
+    {
+        yield return null;
+        _baseBattleEntity.RemoveActionPoint(_actionType, ActionCost);
+    }
 
     public void ShowActionRange()
     {
@@ -49,8 +57,11 @@ public class ActionBase
         return Vector2Int.Distance(TargetNode.GetGridPosition, CurrentNode.GetGridPosition) <= ActionRange;
     }
 
+    public ActionType GetActionType => _actionType;
+
 }
 
+[System.Serializable]
 public enum ActionType
 {
     MovePoint,
