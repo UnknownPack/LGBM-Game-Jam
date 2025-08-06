@@ -23,9 +23,9 @@ public class BaseBattleEntity : MonoBehaviour
     private GridManager _gridManager;
     private PathFinding _pathFinding;
 
-    public virtual void InitActions(ActionBase action)
+    public virtual void InitActions(ActionBase action, float ActionRange)
     {
-        action.Init(gameObject);
+        action.Init(gameObject, ActionRange, _gridManager);
         Abilities.Add(action);
         Debug.Log("Ability Initialized");
     }
@@ -59,6 +59,6 @@ public class BaseBattleEntity : MonoBehaviour
         Grid = _gridManager.GetGridNodes;
         
         //Action specfic initialisation
-        InitActions(new MoveAction(_gridManager));
+        InitActions(new MoveAction(), MoveSpeed);
     }
 }

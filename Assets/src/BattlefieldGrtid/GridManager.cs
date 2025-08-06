@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -106,7 +107,19 @@ public class GridManager : MonoBehaviour
         }
         return closestNode;
     }
-    
+
+    public void ResetColourTiles()
+    {
+        foreach (var node in Grid_Nodes)
+        {
+            SpriteRenderer spriteRenderer = node.Value.GetTileObject.GetComponent<SpriteRenderer>();
+            if (spriteRenderer == null)
+                Debug.LogError("SpriteRender not found");
+                
+            spriteRenderer.color = Color.gray;
+        }
+    }
+
     public PathFinding GetPathFinding => pathFinding;
 
     public Dictionary<Vector2Int, Node> GetGridNodes => Grid_Nodes;

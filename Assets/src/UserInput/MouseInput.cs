@@ -6,7 +6,7 @@ public class MouseInput : MonoBehaviour
 {
     private GameObject SelectedUnit;
     private bool unitsSelected = false;
-    
+    private ActionBase currentSelectedAction;
     private GridManager _gridManager;
     
     void Start()
@@ -65,19 +65,32 @@ public class MouseInput : MonoBehaviour
             Debug.LogError("Unable to get battleEntity component.");
             return;
         }
+
+        currentSelectedAction = battleEntity.GetAbilityList[0];
+        
+        if(Input.GetKey(KeyCode.LeftShift))
+            currentSelectedAction.ShowActionRange();
+        else
+            _gridManager.ResetColourTiles();
+        
+        
         //TODO: Implement logic for managing the selected unit and selecting actions
         if (Input.GetMouseButtonDown(1)) // Right-click to clear selection
         {
+            _gridManager.ResetColourTiles();
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
             
             if (hit.collider.CompareTag("Tile"))
             {
+                if (!currentSelectedAction.TargetWiihinRange(hit.collider.gameObject))
+                {
+                    Debug.LogWarning("Failure! You tried to execute action outside it's range");
+                    return;
+                }
                 Node node = _gridManager.GetNodeFromPosition(mouseWorldPos);
-                //Debug.Log($"{hit.collider.name}: {node.GetGridPosition} \n {battleEntity.gameObject.name} \n {_gridManager.GetNodeFromPosition(battleEntity.transform.localPosition).GetGridPosition}");
-                MoveAction action = (MoveAction)battleEntity.GetAbilityList[0];
                 Debug.LogWarning($"Executing Action!");
-                StartCoroutine(action.Action(node.GetTileObject));
+                StartCoroutine(currentSelectedAction.Action(node.GetTileObject));
             }
         }
     }

@@ -4,21 +4,12 @@ using UnityEngine;
 
 public class MoveAction : ActionBase
 {
-    private PathFinding PathFinder;
-    private Dictionary<Vector2Int, Node> Grid_Nodes;
-    private GridManager _gridManager;
-
-    public MoveAction(GridManager gridManager)
-    {
-        
-        this._gridManager = gridManager;
-        this.PathFinder = _gridManager.GetPathFinding;
-        this.Grid_Nodes = _gridManager.GetGridNodes;
-    }
-    public override IEnumerator Action(GameObject targert)
+    //dictates the speed a unit will move fdrom tile to tile
+    private float moveSpeed = 0.15f ;
+    public override IEnumerator Action(GameObject target)
     {
         Node CurrentNode = _gridManager.GetNodeFromPosition(ParentObject.transform.position);
-        Node TargetNode = _gridManager.GetNodeFromPosition(targert.transform.position); 
+        Node TargetNode = _gridManager.GetNodeFromPosition(target.transform.position); 
 
         List<Node> path = PathFinder.GetPath(CurrentNode, TargetNode);
         
@@ -35,7 +26,7 @@ public class MoveAction : ActionBase
 
     private IEnumerator Move(Vector3 startPosition, Node TargetNode)
     { 
-        float duration = 1f, elapsedTIme = 0;
+        float duration = moveSpeed, elapsedTIme = 0;
         Vector3 StartPosition = ParentObject.transform.position,
             EndPosition = TargetNode.GetRealPosition;
         
