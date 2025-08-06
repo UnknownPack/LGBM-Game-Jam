@@ -34,6 +34,9 @@ public class MouseInput : MonoBehaviour
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
 
+            if (hit.collider == null)
+                return;
+            
             // Check if the hit object has a specific tag
             if (hit.collider.CompareTag("PlayerUnit"))
             {
@@ -80,6 +83,9 @@ public class MouseInput : MonoBehaviour
             _gridManager.ResetColourTiles();
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+
+            if (hit.collider == null)
+                return;
             
             if (hit.collider.CompareTag("Tile"))
             {
