@@ -35,7 +35,7 @@ public class ActionBase
         Debug.Log($"{_actionType.ToString()}s remaining: {_baseBattleEntity.GetActionPointsCount(_actionType).ToString()} ");
     }
 
-    public void ShowActionRange()
+    public void ShowActionRange(Color highlightColor)
     {
         foreach (var node in Grid_Nodes)
         {
@@ -45,9 +45,10 @@ public class ActionBase
                 if (spriteRenderer == null)
                     Debug.LogError("SpriteRender not found");
                 
-                spriteRenderer.color = Color.cyan;
+                spriteRenderer.color = highlightColor;
             }
         }
+        _gridManager.GetNodeFromPosition(ParentObject.transform.position).GetTileObject.GetComponent<SpriteRenderer>().color = Color.gray;
     }
 
     public bool TargetWiihinRange(GameObject target)
