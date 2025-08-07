@@ -85,6 +85,8 @@ public class BaseBattleEntity : MonoBehaviour
             if (Health <= 0)
                 Death();
         }
+
+        public void Heal(float amountToHeal) => Health += amountToHeal;
         
         public float GetDamage => Damage;
         public float GetDefence => Defence;
