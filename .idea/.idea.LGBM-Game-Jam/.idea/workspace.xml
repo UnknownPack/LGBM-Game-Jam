@@ -6,19 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/ActionBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/ActionBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/EnemyCharacter_Actions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/MoveAction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/MoveAction.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/Actions/PlayerCharacter_Actions.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/ActionBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/ActionBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/New Folder.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/GridManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/EnemyEntities/EnemyBaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/EnemyEntities/EnemyBaseEntity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/TurnSystem/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/TurnSystem/TurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/MouseInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/UserInput/MouseInput.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +120,7 @@
       <workItem from="1754487483652" duration="3216000" />
       <workItem from="1754492635393" duration="3232000" />
       <workItem from="1754496584525" duration="6113000" />
-      <workItem from="1754527049037" duration="2705000" />
+      <workItem from="1754527049037" duration="5469000" />
     </task>
     <servers />
   </component>

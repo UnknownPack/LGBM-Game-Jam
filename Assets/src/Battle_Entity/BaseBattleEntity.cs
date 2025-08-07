@@ -28,13 +28,6 @@ public class BaseBattleEntity : MonoBehaviour
     private Animator EntityAnimtor;
     private GridManager _gridManager;
     private PathFinding _pathFinding;
-
-    public virtual void InitActions(ActionBase action, float ActionRange, int CostOfAction, ActionType actionType)
-    {
-        action.Init(gameObject, this, ActionRange, CostOfAction, actionType, _gridManager);
-        Abilities.Add(action);
-        Debug.Log("Ability Initialized");
-    }
     
     void Start()
     {
@@ -69,11 +62,30 @@ public class BaseBattleEntity : MonoBehaviour
     {
         InitActions(new MoveAction(), MoveSpeed, MovePoint_Cost, ActionType.MovePoint);
     }
+    
+    private void InitActions(ActionBase action, float ActionRange, int CostOfAction, ActionType actionType)
+    {
+        action.Init(gameObject, this, ActionRange, CostOfAction, actionType, _gridManager);
+        Abilities.Add(action);
+        Debug.Log("Ability Initialized");
+    }
 
-     
+    protected virtual void Death()
+    {
+        Debug.Log($"{gameObject.name} has died!");
+        Destroy(gameObject);
+    }
 
     #region Public Helper Functions
         public float GetHealth => Health;
+        
+        public void TakeDamage(float damageAmount)
+        {
+            Health -= damageAmount;
+            if (Health <= 0)
+                Death();
+        }
+        
         public float GetDamage => Damage;
         public float GetDefence => Defence;
         public float GetMoveSpeed => MoveSpeed;

@@ -18,6 +18,7 @@ public class TurnManager : MonoBehaviour
         
         mouseInput.InjectBackendSystems(gridManager, this);
         gridManager.InitaliseMap();
+        
         foreach (var entity in battleEntities)
         {
             Debug.Log($"{entity.gameObject.name} Initialised with GridManager");

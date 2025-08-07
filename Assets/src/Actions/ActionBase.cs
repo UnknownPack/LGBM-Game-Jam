@@ -26,8 +26,6 @@ public class ActionBase
         this.Grid_Nodes = _gridManager.GetGridNodes;
     }
 
-    public virtual void SetVariables(){}
-
     public virtual IEnumerator Action(GameObject target)
     {
         yield return null;
