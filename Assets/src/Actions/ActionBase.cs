@@ -33,7 +33,12 @@ public class ActionBase
         Debug.Log($"{_actionType.ToString()}s remaining: {_baseBattleEntity.GetActionPointsCount(_actionType).ToString()} ");
     }
 
-    public void ShowActionRange()
+    public void PreviewActionRange()
+    {
+        ShowActionRange();
+    }
+
+    private void ShowActionRange()
     {
         foreach (var node in Grid_Nodes)
         {
@@ -55,6 +60,17 @@ public class ActionBase
         Node CurrentNode = _gridManager.GetNodeFromPosition(ParentPosition);
         Node TargetNode = _gridManager.GetNodeFromPosition(TargetPostion); 
         return Vector2Int.Distance(TargetNode.GetGridPosition, CurrentNode.GetGridPosition) <= ActionRange;
+    }
+
+    protected List<Node> GetListOfNodesAffected()
+    {
+        List<Node> output = new List<Node>();
+        foreach (var node in Grid_Nodes)
+        {
+            if (TargetWiihinRange(node.Value.GetTileObject))
+                output.Add(node.Value);
+        }
+        return output;
     }
 
     public ActionType GetActionType => _actionType;

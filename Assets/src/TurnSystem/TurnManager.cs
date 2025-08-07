@@ -9,6 +9,7 @@ public class TurnManager : MonoBehaviour
     public GridManager gridManager;
     public List<BaseBattleEntity> battleEntities;
     public bool isPlayersTurn = true;
+    public int currentTurn = 0;
     
     bool isPlayerTurn = true;
     void Start()
@@ -48,6 +49,8 @@ public class TurnManager : MonoBehaviour
         // After enemy turns have been executed, return control back to player and replenish spent action points
         ResetActionPoints(UnitOwnership.Player);
         SetPlayerTurn(true);
+        currentTurn++;
+        Debug.Log($"Current Turn cycle: {currentTurn}");
     }
 
     private void ManageTurns()
