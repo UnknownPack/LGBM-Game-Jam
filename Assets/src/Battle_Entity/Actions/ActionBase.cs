@@ -17,6 +17,7 @@ public class ActionBase
     public virtual void Init(GameObject parentObject, BaseBattleEntity _baseBattleEntity, float actionRange, int ActionCost, ActionType _actionType, GridManager gridManager)
     { 
         ParentObject = parentObject;
+        this._baseBattleEntity = _baseBattleEntity;
         ActionRange  = actionRange;
         this.ActionCost = ActionCost;
         this._actionType = _actionType;

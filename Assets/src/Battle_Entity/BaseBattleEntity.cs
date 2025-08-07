@@ -18,11 +18,8 @@ public class BaseBattleEntity : MonoBehaviour
 
     [Header("Entity Alligence")]
     [SerializeField]protected UnitOwnership UnitOwner;
-    
-    private Dictionary<ActionType, int> ActionPoints = new Dictionary<ActionType, int>
-    {
-        { ActionType.MovePoint, 1},{ ActionType.ActionPoint, 1 },
-    };
+
+    private Dictionary<ActionType, int> ActionPoints;
     private List<ActionBase> Abilities = new List<ActionBase>();
     private Dictionary<Vector2Int, Node> Grid;
      private Node CurrentNode;
@@ -32,15 +29,19 @@ public class BaseBattleEntity : MonoBehaviour
     private GridManager _gridManager;
     private PathFinding _pathFinding;
 
-    public virtual void InitActions(ActionBase action, float ActionRange, int CostOfAction)
+    public virtual void InitActions(ActionBase action, float ActionRange, int CostOfAction, ActionType actionType)
     {
-        action.Init(gameObject, this, ActionRange, CostOfAction,  ActionType.MovePoint, _gridManager);
+        action.Init(gameObject, this, ActionRange, CostOfAction, actionType, _gridManager);
         Abilities.Add(action);
         Debug.Log("Ability Initialized");
     }
     
     void Start()
     {
+        ActionPoints = new Dictionary<ActionType, int>
+        {
+            { ActionType.MovePoint, 1},{ ActionType.ActionPoint, 1 },
+        };
         EntityAnimtor = GetComponent<Animator>();
         
     }
@@ -70,7 +71,7 @@ public class BaseBattleEntity : MonoBehaviour
         _pathFinding = _gridManager.GetPathFinding;
         Grid = _gridManager.GetGridNodes;
         
-        InitActions(new MoveAction(), MoveSpeed, MovePoint_Cost);
+        InitActions(new MoveAction(), MoveSpeed, MovePoint_Cost, ActionType.MovePoint);
     }
 
     public void ResetActionPoints()
