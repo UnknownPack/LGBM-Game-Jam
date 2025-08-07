@@ -65,7 +65,7 @@ public class GridManager : MonoBehaviour
                 tile.transform.position = new Vector3(i, p, 10);
                 Grid_Nodes[GridPostion] = new Node(GridPostion, RealPosition, tile, true);
                 yCord++;
-                Debug.Log($"Tile's Real position: {RealPosition} \n Grid Position: {GridPostion}");
+                //Debug.Log($"Tile's Real position: {RealPosition} \n Grid Position: {GridPostion}");
             } 
             xCord++; 
         }

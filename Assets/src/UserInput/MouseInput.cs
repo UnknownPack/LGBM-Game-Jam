@@ -5,22 +5,20 @@ using UnityEngine;
 public class MouseInput : MonoBehaviour
 {
     private GameObject SelectedUnit;
-    private bool unitsSelected = false;
+    private bool unitsSelected = false, readUserInput = false;
     private ActionBase currentSelectedAction;
     private GridManager _gridManager;
+    private TurnManager _turnManager;
     
     void Start()
     {
-        _gridManager = GameObject.Find("CoreManager").GetComponent<GridManager>();
-        if(_gridManager == null)
-        {
-            Debug.LogError("GridManager not found in the scene. Please ensure it is present.");
-            return;
-        }
     }
 
     void Update()
     {
+        if(!readUserInput)
+            return;
+        
         if (!unitsSelected)
             ManageUserInput();
         else
@@ -70,16 +68,7 @@ public class MouseInput : MonoBehaviour
         }
 
         currentSelectedAction = battleEntity.GetAbilityList[0];
-        if(!battleEntity.isActionPointAvailable(currentSelectedAction.GetActionType))
-        {
-            if (Input.GetKey(KeyCode.LeftShift))
-                currentSelectedAction.ShowActionRange();
-            else
-                _gridManager.ResetColourTiles();
-        }
-        
-        
-        //TODO: Implement logic for managing the selected unit and selecting actions
+{}      //TODO: Implement logic for managing the selected unit and selecting actions
         if (Input.GetMouseButtonDown(1)) // Right-click to clear selection
         {
             _gridManager.ResetColourTiles();
@@ -88,6 +77,18 @@ public class MouseInput : MonoBehaviour
 
             if (hit.collider == null)
                 return;
+            
+            if(!battleEntity.isActionPointAvailable(currentSelectedAction.GetActionType))
+            {
+                Debug.Log($"Cannot Execute {currentSelectedAction.GetActionType.ToString()} type actions anymore!");
+                return;
+            }
+            /*
+            if (Input.GetKey(KeyCode.LeftShift))
+                currentSelectedAction.ShowActionRange();
+            else
+                _gridManager.ResetColourTiles();
+             */
             
             if (hit.collider.CompareTag("Tile"))
             {
@@ -103,10 +104,23 @@ public class MouseInput : MonoBehaviour
         }
     }
 
-    #region Public Getters
-
+    #region Public Helper Functions
     public GameObject GetSelectedUnit => SelectedUnit;
     public bool IsUnitSelected => unitsSelected;
+    public void InjectBackendSystems(GridManager gridManager, TurnManager TurnManager)
+    {
+        _gridManager = gridManager;
+        _turnManager = TurnManager;
+        readUserInput = true;
+    }
+
+    public void ResetSelectedUnit()
+    {
+        SelectedUnit = null;
+        unitsSelected = false;
+    }
+
+    public void ReadUserInput(bool b) => readUserInput = b;
 
     #endregion
 

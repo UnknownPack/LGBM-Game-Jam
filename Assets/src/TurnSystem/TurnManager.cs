@@ -15,6 +15,8 @@ public class TurnManager : MonoBehaviour
     {
         mouseInput = GetComponent<MouseInput>();
         gridManager = GetComponent<GridManager>();
+        
+        mouseInput.InjectBackendSystems(gridManager, this);
         gridManager.InitaliseMap();
         foreach (var entity in battleEntities)
         {
@@ -25,15 +27,51 @@ public class TurnManager : MonoBehaviour
 
     private void Update()
     {
-         
+        if (isPlayersTurn)
+            ManageTurns();
     }
 
     private IEnumerator CycleTurn()
     {
+        Debug.Log("Executing Enemy's turns...");
+        ResetActionPoints(UnitOwnership.Enemy);
         foreach (var battleEntity in battleEntities)
         {
-            //battleEntity
+            if (battleEntity is EnemyBaseEntity output)
+            {
+                yield return StartCoroutine(output.ExecuteTurn());
+            }
         }
-        yield return null;
+        
+        Debug.Log("All Enemy Turns Executed");
+        // After enemy turns have been executed, return control back to player and replenish spent action points
+        ResetActionPoints(UnitOwnership.Player);
+        SetPlayerTurn(true);
+    }
+
+    private void ManageTurns()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Ending player turn...");
+            SetPlayerTurn(false);
+            StartCoroutine(CycleTurn());
+        }
+    }
+
+    private void SetPlayerTurn(bool b)
+    {
+        isPlayersTurn = b;
+        mouseInput.ReadUserInput(b);
+        mouseInput.ResetSelectedUnit();
+    }
+
+    private void ResetActionPoints(UnitOwnership owner)
+    {
+        foreach (var battleEntity in battleEntities)
+        {
+            if (battleEntity.GetUnitOwnerShip == owner)
+                battleEntity.ResetActionPoints();
+        }
     }
 }

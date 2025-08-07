@@ -50,15 +50,6 @@ public class BaseBattleEntity : MonoBehaviour
     {
         
     }
-
-    #region Public Getters
-        public float GetHealth => Health;
-        public float GetDamage => Damage;
-        public float GetDefence => Defence;
-        public float GetMoveSpeed => MoveSpeed;
-        public Animator GetAnimator => EntityAnimtor;
-        public List<ActionBase> GetAbilityList => Abilities;
-    #endregion
     public void InjectGridManager(GridManager gridManager)
     {
         _gridManager = gridManager;
@@ -70,19 +61,40 @@ public class BaseBattleEntity : MonoBehaviour
         transform.position = _gridManager.GetNodeFromPosition(transform.position).GetRealPosition;
         _pathFinding = _gridManager.GetPathFinding;
         Grid = _gridManager.GetGridNodes;
-        
+
+        InitialiseActions();
+    }
+
+    protected virtual void InitialiseActions()
+    {
         InitActions(new MoveAction(), MoveSpeed, MovePoint_Cost, ActionType.MovePoint);
     }
 
-    public void ResetActionPoints()
-    {
-        ActionPoints[ActionType.MovePoint] = MovePoint_MaxCount;
-        ActionPoints[ActionType.ActionPoint] = ActionPoint_MaxCount;
-    }
+     
 
-    public bool isActionPointAvailable(ActionType actionType) => ActionPoints[actionType] > 0;
+    #region Public Helper Functions
+        public float GetHealth => Health;
+        public float GetDamage => Damage;
+        public float GetDefence => Defence;
+        public float GetMoveSpeed => MoveSpeed;
+        public Animator GetAnimator => EntityAnimtor;
+        public List<ActionBase> GetAbilityList => Abilities;
+        public Dictionary<ActionType, int> GetActionPoints => ActionPoints;
+        public int GetActionPointsCount(ActionType actionType) => ActionPoints[actionType]; 
+        
+        public void RemoveActionPoint(ActionType actionType, int amount) => ActionPoints[actionType] -= amount;
+        
+        public void ResetActionPoints()
+        {
+            ActionPoints[ActionType.MovePoint] = MovePoint_MaxCount;
+            ActionPoints[ActionType.ActionPoint] = ActionPoint_MaxCount;
+        }
 
-    public void RemoveActionPoint(ActionType actionType, int amount) => ActionPoints[actionType] -= amount;
+        public UnitOwnership GetUnitOwnerShip => UnitOwner;
+        public bool isActionPointAvailable(ActionType actionType) => ActionPoints[actionType] > 0;
+    
+    #endregion
+    
 }
 
 [System.Serializable]

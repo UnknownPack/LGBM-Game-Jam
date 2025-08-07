@@ -32,6 +32,7 @@ public class ActionBase
     {
         yield return null;
         _baseBattleEntity.RemoveActionPoint(_actionType, ActionCost);
+        Debug.Log($"{_actionType.ToString()}s remaining: {_baseBattleEntity.GetActionPointsCount(_actionType).ToString()} ");
     }
 
     public void ShowActionRange()
