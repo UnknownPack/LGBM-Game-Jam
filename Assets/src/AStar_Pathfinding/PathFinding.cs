@@ -25,6 +25,7 @@ public class PathFinding
             Queue<Node> ClosedSet = new Queue<Node>();
             
             OpenSet.Enqueue(startNode);
+            startNode.SetWalkableState(true);
             startNode.GCost = 0;
             startNode.HCost = Get_HCost(startNode, goalNode);
 

@@ -24,6 +24,7 @@ public class TurnManager : MonoBehaviour
         {
             Debug.Log($"{entity.gameObject.name} Initialised with GridManager");
             entity.InjectGridManager(gridManager);
+            gridManager.GetNodeFromPosition(entity.transform.position).SetWalkableState(false);
         }
     }
 
