@@ -1375,7 +1375,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -1.06, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4425,6 +4425,7 @@ GameObject:
   - component: {fileID: 1525577222}
   - component: {fileID: 1525577221}
   - component: {fileID: 1525577224}
+  - component: {fileID: 1525577225}
   m_Layer: 0
   m_Name: CoreManager
   m_TagString: Untagged
@@ -4461,6 +4462,7 @@ MonoBehaviour:
   battleEntities:
   - {fileID: 485337511}
   isPlayersTurn: 1
+  currentTurn: 0
 --- !u!4 &1525577223
 Transform:
   m_ObjectHideFlags: 0
@@ -4491,6 +4493,25 @@ MonoBehaviour:
   tilePrefab: {fileID: 3364500529239584874, guid: 2bbf972cc7fe87f48a0dc3b1c49e7a01, type: 3}
   GridRadius: 3
   parentNode: {fileID: 1676071391}
+--- !u!114 &1525577225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525577220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 26c1b124299d5d24bb72bbc2c91c3c88, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 31dba4f37a3ab66468b333a73a021238, type: 3}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!1 &1653929394
 GameObject:
   m_ObjectHideFlags: 0
