@@ -8,19 +8,21 @@ public class ActionBase
     protected GameObject ParentObject;
     protected float ActionRange;
     protected ActionType _actionType;
+    protected ActionTargetType _actionTargetType;
     protected int ActionCost; 
     protected PathFinding PathFinder;
     protected Dictionary<Vector2Int, Node> Grid_Nodes;
     protected GridManager _gridManager;
     protected BaseBattleEntity _baseBattleEntity;
 
-    public virtual void Init(GameObject parentObject, BaseBattleEntity _baseBattleEntity, float actionRange, int ActionCost, ActionType _actionType, GridManager gridManager)
+    public virtual void Init(GameObject parentObject, BaseBattleEntity _baseBattleEntity, float actionRange, int ActionCost, ActionTargetType _actionTargetType ,ActionType _actionType, GridManager gridManager)
     { 
         ParentObject = parentObject;
         this._baseBattleEntity = _baseBattleEntity;
         ActionRange  = actionRange;
         this.ActionCost = ActionCost;
         this._actionType = _actionType;
+        this._actionTargetType = _actionTargetType;
         this._gridManager = gridManager;
         this.PathFinder = _gridManager.GetPathFinding;
         this.Grid_Nodes = _gridManager.GetGridNodes;
@@ -66,4 +68,11 @@ public enum ActionType
 {
     MovePoint,
     ActionPoint
+}
+
+[System.Serializable]
+public enum ActionTargetType
+{
+    Unit,
+    Tile
 }
