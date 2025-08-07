@@ -35,20 +35,20 @@ public class GridManager : MonoBehaviour
         } 
         GenerateMap(); 
     }
-
-
-    [ContextMenu("Test Grid Nodes")]
-    public void TestGridNodeFunctinality()
-    {
-        if (parentNode != null)
-        {
-            DestroyImmediate(parentNode);
-            parentNode = null;  
-        } 
-        GenerateMap();
-        TestPathfinding();
-    }
-    
+    //
+    //
+    // [ContextMenu("Test Grid Nodes")]
+    // public void TestGridNodeFunctinality()
+    // {
+    //     if (parentNode != null)
+    //     {
+    //         DestroyImmediate(parentNode);
+    //         parentNode = null;  
+    //     } 
+    //     GenerateMap();
+    //     TestPathfinding();
+    // }
+    //
     private void GenerateMap()
     { 
         Grid_Nodes = new Dictionary<Vector2Int , Node>(); 

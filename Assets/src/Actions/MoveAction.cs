@@ -39,6 +39,7 @@ public class MoveAction : ActionBase
             yield return null;
         }
         ParentObject.transform.position = EndPosition;
+        TargetNode.SetWalkableState(false);
     }
 }
 
