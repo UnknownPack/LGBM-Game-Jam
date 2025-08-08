@@ -17,6 +17,7 @@ public class TurnManager : MonoBehaviour
     {
         mouseInput = GetComponent<MouseInput>();
         gridManager = GetComponent<GridManager>();
+        gridManager.InjectTurnManager(this);
         UserInputManager = GetComponent<UserInputManager>();
         gridManager.InitaliseMap();
         foreach (var entity in battleEntities)
@@ -63,6 +64,7 @@ public class TurnManager : MonoBehaviour
             StartCoroutine(CycleTurn());
         }
     }
+    
 
     private void SetPlayerTurn(bool b)
     {
@@ -80,5 +82,17 @@ public class TurnManager : MonoBehaviour
         }
     }
     
-    
+    public void RemoveEntityFromTurnManager(BaseBattleEntity entity)
+    {
+        if (battleEntities.Contains(entity))
+        {
+            battleEntities.Remove(entity);
+            Debug.Log($"{entity.gameObject.name} removed from TurnManager");
+        }
+        else
+        {
+            Debug.LogWarning($"{entity.gameObject.name} not found in TurnManager's list of entities.");
+        }
+    }
+
 }

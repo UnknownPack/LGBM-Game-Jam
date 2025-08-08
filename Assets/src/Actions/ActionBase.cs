@@ -12,10 +12,11 @@ public class ActionBase
     protected int ActionCost; 
     protected PathFinding PathFinder;
     protected Dictionary<Vector2Int, Node> Grid_Nodes;
+    protected TurnManager TurnManager;
     protected GridManager _gridManager;
     protected BaseBattleEntity _baseBattleEntity;
 
-    public virtual void Init(GameObject parentObject, BaseBattleEntity _baseBattleEntity, float actionRange, int ActionCost, ActionTargetType _actionTargetType ,ActionType _actionType, GridManager gridManager)
+    public virtual void Init(GameObject parentObject, BaseBattleEntity _baseBattleEntity, float actionRange, int ActionCost, ActionTargetType _actionTargetType ,ActionType _actionType, GridManager _gridManager)
     { 
         ParentObject = parentObject;
         this._baseBattleEntity = _baseBattleEntity;
@@ -23,7 +24,9 @@ public class ActionBase
         this.ActionCost = ActionCost;
         this._actionType = _actionType;
         this._actionTargetType = _actionTargetType;
-        this._gridManager = gridManager;
+        
+        this._gridManager = _gridManager;
+        this.TurnManager = _gridManager.GetTurnManager;
         this.PathFinder = _gridManager.GetPathFinding;
         this.Grid_Nodes = _gridManager.GetGridNodes;
     }
@@ -33,6 +36,7 @@ public class ActionBase
         _gridManager.ResetColourTiles();
         yield return null;
         _baseBattleEntity.RemoveActionPoint(_actionType, ActionCost);
+        _baseBattleEntity.SetCurrentNode(_gridManager.GetNodeFromPosition(ParentObject.transform.position));
         Debug.Log($"{_actionType.ToString()}s remaining: {_baseBattleEntity.GetActionPointsCount(_actionType).ToString()} ");
     }
 
@@ -51,7 +55,7 @@ public class ActionBase
         }
         _gridManager.GetNodeFromPosition(ParentObject.transform.position).GetTileObject.GetComponent<SpriteRenderer>().color = Color.gray;
     }
-
+    
     public bool TargetWiihinRange(GameObject target)
     {
         Vector3 ParentPosition = ParentObject.transform.position;
@@ -61,12 +65,13 @@ public class ActionBase
         return Vector2Int.Distance(TargetNode.GetGridPosition, CurrentNode.GetGridPosition) <= ActionRange;
     }
 
-    protected List<Node> GetListOfNodesAffected()
+    protected List<Node> GetNodesWithinAoe(GameObject PointOfOrigin, int AoeRadius)
     {
         List<Node> output = new List<Node>();
+        Node CurrentNode = _gridManager.GetNodeFromPosition(PointOfOrigin.transform.position); 
         foreach (var node in Grid_Nodes)
         {
-            if (TargetWiihinRange(node.Value.GetTileObject))
+            if(Vector2Int.Distance(CurrentNode.GetGridPosition, node.Value.GetGridPosition) <= AoeRadius)
                 output.Add(node.Value);
         }
         return output;

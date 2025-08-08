@@ -9,9 +9,9 @@ public class GridManager : MonoBehaviour
     public GameObject tilePrefab;
     [SerializeField] private int GridRadius = 15;
     private Dictionary<Vector2Int , Node> Grid_Nodes = new Dictionary<Vector2Int , Node>();
-    
-    
+    private List<BaseBattleEntity> BattleEntitiesList = new List<BaseBattleEntity>();
     private PathFinding pathFinding = new PathFinding();
+    private TurnManager turnManager;
 
     [SerializeField] private GameObject parentNode;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -120,8 +120,50 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    public PathFinding GetPathFinding => pathFinding;
+    public void AddEntityToGrid(BaseBattleEntity entity)
+    {
+        if (entity == null)
+        {
+            Debug.LogError("Entity is null, cannot add to grid.");
+            return;
+        }
+        BattleEntitiesList.Add(entity); 
+        GetNodeFromPosition(entity.transform.position).SetWalkableState(false);
+    }
+    public void RemoveEntityFromGrid(BaseBattleEntity entity)
+    {
+        if (entity == null)
+        {
+            Debug.LogError("Entity is null, cannot remove from grid.");
+            return;
+        }
+        BattleEntitiesList.Remove(entity);
+        turnManager.RemoveEntityFromTurnManager(entity);
+    }
 
+    public Dictionary<Vector2Int, BaseBattleEntity> GetEntityListToGrid()
+    {
+        Dictionary<Vector2Int, BaseBattleEntity> entityGrid = new Dictionary<Vector2Int, BaseBattleEntity>();
+        foreach (var entity in BattleEntitiesList)
+        {
+            Node node = GetNodeFromPosition(entity.transform.position);
+            if (node != null)
+            {
+                entityGrid[node.GetGridPosition] = entity;
+            }
+            else
+            {
+                Debug.LogWarning($"Node not found for entity at position: {entity.transform.position}");
+            }
+        }
+        return entityGrid;
+    }
+
+    public PathFinding GetPathFinding => pathFinding;
+    public void InjectTurnManager(TurnManager turnManager) => this.turnManager = turnManager;
+    public TurnManager GetTurnManager => turnManager;
+    public void UpdateBattleList(List<BaseBattleEntity> entities) => BattleEntitiesList = entities;
+    public List<BaseBattleEntity> GetBattleEntitiesList() => BattleEntitiesList;
     public Dictionary<Vector2Int, Node> GetGridNodes => Grid_Nodes;
 
     #endregion

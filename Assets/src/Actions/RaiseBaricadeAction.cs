@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class RaiseBaricadeAction : ActionBase
 {
+    public int BaricadeRadius = 2;
+    
     public override IEnumerator Action(GameObject target)
     {
-        Node TargetNode = _gridManager.GetNodeFromPosition(target.transform.position);
-        List<Node> AreaOfEffect = GetListOfNodesAffected();
-
-        foreach (var node in AreaOfEffect)
+        List<Node> NodesWithinAoe = GetNodesWithinAoe(target, BaricadeRadius);
+        foreach (var node in NodesWithinAoe)
         {
             node.SetWalkableState(false);
-            SpriteRenderer sr = node.GetTileObject.GetComponent<SpriteRenderer>();
-            if(sr == null)
-                yield break;
-            
-            sr.color = Color.red;
-            //TODO: IMplement future logic to reverse this after a certain amount of turns
         }
+        //TODO: TRIGGER ANIMATION(S) HERE
+        
+        // Remove action points etc.
+        yield return base.Action(target);
     }
 }

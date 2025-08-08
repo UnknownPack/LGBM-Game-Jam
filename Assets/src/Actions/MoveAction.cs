@@ -22,7 +22,7 @@ public class MoveAction : ActionBase
             
         foreach (var node in path)
             yield return Move(ParentObject.transform.position, node);
-
+        
         yield return base.Action(target);
     }
 

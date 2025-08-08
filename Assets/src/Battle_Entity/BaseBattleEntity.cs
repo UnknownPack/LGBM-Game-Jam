@@ -23,7 +23,7 @@ public class BaseBattleEntity : MonoBehaviour
     private Dictionary<AbilityName, ActionBase> Abilities = new Dictionary<AbilityName, ActionBase>();
     private Dictionary<Vector2Int, Node> Grid;
     private Node CurrentNode;
- 
+    private InitalEntityStats initalEntityStats;
     
     private Animator EntityAnimtor;
     private GridManager _gridManager;
@@ -33,19 +33,16 @@ public class BaseBattleEntity : MonoBehaviour
     {
         ActionPoints = new Dictionary<ActionType, int>
         {
-            { ActionType.MovePoint, 1},{ ActionType.ActionPoint, 1 },
+            { ActionType.MovePoint, MovePoint_MaxCount},{ ActionType.ActionPoint, ActionPoint_MaxCount },
         };
         EntityAnimtor = GetComponent<Animator>();
-        
+        initalEntityStats = new InitalEntityStats(Health, Damage, Defence, MoveSpeed);
     }
 
-    void Update()
-    {
-        
-    }
     public void InjectGridManager(GridManager gridManager)
     {
         _gridManager = gridManager;
+        _gridManager.AddEntityToGrid(this);
         if(_gridManager == null)
         {
             Debug.LogError("GridManager not found in the scene. Please ensure it is present.");
@@ -72,6 +69,7 @@ public class BaseBattleEntity : MonoBehaviour
 
     protected virtual void Death()
     {
+        _gridManager.RemoveEntityFromGrid(this);
         Debug.Log($"{gameObject.name} has died!");
         Destroy(gameObject);
     }
@@ -92,6 +90,7 @@ public class BaseBattleEntity : MonoBehaviour
         public float GetDefence => Defence;
         public float GetMoveSpeed => MoveSpeed;
         public Animator GetAnimator => EntityAnimtor;
+        public void SetCurrentNode(Node node) => CurrentNode = node;
         public Dictionary<AbilityName, ActionBase> GetAbilityList => Abilities;
         public Dictionary<ActionType, int> GetActionPoints => ActionPoints;
         public int GetActionPointsCount(ActionType actionType) => ActionPoints[actionType]; 
@@ -117,4 +116,20 @@ public enum UnitOwnership
     Player,
     Ally,
     Enemy
+}
+
+public struct InitalEntityStats
+{
+    public float Health;
+    public float Damage;
+    public float Defence;
+    public int MoveSpeed;
+
+    public InitalEntityStats(float health, float damage, float defence, int moveSpeed)
+    {
+        Health = health;
+        Damage = damage;
+        Defence = defence;
+        MoveSpeed = moveSpeed;
+    }
 }

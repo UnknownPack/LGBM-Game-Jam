@@ -6,13 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Toolkit.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Toolkit/UnityThemes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI stuff/UI documents/MainGameUI.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI stuff/UI documents/MainGameUI.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/UserInput/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/Node.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/Node.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/PathFinding.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/AStar_Pathfinding/PathFinding.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/ActionBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/ActionBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/GrenadeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/GrenadeAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/MoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/MoveAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/RaiseBaricadeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/RaiseBaricadeAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/GridManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/GridManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/Tile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/BattlefieldGrtid/Tile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/TurnSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/TurnSystem/TurnManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/TurnSystem/TurnManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/MouseInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/MouseInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/UIManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/UIManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/UserInputManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/UserInputManager.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,21 +66,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;origin-NestorsBranch-UIProgramming&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "origin-NestorsBranch",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.1.14f1\Editor\Unity.exe" />
@@ -124,7 +142,7 @@
       <workItem from="1754496584525" duration="6113000" />
       <workItem from="1754527049037" duration="5905000" />
       <workItem from="1754653604306" duration="2944000" />
-      <workItem from="1754656952000" duration="12167000" />
+      <workItem from="1754656952000" duration="17577000" />
     </task>
     <servers />
   </component>
