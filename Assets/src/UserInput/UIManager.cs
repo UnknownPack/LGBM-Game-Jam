@@ -6,14 +6,17 @@ using UnityEngine.UIElements;
 public class UIManager : MonoBehaviour
 {
     public VisualTreeAsset abilityButtonTemplate;
+    public Color movePointColor, actonPointColor, emptyPointColor;
     private UIDocument uiDocument;
-    private VisualElement abilityButtonContainer;
+    private VisualElement abilityButtonContainer, movePoint, actionPoint;
     private UserInputManager userInputManager;
     private Dictionary<string, Button> CurrentAbilityButtons = new Dictionary<string, Button>();
     void Start()
     {
         uiDocument = GetComponent<UIDocument>();
         abilityButtonContainer = uiDocument.rootVisualElement.Q<VisualElement>("AbilityList");
+        movePoint = uiDocument.rootVisualElement.Q<VisualElement>("movePoint");
+        actionPoint = uiDocument.rootVisualElement.Q<VisualElement>("actionPoint");
     }
     
 
@@ -48,6 +51,9 @@ public class UIManager : MonoBehaviour
             return;
         
         Dictionary<ActionType, int> ActionPoints = SelectedBattleEntity.GetActionPoints;
+        movePoint.style.backgroundColor = (ActionPoints[ActionType.MovePoint] > 0) ? movePointColor : emptyPointColor;
+        actionPoint.style.backgroundColor = (ActionPoints[ActionType.ActionPoint] > 0) ? actonPointColor : emptyPointColor;
+        
         Dictionary<AbilityName, ActionBase> AbilityList = SelectedBattleEntity.GetAbilityList;
         
         foreach (var ability in AbilityList)

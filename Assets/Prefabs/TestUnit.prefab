@@ -224,3 +224,8 @@ MonoBehaviour:
   Damage: 0
   Defence: 0
   MoveSpeed: 0
+  MovePoint_MaxCount: 1
+  MovePoint_Cost: 1
+  ActionPoint_MaxCount: 1
+  ActionPoint_Cost: 1
+  UnitOwner: 0
