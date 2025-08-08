@@ -20,9 +20,9 @@ public class BaseBattleEntity : MonoBehaviour
     [SerializeField]protected UnitOwnership UnitOwner;
 
     private Dictionary<ActionType, int> ActionPoints;
-    private List<ActionBase> Abilities = new List<ActionBase>();
+    private Dictionary<AbilityName, ActionBase> Abilities = new Dictionary<AbilityName, ActionBase>();
     private Dictionary<Vector2Int, Node> Grid;
-     private Node CurrentNode;
+    private Node CurrentNode;
  
     
     private Animator EntityAnimtor;
@@ -60,13 +60,13 @@ public class BaseBattleEntity : MonoBehaviour
 
     protected virtual void InitialiseActions()
     {
-        InitActions(new MoveAction(), MoveSpeed, MovePoint_Cost, ActionType.MovePoint, ActionTargetType.Tile);
+        InitActions(AbilityName.Move, new MoveAction(), MoveSpeed, MovePoint_Cost, ActionType.MovePoint, ActionTargetType.Tile);
     }
     
-    private void InitActions(ActionBase action, float actionRange, int costOfAction, ActionType actionType, ActionTargetType actionTargetType)
+    private void InitActions(AbilityName name,ActionBase action, float actionRange, int costOfAction, ActionType actionType, ActionTargetType actionTargetType)
     {
         action.Init(gameObject, this, actionRange, costOfAction, actionTargetType, actionType, _gridManager);
-        Abilities.Add(action);
+        Abilities.Add(name, action);
         Debug.Log("Ability Initialized");
     }
 
@@ -92,7 +92,7 @@ public class BaseBattleEntity : MonoBehaviour
         public float GetDefence => Defence;
         public float GetMoveSpeed => MoveSpeed;
         public Animator GetAnimator => EntityAnimtor;
-        public List<ActionBase> GetAbilityList => Abilities;
+        public Dictionary<AbilityName, ActionBase> GetAbilityList => Abilities;
         public Dictionary<ActionType, int> GetActionPoints => ActionPoints;
         public int GetActionPointsCount(ActionType actionType) => ActionPoints[actionType]; 
         

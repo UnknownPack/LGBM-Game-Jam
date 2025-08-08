@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class MouseInput : MonoBehaviour
 {
-    private GameObject SelectedUnit;
-    private bool unitsSelected = false, readUserInput = false;
-    private ActionBase currentSelectedAction;
-    private GridManager _gridManager;
-    private TurnManager _turnManager;
+    private bool unitsSelected = false, readUserInput = false, selectingAction = false, actionSelected;
+    private UserInputManager userInputManager;
     
     void Start()
     {
@@ -35,91 +32,62 @@ public class MouseInput : MonoBehaviour
             if (hit.collider == null)
                 return;
             
-            // Check if the hit object has a specific tag
-            if (hit.collider.CompareTag("PlayerUnit"))
-            {
-                unitsSelected = true;
-                SelectedUnit = hit.collider.gameObject;
-                Debug.Log($"{hit.collider.gameObject.name} selected!");
-            }
-            else
-            { 
-                unitsSelected = false; 
-                SelectedUnit = null;
-            }
+            GameObject SelectedUnit = (hit.collider.CompareTag("PlayerUnit"))? hit.collider.gameObject : null;
+            userInputManager.SelectUnit(SelectedUnit);
             
         }
     }
 
     void ManageSelectedUnit()
     {
-        if(SelectedUnit == null)
+        ActionBase SelectedAction = userInputManager.GetSelectedAction();
+        if (SelectedAction == null)
         {
-            unitsSelected = false;
-            Debug.LogError("No unit selected.");
+            Debug.LogWarning("SelectedAction is null.");
             return;
         }
+
+        BaseBattleEntity SelectedEntity = SelectedAction.GetBaseBattleEntity;
         
-        BaseBattleEntity battleEntity = SelectedUnit.GetComponent<BaseBattleEntity>();
-        if(battleEntity == null)
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+        
+        if(hit.collider == null)
+            return;
+
+        if (!SelectedEntity.isActionPointAvailable(SelectedAction.GetActionType))
         {
-            Debug.LogError("Unable to get battleEntity component.");
+            Debug.LogWarning("Selected action is not available.");
             return;
         }
 
-        currentSelectedAction = battleEntity.GetAbilityList[0];
-{}      //TODO: Implement logic for managing the selected unit and selecting actions
-        if (Input.GetMouseButtonDown(1)) // Right-click to clear selection
+        if (Input.GetMouseButtonDown(1))
         {
-            _gridManager.ResetColourTiles();
-            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+            GameObject Target = hit.collider.gameObject;
+            
+            if (Target.CompareTag(SelectedAction.GetActionTargetType.ToString()))
+            {
+                Debug.LogWarning("Invalid target type selected.");
+                return;
+            }
 
-            if (hit.collider == null)
-                return;
-            
-            if(!battleEntity.isActionPointAvailable(currentSelectedAction.GetActionType))
+            if (!SelectedAction.TargetWiihinRange(Target))
             {
-                Debug.Log($"Cannot Execute {currentSelectedAction.GetActionType.ToString()} type actions anymore!");
+                Debug.LogWarning("Invalid target within range.");
                 return;
             }
-            /*
-            if (Input.GetKey(KeyCode.LeftShift))
-                currentSelectedAction.ShowActionRange();
-            else
-                _gridManager.ResetColourTiles();
-             */
             
-            if (hit.collider.CompareTag("Tile"))
-            {
-                if (!currentSelectedAction.TargetWiihinRange(hit.collider.gameObject))
-                {
-                    Debug.LogWarning("Failure! You tried to execute action outside it's range");
-                    return;
-                }
-                Node node = _gridManager.GetNodeFromPosition(mouseWorldPos);
-                Debug.LogWarning($"Executing Action!");
-                StartCoroutine(currentSelectedAction.Action(node.GetTileObject));
-            }
+            Debug.Log("Executing Action...");
+            StartCoroutine(SelectedAction.Action(Target));
         }
     }
+    
+    
 
     #region Public Helper Functions
-    public GameObject GetSelectedUnit => SelectedUnit;
-    public bool IsUnitSelected => unitsSelected;
-    public void InjectBackendSystems(GridManager gridManager, TurnManager TurnManager)
-    {
-        _gridManager = gridManager;
-        _turnManager = TurnManager;
-        readUserInput = true;
-    }
-
-    public void ResetSelectedUnit()
-    {
-        SelectedUnit = null;
-        unitsSelected = false;
-    }
-
+    public void ReadInputForSelectingAction(bool readUserInput)=> selectingAction = readUserInput;
+    public void SetSelectedUnit(bool readUserInput)=> unitsSelected = readUserInput;
+    public void InjectUserInputManager(UserInputManager userInputManager) => this.userInputManager = userInputManager;
     public void ReadUserInput(bool b) => readUserInput = b;
 
     #endregion

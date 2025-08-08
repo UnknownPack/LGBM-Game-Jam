@@ -30,6 +30,7 @@ public class ActionBase
 
     public virtual IEnumerator Action(GameObject target)
     {
+        _gridManager.ResetColourTiles();
         yield return null;
         _baseBattleEntity.RemoveActionPoint(_actionType, ActionCost);
         Debug.Log($"{_actionType.ToString()}s remaining: {_baseBattleEntity.GetActionPointsCount(_actionType).ToString()} ");
@@ -72,6 +73,8 @@ public class ActionBase
     }
 
     public ActionType GetActionType => _actionType;
+    public ActionTargetType GetActionTargetType => _actionTargetType;
+    public BaseBattleEntity GetBaseBattleEntity => _baseBattleEntity;
 
 }
 
@@ -87,4 +90,15 @@ public enum ActionTargetType
 {
     Unit,
     Tile
+}
+
+[System.Serializable]
+public enum AbilityName
+{
+    Move,
+    Attack,
+    Heal,
+    Grenade,
+    Taunt,
+    RaiseBaricade
 }

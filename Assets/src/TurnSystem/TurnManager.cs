@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public MouseInput mouseInput;
-    public GridManager gridManager;
+    private MouseInput mouseInput;
+    private GridManager gridManager;
     public List<BaseBattleEntity> battleEntities;
     public bool isPlayersTurn = true;
     public int currentTurn = 0;
@@ -16,8 +16,6 @@ public class TurnManager : MonoBehaviour
     {
         mouseInput = GetComponent<MouseInput>();
         gridManager = GetComponent<GridManager>();
-        
-        mouseInput.InjectBackendSystems(gridManager, this);
         gridManager.InitaliseMap();
         
         foreach (var entity in battleEntities)
@@ -68,7 +66,7 @@ public class TurnManager : MonoBehaviour
     {
         isPlayersTurn = b;
         mouseInput.ReadUserInput(b);
-        mouseInput.ResetSelectedUnit();
+        mouseInput.SetSelectedUnit(false);
     }
 
     private void ResetActionPoints(UnitOwnership owner)
@@ -79,4 +77,6 @@ public class TurnManager : MonoBehaviour
                 battleEntity.ResetActionPoints();
         }
     }
+    
+    
 }
