@@ -9,21 +9,17 @@ public class UIManager : MonoBehaviour
     private UIDocument uiDocument;
     private VisualElement abilityButtonContainer;
     private UserInputManager userInputManager;
+    private Dictionary<string, Button> CurrentAbilityButtons = new Dictionary<string, Button>();
     void Start()
     {
         uiDocument = GetComponent<UIDocument>();
         abilityButtonContainer = uiDocument.rootVisualElement.Q<VisualElement>("AbilityList");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void ShowUnitAbility(BaseBattleEntity SelectedBattleEntity)
     {
-        //Clear out container
+        CurrentAbilityButtons = new Dictionary<string, Button>();
         abilityButtonContainer.Clear();
         Dictionary<AbilityName, ActionBase> AbilityList = SelectedBattleEntity.GetAbilityList;
 
@@ -38,9 +34,26 @@ public class UIManager : MonoBehaviour
             var instance = abilityButtonTemplate.Instantiate();
             Button btn = instance.Q<Button>(); 
             abilityButtonContainer.Add(instance);
-            btn.name = ability.Key.ToString();
-            btn.Q<Label>("NameLabel").text = ability.Key.ToString();
+            string abilityName = ability.Key.ToString();
+            btn.name = abilityName;
+            btn.Q<Label>("Name").text = ability.Key.ToString();
             btn.clickable.clicked += () => OnButtonClicked(AbilityList[ability.Key]);
+            CurrentAbilityButtons.Add(abilityName, btn);
+        }
+    }
+    
+    public void UpdateAvailableAbility(BaseBattleEntity SelectedBattleEntity)
+    {
+        if(CurrentAbilityButtons.Count == 0)
+            return;
+        
+        Dictionary<ActionType, int> ActionPoints = SelectedBattleEntity.GetActionPoints;
+        Dictionary<AbilityName, ActionBase> AbilityList = SelectedBattleEntity.GetAbilityList;
+        
+        foreach (var ability in AbilityList)
+        {
+            bool isButtonActive = ActionPoints[ability.Value.GetActionType] > 0;
+            CurrentAbilityButtons[ability.Key.ToString()].SetEnabled(isButtonActive);
         }
     }
     
@@ -48,7 +61,7 @@ public class UIManager : MonoBehaviour
     {
         // Clear the ability button container when no unit is selected
         abilityButtonContainer.Clear();
-        //TODO: hide the ability UI or perform any other necessary cleanup
+        CurrentAbilityButtons.Clear();
     }
 
     public void InjectUserInputManager(UserInputManager userInputManager) => this.userInputManager = userInputManager;

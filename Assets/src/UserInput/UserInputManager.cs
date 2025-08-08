@@ -8,9 +8,9 @@ public class UserInputManager : MonoBehaviour
     private UIManager uiManager;
     private GridManager gridManager;
     
-    private GameObject SelectedUnit;
+    private BaseBattleEntity SelectedUnit;
     private ActionBase SelectedAction;
-    
+    private BaseBattleEntity battleEntity;
     private bool showSelectionActionRange = false;
 
     void Start()
@@ -24,32 +24,43 @@ public class UserInputManager : MonoBehaviour
 
     private void Update()
     {
-        if(SelectedAction != null)
-            SelectedAction.ShowActionRange(Color.azure);
+        if(showSelectionActionRange)
+            SelectedAction.ShowActionRange(Color.blue);
         else
             gridManager.ResetColourTiles();
     }
 
-    public void SelectUnit(GameObject unit) 
+    public void SelectUnit(BaseBattleEntity unit) 
     {
-        bool isUnitSelected = unit ==null;
-        mouseInput.ReadInputForSelectingAction(isUnitSelected);
-        mouseInput.SetSelectedUnit(isUnitSelected);
+        bool UnitSelected = unit !=null;
+        mouseInput.SetSelectedUnit(UnitSelected);
         
-        if (!isUnitSelected)
+        if (!UnitSelected)
         {
+            gridManager.ResetColourTiles();
             uiManager.DeselectUnit();
             return;
         }
         
+        Debug.Log($"Selected Unit: {unit.name}");
         SelectedUnit = unit;
-        uiManager.ShowUnitAbility(unit.GetComponent<BaseBattleEntity>());
+        uiManager.ShowUnitAbility(SelectedUnit);
+        uiManager.UpdateAvailableAbility(SelectedUnit);
     }
     
     public void SelectAction(ActionBase action)
     {
         showSelectionActionRange = action != null;
+        mouseInput.HasActionBeenSelected(showSelectionActionRange);
         SelectedAction = (showSelectionActionRange) ? action : null;
+        uiManager.UpdateAvailableAbility(SelectedUnit);
+    }
+    
+    public void ResetInputs()
+    {
+        SelectUnit(null);
+        SelectAction(null);
+        uiManager.DeselectUnit();
     }
     
     public ActionBase GetSelectedAction() => SelectedAction;

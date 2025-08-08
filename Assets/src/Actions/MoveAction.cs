@@ -29,7 +29,7 @@ public class MoveAction : ActionBase
     private IEnumerator Move(Vector3 startPosition, Node TargetNode)
     { 
         float duration = moveSpeed, elapsedTIme = 0;
-        Vector3 StartPosition = ParentObject.transform.position,
+        Vector3 StartPosition = startPosition,
             EndPosition = TargetNode.GetRealPosition;
         
         while (elapsedTIme<duration)

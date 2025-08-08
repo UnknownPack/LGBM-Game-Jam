@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI stuff/UI documents/AbilityButtonTemplate.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI stuff/UI documents/AbilityButtonTemplate.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI stuff/UI documents/MainGameUI.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI stuff/UI documents/MainGameUI.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/ActionBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/ActionBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/MoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/MoveAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/TurnSystem/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/TurnSystem/TurnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/MouseInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/UserInput/MouseInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/UserInput/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/UserInput/UIManager.cs" afterDir="false" />
@@ -127,7 +123,7 @@
       <workItem from="1754496584525" duration="6113000" />
       <workItem from="1754527049037" duration="5905000" />
       <workItem from="1754653604306" duration="2944000" />
-      <workItem from="1754656952000" duration="6412000" />
+      <workItem from="1754656952000" duration="10408000" />
     </task>
     <servers />
   </component>

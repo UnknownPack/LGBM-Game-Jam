@@ -7,6 +7,7 @@ public class TurnManager : MonoBehaviour
 {
     private MouseInput mouseInput;
     private GridManager gridManager;
+    private UserInputManager UserInputManager;
     public List<BaseBattleEntity> battleEntities;
     public bool isPlayersTurn = true;
     public int currentTurn = 0;
@@ -16,8 +17,8 @@ public class TurnManager : MonoBehaviour
     {
         mouseInput = GetComponent<MouseInput>();
         gridManager = GetComponent<GridManager>();
+        UserInputManager = GetComponent<UserInputManager>();
         gridManager.InitaliseMap();
-        
         foreach (var entity in battleEntities)
         {
             Debug.Log($"{entity.gameObject.name} Initialised with GridManager");
@@ -47,6 +48,7 @@ public class TurnManager : MonoBehaviour
         Debug.Log("All Enemy Turns Executed");
         // After enemy turns have been executed, return control back to player and replenish spent action points
         ResetActionPoints(UnitOwnership.Player);
+        UserInputManager.ResetInputs();
         SetPlayerTurn(true);
         currentTurn++;
         Debug.Log($"Current Turn cycle: {currentTurn}");

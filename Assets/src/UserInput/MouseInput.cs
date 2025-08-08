@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseInput : MonoBehaviour
 {
-    private bool unitsSelected = false, readUserInput = false, selectingAction = false, actionSelected;
+    private bool unitsSelected = false, readUserInput = true, actionSelected = false;
     private UserInputManager userInputManager;
     
     void Start()
@@ -18,12 +19,14 @@ public class MouseInput : MonoBehaviour
         
         if (!unitsSelected)
             ManageUserInput();
-        else
+        
+        if(actionSelected)
             ManageSelectedUnit();
     }
 
     void ManageUserInput()
     {
+        // Responsible for selecting a unit
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -33,8 +36,7 @@ public class MouseInput : MonoBehaviour
                 return;
             
             GameObject SelectedUnit = (hit.collider.CompareTag("PlayerUnit"))? hit.collider.gameObject : null;
-            userInputManager.SelectUnit(SelectedUnit);
-            
+            userInputManager.SelectUnit(SelectedUnit.GetComponent<BaseBattleEntity>());
         }
     }
 
@@ -42,10 +44,7 @@ public class MouseInput : MonoBehaviour
     {
         ActionBase SelectedAction = userInputManager.GetSelectedAction();
         if (SelectedAction == null)
-        {
-            Debug.LogWarning("SelectedAction is null.");
             return;
-        }
 
         BaseBattleEntity SelectedEntity = SelectedAction.GetBaseBattleEntity;
         
@@ -60,14 +59,14 @@ public class MouseInput : MonoBehaviour
             Debug.LogWarning("Selected action is not available.");
             return;
         }
-
+        
         if (Input.GetMouseButtonDown(1))
         {
             GameObject Target = hit.collider.gameObject;
             
-            if (Target.CompareTag(SelectedAction.GetActionTargetType.ToString()))
+            if (!Target.CompareTag(SelectedAction.GetActionTargetType.ToString()))
             {
-                Debug.LogWarning("Invalid target type selected.");
+                Debug.LogWarning($"Invalid target type selected.\n Expected: {SelectedAction.GetActionTargetType}, Found: {Target.tag}.");
                 return;
             }
 
@@ -77,15 +76,21 @@ public class MouseInput : MonoBehaviour
                 return;
             }
             
-            Debug.Log("Executing Action...");
-            StartCoroutine(SelectedAction.Action(Target));
+            StartCoroutine(AwaitActionExecution(SelectedAction, Target));
+            userInputManager.SelectAction(null);
         }
+    }
+    
+    private IEnumerator AwaitActionExecution(ActionBase action, GameObject target)
+    {
+        yield return action.Action(target);
+        userInputManager.SelectAction(null);
     }
     
     
 
     #region Public Helper Functions
-    public void ReadInputForSelectingAction(bool readUserInput)=> selectingAction = readUserInput;
+    public void HasActionBeenSelected(bool readUserInput)=> actionSelected = readUserInput;
     public void SetSelectedUnit(bool readUserInput)=> unitsSelected = readUserInput;
     public void InjectUserInputManager(UserInputManager userInputManager) => this.userInputManager = userInputManager;
     public void ReadUserInput(bool b) => readUserInput = b;
