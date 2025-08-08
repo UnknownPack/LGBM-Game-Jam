@@ -65,7 +65,7 @@ public class ActionBase
         return Vector2Int.Distance(TargetNode.GetGridPosition, CurrentNode.GetGridPosition) <= ActionRange;
     }
 
-    protected List<Node> GetNodesWithinAoe(GameObject PointOfOrigin, int AoeRadius)
+    protected List<Node> GetNodesWithinAoe(GameObject PointOfOrigin, float AoeRadius)
     {
         List<Node> output = new List<Node>();
         Node CurrentNode = _gridManager.GetNodeFromPosition(PointOfOrigin.transform.position); 

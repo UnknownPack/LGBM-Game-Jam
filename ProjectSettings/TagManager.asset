@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - PlayerUnit
   - Tile
+  - Unit
   layers:
   - Default
   - TransparentFX

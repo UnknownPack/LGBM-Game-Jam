@@ -60,11 +60,10 @@ public class BaseBattleEntity : MonoBehaviour
         InitActions(AbilityName.Move, new MoveAction(), MoveSpeed, MovePoint_Cost, ActionType.MovePoint, ActionTargetType.Tile);
     }
     
-    private void InitActions(AbilityName name,ActionBase action, float actionRange, int costOfAction, ActionType actionType, ActionTargetType actionTargetType)
+    public void InitActions(AbilityName name,ActionBase action, float actionRange, int costOfAction, ActionType actionType, ActionTargetType actionTargetType)
     {
         action.Init(gameObject, this, actionRange, costOfAction, actionTargetType, actionType, _gridManager);
         Abilities.Add(name, action);
-        Debug.Log("Ability Initialized");
     }
 
     protected virtual void Death()

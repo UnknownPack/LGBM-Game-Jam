@@ -17,8 +17,7 @@ public class MouseInput : MonoBehaviour
         if(!readUserInput)
             return;
         
-        if (!unitsSelected)
-            ManageUserInput();
+        ManageUserInput();
         
         if(actionSelected)
             ManageSelectedUnit();
@@ -35,8 +34,15 @@ public class MouseInput : MonoBehaviour
             if (hit.collider == null)
                 return;
             
-            GameObject SelectedUnit = (hit.collider.CompareTag("PlayerUnit"))? hit.collider.gameObject : null;
-            userInputManager.SelectUnit(SelectedUnit.GetComponent<BaseBattleEntity>());
+            GameObject SelectedUnit = (hit.collider.CompareTag("Unit"))? hit.collider.gameObject : null;
+            
+            if(SelectedUnit != null)
+            {
+                BaseBattleEntity baseBattleEntity = SelectedUnit.GetComponent<BaseBattleEntity>();
+                if (baseBattleEntity.GetUnitOwnerShip == UnitOwnership.Player)
+                    userInputManager.SelectUnit(baseBattleEntity);
+            }
+            
         }
     }
 

@@ -44,8 +44,8 @@ public class UserInputManager : MonoBehaviour
         
         Debug.Log($"Selected Unit: {unit.name}");
         SelectedUnit = unit;
-        uiManager.ShowUnitAbility(SelectedUnit);
-        uiManager.UpdateAvailableAbility(SelectedUnit);
+        uiManager.ShowUnitAbility(unit);
+        uiManager.UpdateAvailableAbility(unit);
     }
     
     public void SelectAction(ActionBase action)

@@ -20,27 +20,21 @@ public class HealAction : ActionBase
      * 
      */
 
+    public void SetHealthPoints(float value) => healthpoints = value;
+    
     private float healthpoints = 3f;
 
     public override IEnumerator Action(GameObject target)
     {
-     
-
-
-        Heal(target);
-        yield return base.Action(target);
-
-    }
-
-    public void Heal(GameObject target) 
-    {
         BaseBattleEntity entity = target.GetComponent<BaseBattleEntity>();
-
-        if (entity.GetUnitOwnerShip == UnitOwnership.Player || entity.GetUnitOwnerShip == UnitOwnership.Ally)
+        if (entity == null)
         {
-            entity.Heal(healthpoints);
+            Debug.LogError("Target does not have a BaseBattleEntity component.");
+            yield break;
         }
+        
+        entity.Heal(healthpoints);
+        //TODO: TRIGGER ANIMATION(S) HERE
+        yield return base.Action(target);
     }
-
-
 }
