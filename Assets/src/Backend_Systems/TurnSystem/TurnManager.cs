@@ -23,7 +23,7 @@ public class TurnManager : MonoBehaviour
         foreach (var entity in battleEntities)
         {
             Debug.Log($"{entity.gameObject.name} Initialised with GridManager");
-            entity.InjectGridManager(gridManager);
+            entity.InjectGridManager(gridManager, this);
             gridManager.GetNodeFromPosition(entity.transform.position).SetWalkableState(false);
         }
     }

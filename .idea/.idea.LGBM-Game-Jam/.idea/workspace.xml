@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/Grid_System/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/Grid_System/GridManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/TurnSystem/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/TurnSystem/TurnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +120,7 @@
       <workItem from="1754527049037" duration="5905000" />
       <workItem from="1754653604306" duration="2944000" />
       <workItem from="1754656952000" duration="19376000" />
-      <workItem from="1754703591081" duration="1228000" />
+      <workItem from="1754703591081" duration="3113000" />
     </task>
     <servers />
   </component>
