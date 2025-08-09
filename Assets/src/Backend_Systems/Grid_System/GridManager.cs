@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class GridManager : MonoBehaviour
 {
     public GameObject tilePrefab;
-    [SerializeField] private int GridRadius = 15;
+    [SerializeField, Range(2, 10)] private int GridXRadius;
+    [SerializeField, Range(2, 10)] private int GridYRadius;
     private Dictionary<Vector2Int , Node> Grid_Nodes = new Dictionary<Vector2Int , Node>();
     private List<BaseBattleEntity> BattleEntitiesList = new List<BaseBattleEntity>();
     private PathFinding pathFinding = new PathFinding();
@@ -24,6 +25,8 @@ public class GridManager : MonoBehaviour
     {
         
     }
+    
+    
     
     public void InitaliseMap()
     {
@@ -54,10 +57,10 @@ public class GridManager : MonoBehaviour
         Grid_Nodes = new Dictionary<Vector2Int , Node>(); 
         parentNode =  new GameObject(" --- Nodes --- ");
         int xCord = 0;
-        for (int i = -GridRadius; i <= GridRadius; i++)
+        for (int i = -GridXRadius; i <= GridXRadius; i++)
         {
             var yCord = 0;
-            for (int p = GridRadius; p >= -GridRadius; p--)
+            for (int p = GridYRadius; p >= -GridYRadius; p--)
             {
                 Vector3 RealPosition = new Vector3(i, p);
                 Vector2Int GridPostion = new Vector2Int(xCord, yCord);
@@ -169,7 +172,18 @@ public class GridManager : MonoBehaviour
     #endregion
     
     #region Testing Functions
-
+    
+    [ContextMenu("Regenerate Map")]
+    public void Rebuild()
+    {
+        if (parentNode != null)
+        {
+            DestroyImmediate(parentNode);
+            parentNode = null;  
+        } 
+        GenerateMap();
+    }
+    
     
     public void TestPathfinding()
     {
