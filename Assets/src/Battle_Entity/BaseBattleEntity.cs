@@ -84,8 +84,9 @@ public class BaseBattleEntity : MonoBehaviour
 
     #region Public Helper Functions
         public float GetHealth => Health;
-        
-        public void TakeDamage(float damageAmount)
+        public GridManager GetGridManager => _gridManager;
+
+    public void TakeDamage(float damageAmount)
         {
             Health -= damageAmount;
             if (Health <= 0)
