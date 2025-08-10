@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public class BaseBattleEntity : MonoBehaviour
@@ -18,6 +19,10 @@ public class BaseBattleEntity : MonoBehaviour
 
     [Header("Entity Alligence")]
     [SerializeField]protected UnitOwnership UnitOwner;
+
+    [Header("Entity UI")]
+    [SerializeField] private TextMeshProUGUI DamageTxt;
+    [SerializeField] private TextMeshProUGUI HealTxt;
 
     private Dictionary<ActionType, int> ActionPoints;
     private Dictionary<AbilityName, ActionBase> Abilities = new Dictionary<AbilityName, ActionBase>();

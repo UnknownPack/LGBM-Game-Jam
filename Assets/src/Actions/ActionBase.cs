@@ -44,7 +44,7 @@ public class ActionBase
     {
         foreach (var node in Grid_Nodes)
         {
-            if (TargetWiihinRange(node.Value.GetTileObject))
+            if (TargetWithinRange(node.Value.GetTileObject))
             {
                 SpriteRenderer spriteRenderer = node.Value.GetTileObject.GetComponent<SpriteRenderer>();
                 if (spriteRenderer == null)
@@ -56,7 +56,7 @@ public class ActionBase
         _gridManager.GetNodeFromPosition(ParentObject.transform.position).GetTileObject.GetComponent<SpriteRenderer>().color = Color.gray;
     }
     
-    public bool TargetWiihinRange(GameObject target)
+    public bool TargetWithinRange(GameObject target)
     {
         Vector3 ParentPosition = ParentObject.transform.position;
         Vector3 TargetPostion = target.transform.position;

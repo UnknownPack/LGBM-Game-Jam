@@ -521,6 +521,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &75062613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9053200928733542411, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+  m_PrefabInstance: {fileID: 2057821935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &156449430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1336,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &312231360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6098252262498985735, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 9200433361112879197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &355759590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,17 +2022,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7757181343623978147, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
   m_PrefabInstance: {fileID: 2057821935}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &485337511 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1602761489863518965, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
-  m_PrefabInstance: {fileID: 2057821935}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485337510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efae805403d55a94e8278611220393c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &485337513
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2048,6 +2059,59 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &485337515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485337510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d19550418917bd4c82b2535be4ad868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 3
+  Damage: 3
+  Defence: 3
+  MoveSpeed: 3
+  MovePoint_MaxCount: 1
+  MovePoint_Cost: 1
+  ActionPoint_MaxCount: 1
+  ActionPoint_Cost: 1
+  UnitOwner: 0
+  DamageTxt: {fileID: 1252313322}
+  HealTxt: {fileID: 75062613}
+  AttackRange: 1
+  DamageAmount: 1
+--- !u!1 &512746682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 9200433361112879197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &512746686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512746682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb2b30a7cdf5b64789c51a3499ca1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 3
+  Damage: 3
+  Defence: 3
+  MoveSpeed: 3
+  MovePoint_MaxCount: 1
+  MovePoint_Cost: 1
+  ActionPoint_MaxCount: 1
+  ActionPoint_Cost: 1
+  UnitOwner: 0
+  DamageTxt: {fileID: 887046618}
+  HealTxt: {fileID: 312231360}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4105,6 +4169,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &887046618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6399873829959596467, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 9200433361112879197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &951968459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4276,6 +4351,8 @@ MonoBehaviour:
   ActionPoint_MaxCount: 1
   ActionPoint_Cost: 1
   UnitOwner: 0
+  DamageTxt: {fileID: 1160598022}
+  HealTxt: {fileID: 1959861657}
   HealingRange: 3
   HealingAmount: 1
   BaricadeSummonRange: 3
@@ -5218,6 +5295,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1160598022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8201860928150447807, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+  m_PrefabInstance: {fileID: 951968459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1242210041
 GameObject:
   m_ObjectHideFlags: 0
@@ -5352,6 +5440,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1252313322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8201860928150447807, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+  m_PrefabInstance: {fileID: 2057821935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1264565730
 GameObject:
   m_ObjectHideFlags: 0
@@ -6471,7 +6570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleEntities:
-  - {fileID: 485337511}
+  - {fileID: 485337515}
   - {fileID: 951968462}
   isPlayersTurn: 1
   currentTurn: 0
@@ -8831,6 +8930,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1959861657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9053200928733542411, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+  m_PrefabInstance: {fileID: 951968459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2028953804
 GameObject:
   m_ObjectHideFlags: 0
@@ -9307,16 +9417,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7757181343623978147, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       propertyPath: m_Name
-      value: TestUnit
+      value: Damage Guy
       objectReference: {fileID: 0}
     - target: {fileID: 7757181343623978147, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1602761489863518965, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7757181343623978147, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 485337515}
     - targetCorrespondingSourceObject: {fileID: 7757181343623978147, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       insertIndex: -1
       addedObject: {fileID: 485337513}
@@ -9385,10 +9499,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4556535947069683193, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 512746686}
   m_SourcePrefab: {fileID: 100100000, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
