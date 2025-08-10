@@ -95,6 +95,25 @@ public class GridManager : MonoBehaviour
         return Output;
     }
 
+    public Node FindClosestNodeToTarget(GameObject target, float actionRange)
+    {
+        Vector3 targetPosition = target.transform.position;
+        Vector3 unitPosition = transform.position;
+        float distance = Vector3.Distance(unitPosition, targetPosition);
+        float percentage = actionRange / distance;
+        Vector2Int a = new Vector2Int((int)unitPosition.x, (int)unitPosition.y);
+        Vector2Int b =new Vector2Int((int)targetPosition.x, (int)targetPosition.y);
+
+        Vector2 lerped = Vector2.Lerp(a, b, percentage);
+        Vector2Int result = Vector2Int.RoundToInt(lerped);
+
+        Node closestNode = Grid_Nodes.ContainsKey(result) ? Grid_Nodes[result] : null;
+        if (closestNode == null)
+            Debug.LogError($"Could not find Node a:{result}!");
+
+        return closestNode;
+    }
+
     public Node GetNodeFromPosition(Vector3 position)
     {
         Node closestNode = null;
