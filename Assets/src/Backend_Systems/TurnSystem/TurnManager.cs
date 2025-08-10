@@ -61,6 +61,7 @@ public class TurnManager : MonoBehaviour
         {
             Debug.Log("Ending player turn...");
             SetPlayerTurn(false);
+
             StartCoroutine(CycleTurn());
         }
     }

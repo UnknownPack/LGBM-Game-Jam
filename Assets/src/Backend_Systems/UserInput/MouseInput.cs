@@ -76,7 +76,7 @@ public class MouseInput : MonoBehaviour
                 return;
             }
 
-            if (!SelectedAction.TargetWiihinRange(Target))
+            if (!SelectedAction.TargetWithinRange(Target))
             {
                 Debug.LogWarning("Invalid target within range.");
                 return;

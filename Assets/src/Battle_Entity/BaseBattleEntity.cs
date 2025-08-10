@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public class BaseBattleEntity : MonoBehaviour
@@ -19,6 +20,10 @@ public class BaseBattleEntity : MonoBehaviour
     [Header("Entity Alligence")]
     [SerializeField]protected UnitOwnership UnitOwner;
 
+    [Header("Entity UI")]
+    [SerializeField] private TextMeshProUGUI DamageTxt;
+    [SerializeField] private TextMeshProUGUI HealTxt;
+
     private Dictionary<ActionType, int> ActionPoints;
     private Dictionary<AbilityName, ActionBase> Abilities = new Dictionary<AbilityName, ActionBase>();
     private Dictionary<Vector2Int, Node> Grid;
@@ -27,7 +32,7 @@ public class BaseBattleEntity : MonoBehaviour
     private InitalEntityStats initalEntityStats;
     
     private Animator EntityAnimtor;
-    private GridManager _gridManager;
+    protected GridManager _gridManager;
     private PathFinding _pathFinding;
     private TurnManager _turnManager;
     
@@ -79,8 +84,9 @@ public class BaseBattleEntity : MonoBehaviour
 
     #region Public Helper Functions
         public float GetHealth => Health;
-        
-        public void TakeDamage(float damageAmount)
+        public GridManager GetGridManager => _gridManager;
+
+    public void TakeDamage(float damageAmount)
         {
             Health -= damageAmount;
             if (Health <= 0)

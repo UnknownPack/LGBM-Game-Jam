@@ -1,14 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class EnemyBaseEntity : BaseBattleEntity
 {
+    
+
+    [Header("\nDamage Stats")]
+    public float AttackRange = 1f;
+    public float DamageAmount = 1f;
+
+
     public virtual IEnumerator ExecuteTurn()
     {
         Debug.Log($"{gameObject.name}'s Turn is being executed!");
-        GameObject TargetUnit = SelectTarget();
-        List<ActionBase> Plan = GeneratePlan();
+        BaseBattleEntity TargetUnit = SelectNearestTarget();
+        List<ActionBase> Plan = GeneratePlan(TargetUnit.gameObject);
         
         if(TargetUnit == null)
         {
@@ -22,14 +32,14 @@ public class EnemyBaseEntity : BaseBattleEntity
             yield break;
         }
         
-        foreach (var action in GeneratePlan())
+        foreach (var action in Plan)
         {
-            yield return StartCoroutine(action.Action(TargetUnit));
+            yield return StartCoroutine(action.Action(TargetUnit.gameObject));
         }
         Debug.Log($"{gameObject.name}'s turn is finished!");
     }
 
-    protected virtual List<ActionBase> GeneratePlan()
+    protected virtual List<ActionBase> GeneratePlan(GameObject target)
     {
         /* Implement logic that will generate a plan
          * For example:
@@ -40,20 +50,64 @@ public class EnemyBaseEntity : BaseBattleEntity
          *
          *  if the enemy can do both in one turn, add both actions appropriately
          */
-        return null;
+
+
+        //just doing a default (will attack nearest player)
+        List<ActionBase> plan = new List<ActionBase>();
+        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        Debug.Log($"Distance to target: {distanceToTarget}!, current move speed: {GetMoveSpeed}, current attack range: {AttackRange}");
+
+        if (distanceToTarget <= AttackRange)
+        {
+            plan.Add(GetAbilityList[AbilityName.Attack]);
+            return plan;
+        }
+
+        if (distanceToTarget <= AttackRange + GetMoveSpeed)
+        {
+            plan.Add(GetAbilityList[AbilityName.Move]);
+            plan.Add(GetAbilityList[AbilityName.Attack]);
+        }
+
+        else
+        {
+            plan.Add(GetAbilityList[AbilityName.Move]);
+        }
+
+        return plan;
     }
     
-    protected virtual GameObject SelectTarget()
+    protected virtual BaseBattleEntity SelectNearestTarget()
     {
         /*
          * Implement logic that will select a player unit
          */
+        List<BaseBattleEntity> filteredList = _gridManager.GetBattleEntitiesList().
+            Where(obj => obj.GetUnitOwnerShip == UnitOwnership.Player).ToList();
+
+        GameObject closestTarget;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (BaseBattleEntity target in filteredList)
+        {
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                return target;
+            }
+        }
+
         return null;
     }
 
     protected override void InitialiseActions()
     {
-        base.InitialiseActions();
-        //Intialise Enemy Specific Actions here
+        // Initialise the actions for the enemy entity
+        InitActions(AbilityName.Move, new EnenyMoveAction(), GetMoveSpeed, MovePoint_Cost, ActionType.MovePoint, ActionTargetType.Tile);
+        MeleeAttackAction meleeAttackAction = new MeleeAttackAction();
+        meleeAttackAction.SetDamageAmount(DamageAmount);
+        InitActions(AbilityName.Attack, meleeAttackAction, AttackRange, ActionPoint_Cost, ActionType.ActionPoint,
+            ActionTargetType.Unit);
     }
 }

@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class DamageGuy : BaseBattleEntity
 {
+    [Header("\nDamage Stats")]
+    public float AttackRange = 1f;
+    public float DamageAmount = 1f;
     protected override void InitialiseActions()
     {
         base.InitialiseActions();
-        
+        MeleeAttackAction meleeAttackAction = new MeleeAttackAction();
+        meleeAttackAction.SetDamageAmount(DamageAmount);
+        InitActions(AbilityName.Attack, meleeAttackAction, AttackRange, ActionPoint_Cost, ActionType.ActionPoint,
+            ActionTargetType.Unit);
     }
 }
