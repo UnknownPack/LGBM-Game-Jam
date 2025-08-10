@@ -100,7 +100,7 @@ public enum ActionTargetType
 [System.Serializable]
 public enum AbilityName
 {
-    Move,
+    Move, 
     Attack,
     Heal,
     Grenade,

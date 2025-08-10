@@ -2112,6 +2112,8 @@ MonoBehaviour:
   UnitOwner: 0
   DamageTxt: {fileID: 887046618}
   HealTxt: {fileID: 312231360}
+  AttackRange: 1
+  DamageAmount: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -6572,6 +6574,7 @@ MonoBehaviour:
   battleEntities:
   - {fileID: 485337515}
   - {fileID: 951968462}
+  - {fileID: 512746686}
   isPlayersTurn: 1
   currentTurn: 0
 --- !u!4 &1525577223

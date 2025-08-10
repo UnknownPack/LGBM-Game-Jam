@@ -32,7 +32,7 @@ public class BaseBattleEntity : MonoBehaviour
     private InitalEntityStats initalEntityStats;
     
     private Animator EntityAnimtor;
-    private GridManager _gridManager;
+    protected GridManager _gridManager;
     private PathFinding _pathFinding;
     private TurnManager _turnManager;
     

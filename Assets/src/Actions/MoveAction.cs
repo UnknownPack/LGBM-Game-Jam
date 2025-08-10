@@ -8,6 +8,15 @@ public class MoveAction : ActionBase
     private float moveSpeed = 0.15f ;
     public override IEnumerator Action(GameObject target)
     {
+        List<Node> path = CreatePath(target);
+        foreach (var node in path)
+            yield return Move(ParentObject.transform.position, node);
+        
+        yield return base.Action(target);
+    }
+    
+    protected virtual List<Node> CreatePath(GameObject target)
+    {
         Node CurrentNode = _gridManager.GetNodeFromPosition(ParentObject.transform.position);
         Node TargetNode = _gridManager.GetNodeFromPosition(target.transform.position); 
 
@@ -17,13 +26,10 @@ public class MoveAction : ActionBase
         {
             Debug.Log($"Start Node Position: {CurrentNode.GetGridPosition} \n Goal Node Position: {TargetNode.GetGridPosition}");
             Debug.LogError("Path is null or empty!");
-            yield break;
+            return null;
         }
-            
-        foreach (var node in path)
-            yield return Move(ParentObject.transform.position, node);
         
-        yield return base.Action(target);
+        return path;
     }
 
     private IEnumerator Move(Vector3 startPosition, Node TargetNode)
