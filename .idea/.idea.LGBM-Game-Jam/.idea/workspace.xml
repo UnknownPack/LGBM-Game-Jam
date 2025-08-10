@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/TurnSystem/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/TurnSystem/TurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/HealAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/HealAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/UserInput/MouseInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/UserInput/MouseInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/UserInput/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/UserInput/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,9 +82,6 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -93,9 +92,6 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>

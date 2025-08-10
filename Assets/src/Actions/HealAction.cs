@@ -34,6 +34,7 @@ public class HealAction : ActionBase
         }
         
         entity.Heal(healthpoints);
+        Debug.Log($"{target.name} healed! for {healthpoints} points!");
         //TODO: TRIGGER ANIMATION(S) HERE
         yield return base.Action(target);
     }

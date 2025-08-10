@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -40,7 +41,7 @@ public class UIManager : MonoBehaviour
             string abilityName = ability.Key.ToString();
             btn.name = abilityName;
             btn.Q<Label>("Name").text = ability.Key.ToString();
-            btn.clickable.clicked += () => OnButtonClicked(AbilityList[ability.Key]);
+            btn.clickable.clicked += () => OnButtonClicked(abilityName, AbilityList[ability.Key]);
             CurrentAbilityButtons.Add(abilityName, btn);
         }
     }
@@ -71,7 +72,12 @@ public class UIManager : MonoBehaviour
     }
 
     public void InjectUserInputManager(UserInputManager userInputManager) => this.userInputManager = userInputManager;
-    private void OnButtonClicked(ActionBase actionBase) => userInputManager.SelectAction(actionBase);
+
+    private void OnButtonClicked(String actionName, ActionBase actionBase)
+    {
+        Debug.Log($"Clicked on {actionName}{actionBase} button! Selection type: {actionBase.GetActionTargetType}");
+        userInputManager.SelectAction(actionBase);
+    } 
     
     
     #region Test Methods
