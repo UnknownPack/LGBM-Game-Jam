@@ -191,7 +191,6 @@ public class GridManager : MonoBehaviour
             return;
         }
         BattleEntitiesList.Remove(entity);
-        turnManager.RemoveEntityFromTurnManager(entity);
     }
 
     public Dictionary<Vector2Int, BaseBattleEntity> GetEntityListToGrid()

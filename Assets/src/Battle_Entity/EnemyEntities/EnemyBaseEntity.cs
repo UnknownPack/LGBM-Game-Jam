@@ -35,6 +35,15 @@ public class EnemyBaseEntity : BaseBattleEntity
         foreach (var action in Plan)
         {
             Debug.Log($"{action.GetType().Name}");
+            if(TargetUnit == null)
+            {
+                TargetUnit = SelectNearestTarget();
+                if(TargetUnit == null)
+                {
+                    Debug.LogError("Target unit is null, cannot execute action!, Skipping turn!");
+                    yield break;
+                } 
+            }
             yield return StartCoroutine(action.Action(TargetUnit.gameObject));
         }
         Debug.Log($"{gameObject.name}'s turn is finished!");

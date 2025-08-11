@@ -7,12 +7,8 @@
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/EnenyMoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/EnenyMoveAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/MeleeAttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/MeleeAttackAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/MoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/MoveAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/AStar_Pathfinding/PathFinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/AStar_Pathfinding/PathFinding.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/Grid_System/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/Grid_System/GridManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/TurnSystem/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/TurnSystem/TurnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/EnemyEntities/EnemyBaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/EnemyEntities/EnemyBaseEntity.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

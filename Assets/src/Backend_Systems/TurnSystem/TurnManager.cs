@@ -40,11 +40,17 @@ public class TurnManager : MonoBehaviour
         ResetActionPoints(UnitOwnership.Enemy);
         foreach (var battleEntity in battleEntities)
         {
+            if(battleEntity == null)
+            {
+                Debug.LogWarning("Battle entity is null, skipping...");
+                continue;
+            }
             if (battleEntity is EnemyBaseEntity output)
             {
                 yield return StartCoroutine(output.ExecuteTurn());
             }
         }
+        battleEntities.RemoveAll(battleEntity => battleEntity == null );
         
         Debug.Log("All Enemy Turns Executed");
         // After enemy turns have been executed, return control back to player and replenish spent action points
@@ -80,19 +86,6 @@ public class TurnManager : MonoBehaviour
         {
             if (battleEntity.GetUnitOwnerShip == owner)
                 battleEntity.ResetActionPoints();
-        }
-    }
-    
-    public void RemoveEntityFromTurnManager(BaseBattleEntity entity)
-    {
-        if (battleEntities.Contains(entity))
-        {
-            battleEntities.Remove(entity);
-            Debug.Log($"{entity.gameObject.name} removed from TurnManager");
-        }
-        else
-        {
-            Debug.LogWarning($"{entity.gameObject.name} not found in TurnManager's list of entities.");
         }
     }
 
