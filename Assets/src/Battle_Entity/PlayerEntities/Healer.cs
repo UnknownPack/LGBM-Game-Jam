@@ -17,7 +17,7 @@ public class Healer : BaseBattleEntity
         
         RaiseBaricadeAction raiseBaricadeAction = new RaiseBaricadeAction();
         raiseBaricadeAction.SetBaricadeRadius(baricadeRadius);
-        InitActions(AbilityName.RaiseBaricade, healAction, BaricadeSummonRange, ActionPoint_Cost, ActionType.ActionPoint,
+        InitActions(AbilityName.RaiseBaricade, raiseBaricadeAction, BaricadeSummonRange, ActionPoint_Cost, ActionType.ActionPoint,
             ActionTargetType.Tile);
     }
 }

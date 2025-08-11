@@ -103,14 +103,14 @@ public class GridManager : MonoBehaviour
         Node start = Grid_Nodes[GetNodeFromPosition(transform.localPosition).GetGridPosition];
         if (start == null)
         {
-            Debug.LogError($"FindClosestNodeToTarget: Start node is null at position {transform.position}.");
+            Debug.LogWarning($"FindClosestNodeToTarget: Start node is null at position {transform.position}.");
             return null;
         }
 
         Node end = Grid_Nodes[targetPosition];
         if (end == null)
         {
-            Debug.LogError($"FindClosestNodeToTarget: End node is null at target position {targetPosition}.");
+            Debug.LogWarning($"FindClosestNodeToTarget: End node is null at target position {targetPosition}.");
             return null;
         }
         Debug.Log($"FindClosestNodeToTarget: Start node {start.GetGridPosition}, End node {end.GetGridPosition}.");
@@ -118,13 +118,13 @@ public class GridManager : MonoBehaviour
         var path = pathFinding.GetPath(start, end);
         if (path == null)
         {
-            Debug.LogError("FindClosestNodeToTarget: Path is null.");
+            Debug.LogWarning("FindClosestNodeToTarget: Path is null.");
             return null;
         }
 
         if (path.Count == 0)
         {
-            Debug.LogError("FindClosestNodeToTarget: Path is empty.");
+            Debug.LogWarning("FindClosestNodeToTarget: Path is empty.");
             return null;
         }
 
@@ -142,6 +142,42 @@ public class GridManager : MonoBehaviour
         Debug.LogWarning("FindClosestNodeToTarget: No node found within actionRange, returning first path node.");
         path[path.Count].SetWalkableState(false);
         return path[0];
+    }
+    
+    public bool noPathToTarget(Vector3 targetPosition)
+    {
+        Node start = Grid_Nodes[GetNodeFromPosition(transform.localPosition).GetGridPosition];
+        if (start == null)
+        {
+            Debug.LogWarning($"noPathToTarget: Start node is null at position {transform.position}.");
+            return true;
+        }
+
+        Node end = Grid_Nodes[GetNodeFromPosition(targetPosition).GetGridPosition];
+        if (end == null)
+        {
+            Debug.LogWarning($"noPathToTarget: End node is null at target position {GetNodeFromPosition(targetPosition).GetGridPosition}.");
+            return true;
+        }
+        
+        var path = pathFinding.GetPath(start, end);
+        if (path == null || path.Count == 0)
+        {
+            Debug.LogWarning("noPathToTarget: No path found.");
+            return false;
+        }
+        
+        return true;
+    }
+
+    public void UpdateGrid()
+    {
+        foreach (var node in Grid_Nodes)
+            node.Value.SetWalkableState(true);
+        
+        foreach (var entity in BattleEntitiesList)
+            Grid_Nodes[GetNodeFromPosition(entity.transform.position).GetGridPosition].SetWalkableState(false);
+        PrintNodes();
     }
 
 
@@ -169,7 +205,7 @@ public class GridManager : MonoBehaviour
             if (spriteRenderer == null)
                 Debug.LogError("SpriteRender not found");
                 
-            spriteRenderer.color = Color.gray;
+            //spriteRenderer.color = Color.gray;
         }
     }
 
@@ -231,6 +267,20 @@ public class GridManager : MonoBehaviour
             parentNode = null;  
         } 
         GenerateMap();
+    }
+    
+    [ContextMenu("Print Walkables")]
+    public void PrintWalkables() => PrintNodes();
+
+    
+    private void PrintNodes()
+    {
+        foreach (var node in Grid_Nodes)
+        {
+            bool walkable = node.Value.CanNavigate;
+            Color color = walkable ? Color.white : Color.red;
+            node.Value.GetTileObject.GetComponent<SpriteRenderer>().color = color;
+        }
     }
     
     

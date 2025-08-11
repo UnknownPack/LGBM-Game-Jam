@@ -11,7 +11,7 @@ public class MoveAction : ActionBase
         List<Node> path = CreatePath(target);
         if(path == null || path.Count == 0)
         {
-            Debug.LogError("Path is null or empty!");
+            Debug.LogWarning($"Path is null or empty for {ParentObject.name}!");
             yield break;
         }
         foreach (var node in path)

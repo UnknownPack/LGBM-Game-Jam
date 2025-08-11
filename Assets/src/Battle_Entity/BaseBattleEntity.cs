@@ -39,6 +39,8 @@ public class BaseBattleEntity : MonoBehaviour
     private PathFinding _pathFinding;
     private TurnManager _turnManager;
 
+    private const float DefenceReducrtionFactor = 0.25f;
+
     private void Awake()
     {
         Healthbar = GetComponentInChildren<HealthBar>();    
@@ -94,15 +96,20 @@ public class BaseBattleEntity : MonoBehaviour
         public float GetHealth => Health;
         public GridManager GetGridManager => _gridManager;
 
-    public void TakeDamage(float damageAmount)
+    public virtual void TakeDamage(float damageAmount)
         {
-            Health -= damageAmount;
+            Health -= damageAmount - (damageAmount * (Defence * DefenceReducrtionFactor));
             Healthbar.UpdateHealthBar(Health, Maxhealth);
             if (Health <= 0)
                 Death();
         }
 
-        public void Heal(float amountToHeal) => Health += amountToHeal;
+        public void Heal(float amountToHeal)
+        {
+            Health += amountToHeal;
+            Health = Mathf.Clamp(Health, 0, Maxhealth);
+            Healthbar.UpdateHealthBar(Health, Maxhealth);
+        }
         
         public float GetDamage => Damage;
         public float GetDefence => Defence;

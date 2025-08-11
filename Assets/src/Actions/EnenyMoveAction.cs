@@ -16,9 +16,11 @@ public class EnenyMoveAction : MoveAction
          ? _gridManager.GetNodeFromPosition(targetPos)
          : _gridManager.FindClosestNodeToTarget(_gridManager.GetNodeFromPosition(targetPos).GetGridPosition , ActionRange);
       
+      if(isTargetWithinRange)
+         TargetNode.SetWalkableState(true);
       if(TargetNode == null)
       {
-         Debug.LogError("Target node not found");
+         Debug.LogWarning("Target node not found");
          return null;
       }
       
@@ -26,15 +28,15 @@ public class EnenyMoveAction : MoveAction
         
       if (path == null)
       {
-         Debug.LogError("Path is null!");
+         Debug.LogWarning("Path is null!");
          return null;
       }
       if (path.Count <= 0)
       {
-         Debug.LogError("Path is empty!");
+         Debug.LogWarning("Path is empty!");
          return null;
       }
-      
+      TargetNode.SetWalkableState(false);
       path.Remove(TargetNode);
       return path;
    }

@@ -48,6 +48,7 @@ public class TurnManager : MonoBehaviour
             if (battleEntity is EnemyBaseEntity output)
             {
                 yield return StartCoroutine(output.ExecuteTurn());
+                gridManager.UpdateGrid();
             }
         }
         battleEntities.RemoveAll(battleEntity => battleEntity == null );

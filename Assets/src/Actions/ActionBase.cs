@@ -78,7 +78,7 @@ public class ActionBase
     }
 
     public ActionType GetActionType => _actionType;
-    public ActionTargetType GetActionTargetType => _actionTargetType;
+    public virtual ActionTargetType GetActionTargetType => _actionTargetType;
     public BaseBattleEntity GetBaseBattleEntity => _baseBattleEntity;
 
 }

@@ -35,13 +35,13 @@ public class EnemyBaseEntity : BaseBattleEntity
         foreach (var action in Plan)
         {
             Debug.Log($"{action.GetType().Name}");
-            if(TargetUnit == null)
+            if(TargetUnit == null || _gridManager.noPathToTarget(TargetUnit.transform.position))
             {
                 TargetUnit = SelectNearestTarget();
-                if(TargetUnit == null)
+                if(TargetUnit == null|| _gridManager.noPathToTarget(TargetUnit.transform.position))
                 {
                     Debug.LogError("Target unit is null, cannot execute action!, Skipping turn!");
-                    yield break;
+                    continue;
                 } 
             }
             yield return StartCoroutine(action.Action(TargetUnit.gameObject));
@@ -84,7 +84,7 @@ public class EnemyBaseEntity : BaseBattleEntity
         return plan;
     }
     
-    protected virtual BaseBattleEntity SelectNearestTarget()
+    protected virtual BaseBattleEntity SelectNearestTarget(BaseBattleEntity excusionTarget = null)
     {
         /*
          * Implement logic that will select a player unit
@@ -97,6 +97,9 @@ public class EnemyBaseEntity : BaseBattleEntity
 
         foreach (BaseBattleEntity target in filteredList)
         {
+            if(target == excusionTarget)
+                continue;
+            
             float distance = Vector3.Distance(transform.position, target.transform.position);
             if (distance < closestDistance)
             {

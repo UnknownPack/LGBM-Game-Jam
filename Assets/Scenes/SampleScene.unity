@@ -2355,6 +2355,7 @@ MonoBehaviour:
   HealTxt: {fileID: 75062613}
   Healthbar: {fileID: 0}
   AttackRange: 1
+  grenadeRange: 3
   DamageAmount: 1
 --- !u!1001 &495745920
 PrefabInstance:
@@ -4775,9 +4776,9 @@ MonoBehaviour:
   HealTxt: {fileID: 1959861657}
   Healthbar: {fileID: 0}
   HealingRange: 3
-  HealingAmount: 1
+  HealingAmount: 2
   BaricadeSummonRange: 3
-  baricadeRadius: 2
+  baricadeRadius: 1
 --- !u!1 &969446640
 GameObject:
   m_ObjectHideFlags: 0
