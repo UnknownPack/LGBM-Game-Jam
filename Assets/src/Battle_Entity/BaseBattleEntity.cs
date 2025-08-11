@@ -7,6 +7,7 @@ public class BaseBattleEntity : MonoBehaviour
 {
     [Header("Entity Stats")]
     [SerializeField] protected float Health;
+    [SerializeField] protected float Maxhealth;
     [SerializeField] protected float Damage;
     [SerializeField] protected float Defence;
     [SerializeField, Tooltip("Dictates the amount of tiles the entity can travel")] private int MoveSpeed;
@@ -23,6 +24,8 @@ public class BaseBattleEntity : MonoBehaviour
     [Header("Entity UI")]
     [SerializeField] private TextMeshProUGUI DamageTxt;
     [SerializeField] private TextMeshProUGUI HealTxt;
+    [SerializeField] private HealthBar Healthbar;
+    
 
     private Dictionary<ActionType, int> ActionPoints;
     private Dictionary<AbilityName, ActionBase> Abilities = new Dictionary<AbilityName, ActionBase>();
@@ -35,6 +38,11 @@ public class BaseBattleEntity : MonoBehaviour
     protected GridManager _gridManager;
     private PathFinding _pathFinding;
     private TurnManager _turnManager;
+
+    private void Awake()
+    {
+        Healthbar = GetComponentInChildren<HealthBar>();    
+    }
     
     void Start()
     {
@@ -44,7 +52,7 @@ public class BaseBattleEntity : MonoBehaviour
             { ActionType.MovePoint, MovePoint_MaxCount},{ ActionType.ActionPoint, ActionPoint_MaxCount },
         };
         EntityAnimtor = GetComponent<Animator>();
-        initalEntityStats = new InitalEntityStats(Health, Damage, Defence, MoveSpeed);
+        initalEntityStats = new InitalEntityStats(Health, Maxhealth, Damage, Defence, MoveSpeed);
     }
 
     public void InjectGridManager(GridManager gridManager, TurnManager turnManager)
@@ -89,6 +97,7 @@ public class BaseBattleEntity : MonoBehaviour
     public void TakeDamage(float damageAmount)
         {
             Health -= damageAmount;
+            Healthbar.UpdateHealthBar(Health, Maxhealth);
             if (Health <= 0)
                 Death();
         }
@@ -133,13 +142,15 @@ public enum UnitOwnership
 public struct InitalEntityStats
 {
     public float Health;
+    public float Maxhealth;
     public float Damage;
     public float Defence;
     public int MoveSpeed;
 
-    public InitalEntityStats(float health, float damage, float defence, int moveSpeed)
+    public InitalEntityStats(float health, float maxHealth, float damage, float defence, int moveSpeed)
     {
         Health = health;
+        Maxhealth = maxHealth;
         Damage = damage;
         Defence = defence;
         MoveSpeed = moveSpeed;
