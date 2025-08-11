@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -95,24 +96,54 @@ public class GridManager : MonoBehaviour
         return Output;
     }
 
-    public Node FindClosestNodeToTarget(GameObject target, float actionRange)
+    public Node FindClosestNodeToTarget(Vector2Int targetPosition, float actionRange)
     {
-        Vector3 targetPosition = target.transform.position;
-        Vector3 unitPosition = transform.position;
-        float distance = Vector3.Distance(unitPosition, targetPosition);
-        float percentage = actionRange / distance;
-        Vector2Int a = new Vector2Int((int)unitPosition.x, (int)unitPosition.y);
-        Vector2Int b =new Vector2Int((int)targetPosition.x, (int)targetPosition.y);
+        Debug.Log(targetPosition);
 
-        Vector2 lerped = Vector2.Lerp(a, b, percentage);
-        Vector2Int result = Vector2Int.RoundToInt(lerped);
+        Node start = Grid_Nodes[GetNodeFromPosition(transform.localPosition).GetGridPosition];
+        if (start == null)
+        {
+            Debug.LogError($"FindClosestNodeToTarget: Start node is null at position {transform.position}.");
+            return null;
+        }
 
-        Node closestNode = Grid_Nodes.ContainsKey(result) ? Grid_Nodes[result] : null;
-        if (closestNode == null)
-            Debug.LogError($"Could not find Node a:{result}!");
+        Node end = Grid_Nodes[targetPosition];
+        if (end == null)
+        {
+            Debug.LogError($"FindClosestNodeToTarget: End node is null at target position {targetPosition}.");
+            return null;
+        }
+        Debug.Log($"FindClosestNodeToTarget: Start node {start.GetGridPosition}, End node {end.GetGridPosition}.");
+        end.SetWalkableState(true);
+        var path = pathFinding.GetPath(start, end);
+        if (path == null)
+        {
+            Debug.LogError("FindClosestNodeToTarget: Path is null.");
+            return null;
+        }
 
-        return closestNode;
+        if (path.Count == 0)
+        {
+            Debug.LogError("FindClosestNodeToTarget: Path is empty.");
+            return null;
+        }
+
+        // walk backward from the target until we're within actionRange of the target
+        for (int i = path.Count - 1; i >= 0; i--)
+        {
+            if (Vector2Int.Distance(path[i].GetGridPosition, end.GetGridPosition) <= actionRange)
+            {
+                Debug.Log($"FindClosestNodeToTarget: Found valid node {path[i].GetGridPosition} within range {actionRange}.");
+                return path[i];
+            }
+        }
+
+        // fallback: first step on the path
+        Debug.LogWarning("FindClosestNodeToTarget: No node found within actionRange, returning first path node.");
+        path[path.Count].SetWalkableState(false);
+        return path[0];
     }
+
 
     public Node GetNodeFromPosition(Vector3 position)
     {

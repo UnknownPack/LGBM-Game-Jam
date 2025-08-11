@@ -34,6 +34,7 @@ public class EnemyBaseEntity : BaseBattleEntity
         
         foreach (var action in Plan)
         {
+            Debug.Log($"{action.GetType().Name}");
             yield return StartCoroutine(action.Action(TargetUnit.gameObject));
         }
         Debug.Log($"{gameObject.name}'s turn is finished!");
@@ -54,26 +55,23 @@ public class EnemyBaseEntity : BaseBattleEntity
 
         //just doing a default (will attack nearest player)
         List<ActionBase> plan = new List<ActionBase>();
-        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        float distanceToTarget = Vector2Int.Distance(_gridManager.GetNodeFromPosition(transform.position).GetGridPosition
+            , _gridManager.GetNodeFromPosition(target.transform.position).GetGridPosition);
         Debug.Log($"Distance to target: {distanceToTarget}!, current move speed: {GetMoveSpeed}, current attack range: {AttackRange}");
-
+        
         if (distanceToTarget <= AttackRange)
         {
             plan.Add(GetAbilityList[AbilityName.Attack]);
-            return plan;
         }
-
-        if (distanceToTarget <= AttackRange + GetMoveSpeed)
+        else if (distanceToTarget <= GetMoveSpeed + AttackRange)
         {
             plan.Add(GetAbilityList[AbilityName.Move]);
             plan.Add(GetAbilityList[AbilityName.Attack]);
         }
-
         else
         {
             plan.Add(GetAbilityList[AbilityName.Move]);
         }
-
         return plan;
     }
     
@@ -85,7 +83,7 @@ public class EnemyBaseEntity : BaseBattleEntity
         List<BaseBattleEntity> filteredList = _gridManager.GetBattleEntitiesList().
             Where(obj => obj.GetUnitOwnerShip == UnitOwnership.Player).ToList();
 
-        GameObject closestTarget;
+        BaseBattleEntity closestTarget = null;
         float closestDistance = Mathf.Infinity;
 
         foreach (BaseBattleEntity target in filteredList)
@@ -94,11 +92,11 @@ public class EnemyBaseEntity : BaseBattleEntity
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                return target;
+                closestTarget = target;
             }
         }
-
-        return null;
+        Debug.LogWarning($"Checking target: {closestTarget.gameObject.name}, {_gridManager.GetNodeFromPosition(closestTarget.transform.position).GetGridPosition}");
+        return closestTarget;
     }
 
     protected override void InitialiseActions()
@@ -107,6 +105,7 @@ public class EnemyBaseEntity : BaseBattleEntity
         InitActions(AbilityName.Move, new EnenyMoveAction(), GetMoveSpeed, MovePoint_Cost, ActionType.MovePoint, ActionTargetType.Tile);
         MeleeAttackAction meleeAttackAction = new MeleeAttackAction();
         meleeAttackAction.SetDamageAmount(DamageAmount);
+        meleeAttackAction.SetTargetType(UnitOwnership.Player);
         InitActions(AbilityName.Attack, meleeAttackAction, AttackRange, ActionPoint_Cost, ActionType.ActionPoint,
             ActionTargetType.Unit);
     }

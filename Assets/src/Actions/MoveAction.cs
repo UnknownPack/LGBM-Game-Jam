@@ -9,8 +9,19 @@ public class MoveAction : ActionBase
     public override IEnumerator Action(GameObject target)
     {
         List<Node> path = CreatePath(target);
+        if(path == null || path.Count == 0)
+        {
+            Debug.LogError("Path is null or empty!");
+            yield break;
+        }
         foreach (var node in path)
-            yield return Move(ParentObject.transform.position, node);
+        {
+            if (node.CanNavigate)
+                yield return Move(ParentObject.transform.position, node);
+
+            else
+                break;
+        }
         
         yield return base.Action(target);
     }
@@ -22,10 +33,15 @@ public class MoveAction : ActionBase
 
         List<Node> path = PathFinder.GetPath(CurrentNode, TargetNode);
         
-        if (path == null || path.Count <= 0)
+        if (path == null)
         {
-            Debug.Log($"Start Node Position: {CurrentNode.GetGridPosition} \n Goal Node Position: {TargetNode.GetGridPosition}");
-            Debug.LogError("Path is null or empty!");
+            Debug.LogError("Path is null!");
+            return null;
+        }
+
+        if (path.Count <= 0)
+        {
+            Debug.LogError("Path is empty!");
             return null;
         }
         

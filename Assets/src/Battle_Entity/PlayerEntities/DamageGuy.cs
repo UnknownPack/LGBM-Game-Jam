@@ -10,6 +10,7 @@ public class DamageGuy : BaseBattleEntity
         base.InitialiseActions();
         MeleeAttackAction meleeAttackAction = new MeleeAttackAction();
         meleeAttackAction.SetDamageAmount(DamageAmount);
+        meleeAttackAction.SetTargetType(UnitOwnership.Enemy);
         InitActions(AbilityName.Attack, meleeAttackAction, AttackRange, ActionPoint_Cost, ActionType.ActionPoint,
             ActionTargetType.Unit);
     }

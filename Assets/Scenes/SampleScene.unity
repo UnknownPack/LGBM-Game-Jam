@@ -2112,7 +2112,7 @@ MonoBehaviour:
   MovePoint_Cost: 1
   ActionPoint_MaxCount: 1
   ActionPoint_Cost: 1
-  UnitOwner: 0
+  UnitOwner: 2
   DamageTxt: {fileID: 887046618}
   HealTxt: {fileID: 312231360}
   Healthbar: {fileID: 0}
@@ -6588,6 +6588,7 @@ MonoBehaviour:
   battleEntities:
   - {fileID: 485337515}
   - {fileID: 951968462}
+  - {fileID: 512746686}
   isPlayersTurn: 1
   currentTurn: 0
 --- !u!4 &1525577223

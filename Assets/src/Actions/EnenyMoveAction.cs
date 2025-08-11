@@ -1,36 +1,41 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class EnenyMoveAction : MoveAction
 {
    protected override List<Node> CreatePath(GameObject target)
-   {
+   {  
       Vector3 currentPos = ParentObject.transform.position, targetPos = target.transform.position;
-      Node CurrentNode = _gridManager.GetNodeFromPosition(ParentObject.transform.position);
-      bool isTargetWithinRange = Vector3.Distance(currentPos, targetPos) > ActionRange;
+      Node CurrentNode = _gridManager.GetNodeFromPosition(currentPos);
+      bool isTargetWithinRange = Vector2Int.Distance(CurrentNode.GetGridPosition, _gridManager.GetNodeFromPosition(targetPos).GetGridPosition) <= ActionRange;
+
       
       Node TargetNode = isTargetWithinRange
          ? _gridManager.GetNodeFromPosition(targetPos)
-         : _gridManager.FindClosestNodeToTarget(target, ActionRange);
-
-      List<Node> path = PathFinder.GetPath(CurrentNode, TargetNode);
-        
-      if (path == null || path.Count <= 0)
+         : _gridManager.FindClosestNodeToTarget(_gridManager.GetNodeFromPosition(targetPos).GetGridPosition , ActionRange);
+      
+      if(TargetNode == null)
       {
-         Debug.Log($"Start Node Position: {CurrentNode.GetGridPosition} \n Goal Node Position: {TargetNode.GetGridPosition}");
-         Debug.Log($"Distance from {CurrentNode.GetGridPosition} to {TargetNode.GetGridPosition} is {Vector2Int.Distance(CurrentNode.GetGridPosition, TargetNode.GetGridPosition)}");
-         Debug.LogError("Path is null or empty!");
+         Debug.LogError("Target node not found");
          return null;
       }
       
-      if(isTargetWithinRange)
+      List<Node> path = PathFinder.GetPath(CurrentNode, TargetNode);
+        
+      if (path == null)
       {
-         Debug.Log("Finding closest node to target!");
-         Node lastNode = path[path.Count - 1];
-         path.Remove(lastNode);
-         
+         Debug.LogError("Path is null!");
+         return null;
       }
+      if (path.Count <= 0)
+      {
+         Debug.LogError("Path is empty!");
+         return null;
+      }
+      
+      path.Remove(TargetNode);
       return path;
    }
    

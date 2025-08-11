@@ -65,17 +65,17 @@ public class BaseBattleEntity : MonoBehaviour
             Debug.LogError("GridManager not found in the scene. Please ensure it is present.");
             return;
         }
-        transform.position = _gridManager.GetNodeFromPosition(transform.position).GetRealPosition;
+        transform.position = _gridManager.GetNodeFromPosition(transform.localPosition).GetRealPosition;
+        Debug.Log(_gridManager.GetNodeFromPosition(transform.position).GetRealPosition + " " + _gridManager.GetNodeFromPosition(transform.position).GetGridPosition);
         _pathFinding = _gridManager.GetPathFinding;
         Grid = _gridManager.GetGridNodes;
 
         InitialiseActions();
     }
 
-    protected virtual void InitialiseActions()
-    {
+    protected virtual void InitialiseActions() =>
         InitActions(AbilityName.Move, new MoveAction(), MoveSpeed, MovePoint_Cost, ActionType.MovePoint, ActionTargetType.Tile);
-    }
+    
     
     public void InitActions(AbilityName name,ActionBase action, float actionRange, int costOfAction, ActionType actionType, ActionTargetType actionTargetType)
     {
