@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
@@ -9,17 +10,53 @@ public class UIManager : MonoBehaviour
     public VisualTreeAsset abilityButtonTemplate;
     public Color movePointColor, actonPointColor, emptyPointColor;
     private UIDocument uiDocument;
-    private VisualElement abilityButtonContainer, movePoint, actionPoint;
+    private VisualElement mainUi, abilityButtonContainer, movePoint, actionPoint, pauseContainer;
+    private Label MainText;
+    private Button resume, restart, MainMenu;
     private UserInputManager userInputManager;
     private Dictionary<string, Button> CurrentAbilityButtons = new Dictionary<string, Button>();
+    private bool isPaused = false;
     void Start()
     {
         uiDocument = GetComponent<UIDocument>();
+        mainUi = uiDocument.rootVisualElement.Q<VisualElement>("MainUI");
         abilityButtonContainer = uiDocument.rootVisualElement.Q<VisualElement>("AbilityList");
         movePoint = uiDocument.rootVisualElement.Q<VisualElement>("movePoint");
         actionPoint = uiDocument.rootVisualElement.Q<VisualElement>("actionPoint");
+        
+        pauseContainer = uiDocument.rootVisualElement.Q<VisualElement>("PauseMenu");
+        resume = uiDocument.rootVisualElement.Q<Button>("Resume");
+        resume.clickable.clicked += () => isPaused = false;
+        
+        restart = uiDocument.rootVisualElement.Q<Button>("Restart");
+        restart.clickable.clicked += () => SceneManager.LoadScene("MainGame");
+        
+        MainMenu = uiDocument.rootVisualElement.Q<Button>("MainMenu");
+        //TODO: Implement logic to load Main Menu
+        
+        MainText = uiDocument.rootVisualElement.Q<Label>("Text");
+        pauseContainer.style.display = DisplayStyle.None;
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            isPaused = !isPaused;
+        
+        Time.timeScale = !isPaused ? 1f : 0f;
+        pauseContainer.style.display = isPaused ? DisplayStyle.Flex : DisplayStyle.None;
+        mainUi.style.display = !isPaused ? DisplayStyle.Flex : DisplayStyle.None;
+
+    }
+
+    public void ShowEndScreen()
+    {
+        mainUi.style.display = DisplayStyle.None;
+        pauseContainer.style.display = DisplayStyle.Flex;
+        resume.style.display = DisplayStyle.None;
+        MainText.text = "Game Over! End of demo";
+    }
+
 
     public void ShowUnitAbility(BaseBattleEntity SelectedBattleEntity)
     {

@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/ActionBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/ActionBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/InsultAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/InsultAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Actions/RaiseBaricadeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Actions/RaiseBaricadeAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/AStar_Pathfinding/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/AStar_Pathfinding/Node.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/Grid_System/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/Grid_System/GridManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/TurnSystem/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/TurnSystem/TurnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI stuff/UI documents/MainGameUI.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI stuff/UI documents/MainGameUI.uxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/Backend_Systems/UserInput/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Backend_Systems/UserInput/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/PlayerEntities/DamageGuy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/PlayerEntities/DamageGuy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/Battle_Entity/PlayerEntities/Healer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/Battle_Entity/PlayerEntities/Healer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/StatusEffects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/StatusEffects.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
