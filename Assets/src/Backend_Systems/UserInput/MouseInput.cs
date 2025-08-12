@@ -51,7 +51,15 @@ public class MouseInput : MonoBehaviour
         ActionBase SelectedAction = userInputManager.GetSelectedAction();
         if (SelectedAction == null)
             return;
-
+        
+        //Call activation early as this means the action is self applying (asumed)
+        if (SelectedAction.GetActionTargetType == ActionTargetType.None)
+        {
+            StartCoroutine(AwaitActionExecution(SelectedAction, null));
+            userInputManager.SelectAction(null);
+            return;
+        }
+            
         BaseBattleEntity SelectedEntity = SelectedAction.GetBaseBattleEntity;
         
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -70,6 +78,7 @@ public class MouseInput : MonoBehaviour
         {
             GameObject Target = hit.collider.gameObject;
             Debug.Log($"Action tag: {SelectedAction.GetActionTargetType.ToString()}, target's tag {Target.tag}");
+                
             if (!Target.CompareTag(SelectedAction.GetActionTargetType.ToString()))
             {
                 Debug.LogWarning($"Invalid target type selected.\n Expected: {SelectedAction.GetActionTargetType}, Found: {Target.tag}.");

@@ -15,7 +15,7 @@ public class GrenadeAction : ActionBase
         {
             Vector2Int nodePosition = node.GetGridPosition;
             if(EntityGridPostions.ContainsKey(nodePosition))
-                EntityGridPostions[nodePosition].TakeDamage(_baseBattleEntity.GetDamage * blastDamageMultiplier);
+                EntityGridPostions[nodePosition].TakeDamage(_baseBattleEntity.GetDamage() * blastDamageMultiplier);
         }
         //TODO: TRIGGER ANIMATION(S) HERE
         

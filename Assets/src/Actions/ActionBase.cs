@@ -94,7 +94,8 @@ public enum ActionType
 public enum ActionTargetType
 {
     Unit,
-    Tile
+    Tile,
+    None
 }
 
 [System.Serializable]
@@ -105,5 +106,6 @@ public enum AbilityName
     Heal,
     Grenade,
     Insult,
-    RaiseBaricade
+    RaiseBaricade,
+    DefenceBoost,
 }

@@ -49,12 +49,13 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void ShowEndScreen()
+    public void ShowEndScreen(string endScreenName)
     {
+        isPaused = true;
         mainUi.style.display = DisplayStyle.None;
         pauseContainer.style.display = DisplayStyle.Flex;
         resume.style.display = DisplayStyle.None;
-        MainText.text = "Game Over! End of demo";
+        MainText.text = endScreenName; 
     }
 
 
