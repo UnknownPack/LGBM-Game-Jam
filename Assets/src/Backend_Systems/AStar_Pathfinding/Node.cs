@@ -27,6 +27,11 @@ public class Node
         _canNavigateTo = state;
     }
 
+    public void RaiseBaricadeOnNode()
+    {
+
+    }
+
     public GameObject GetTileObject => _tileObject;
     public Vector3 GetRealPosition => realPosition;
     public Vector2Int GetGridPosition => gridPosition;

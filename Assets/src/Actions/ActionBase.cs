@@ -77,6 +77,12 @@ public class ActionBase
         return output;
     }
 
+    protected void PlayAbilityAnimation(string abilityName)
+    {
+        Animator animator = _baseBattleEntity.GetAnimator;
+        animator.Play(abilityName);
+    }
+
     public ActionType GetActionType => _actionType;
     public ActionTargetType GetActionTargetType => _actionTargetType;
     public BaseBattleEntity GetBaseBattleEntity => _baseBattleEntity;

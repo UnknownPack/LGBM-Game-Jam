@@ -15,7 +15,8 @@ public class RaiseBaricadeAction : ActionBase
         
         Debug.Log("Baricades raised in the area!");
         //TODO: TRIGGER ANIMATION(S) HERE
-        
+        PlayAbilityAnimation("Heal");
+
         // Remove action points etc.
         yield return base.Action(target);
     }

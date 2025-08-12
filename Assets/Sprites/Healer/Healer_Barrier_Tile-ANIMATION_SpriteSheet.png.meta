@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: f412a296f77600e4cb029a1a324b6c18
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4196230307528354894
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_0
+  - first:
+      213: -360493568743458237
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_1
+  - first:
+      213: -7619785626799447659
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_2
+  - first:
+      213: -1233661835240095109
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_3
+  - first:
+      213: -4677083635551198669
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_4
+  - first:
+      213: 2261429167968642039
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_5
+  - first:
+      213: 4024404311592003248
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_6
+  - first:
+      213: -71576527268136149
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_7
+  - first:
+      213: -5318393072720252016
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_8
+  - first:
+      213: 1097233556636738992
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_9
+  - first:
+      213: -3716598539929973566
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_10
+  - first:
+      213: -5612823785086981700
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_11
+  - first:
+      213: -6385347845602633440
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_12
+  - first:
+      213: 4575516650476511611
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_13
+  - first:
+      213: -1868104158987935443
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_14
+  - first:
+      213: -856779914464276852
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_15
+  - first:
+      213: -6245482640972558999
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_16
+  - first:
+      213: -6567363686881784465
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_17
+  - first:
+      213: -3723482216438810515
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_18
+  - first:
+      213: 6527704400239084433
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_19
+  - first:
+      213: 6040386654580035914
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_20
+  - first:
+      213: -2732007743824064380
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_21
+  - first:
+      213: -7970987095669293981
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_22
+  - first:
+      213: -9045245081695512290
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_23
+  - first:
+      213: -3041905686360450274
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_24
+  - first:
+      213: 4364079410857440610
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_25
+  - first:
+      213: 7918926231165068303
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_26
+  - first:
+      213: 8835138228204695540
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_27
+  - first:
+      213: -3912233524271949350
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_28
+  - first:
+      213: 8301123362388463308
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_29
+  - first:
+      213: 4467806928441713783
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_30
+  - first:
+      213: 7363739214445050961
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_31
+  - first:
+      213: 8821825206054809187
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_32
+  - first:
+      213: 6266514929516122409
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_33
+  - first:
+      213: -4161210750572262090
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_34
+  - first:
+      213: -2528972867423546082
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_35
+  - first:
+      213: -5430972265567786901
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_36
+  - first:
+      213: -3857122973619246205
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_37
+  - first:
+      213: 6172653074925454634
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_38
+  - first:
+      213: -1880096794149976002
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_39
+  - first:
+      213: -724221592855216589
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_40
+  - first:
+      213: 4351705898262489847
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_41
+  - first:
+      213: 6765774409356624471
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_42
+  - first:
+      213: 1772618702033877915
+    second: Healer_Barrier_Tile-ANIMATION_SpriteSheet_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4ca4fb6b310c3a30800000000000000
+      internalID: 4196230307528354894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34abb3b52054ffaf0800000000000000
+      internalID: -360493568743458237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 591edf10855114690800000000000000
+      internalID: -7619785626799447659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b72ce89d81721eee0800000000000000
+      internalID: -1233661835240095109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 332ad26b639a71fb0800000000000000
+      internalID: -4677083635551198669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f36a71c8d5326f10800000000000000
+      internalID: 2261429167968642039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b6edf0366e89d730800000000000000
+      internalID: 4024404311592003248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2b3de51785b10ff0800000000000000
+      internalID: -71576527268136149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0937c9cada54136b0800000000000000
+      internalID: -5318393072720252016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healer_Barrier_Tile-ANIMATION_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b5a8fa3b182a3f00800000000000000
+      internalID: 1097233556636738992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c5cce723be044bc49be7c9ed3a974384
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_0: 4196230307528354894
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_1: -360493568743458237
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_2: -7619785626799447659
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_3: -1233661835240095109
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_4: -4677083635551198669
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_5: 2261429167968642039
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_6: 4024404311592003248
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_7: -71576527268136149
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_8: -5318393072720252016
+      Healer_Barrier_Tile-ANIMATION_SpriteSheet_9: 1097233556636738992
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

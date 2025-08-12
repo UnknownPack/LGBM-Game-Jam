@@ -32,9 +32,10 @@ public class HealAction : ActionBase
             Debug.LogError("Target does not have a BaseBattleEntity component.");
             yield break;
         }
-        
+
+        PlayAbilityAnimation("Heal");
         entity.Heal(healthpoints);
-        //TODO: TRIGGER ANIMATION(S) HERE
+
         yield return base.Action(target);
     }
 }
