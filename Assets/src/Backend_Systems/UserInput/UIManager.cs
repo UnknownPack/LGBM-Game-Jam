@@ -61,7 +61,6 @@ public class UIManager : MonoBehaviour
         {
             bool isButtonActive = ActionPoints[ability.Value.GetActionType] > 0;
             CurrentAbilityButtons[ability.Key.ToString()].SetEnabled(isButtonActive);
-            Debug.Log(ability.Key + " "+CurrentAbilityButtons[ability.Key.ToString()]);
         }
     }
     

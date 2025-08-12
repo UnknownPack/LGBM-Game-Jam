@@ -6,6 +6,7 @@ public class Node
     private Vector3 realPosition;
     private GameObject _tileObject;
     private bool _canNavigateTo;
+    private bool manualUpdate = false;
 
     public float GCost;
     public float HCost;
@@ -25,6 +26,12 @@ public class Node
     public void SetWalkableState(bool state)
     {
         _canNavigateTo = state;
+    }
+    
+    public bool ManualUpdate
+    {
+        get => manualUpdate;
+        set => manualUpdate = value;
     }
 
     public GameObject GetTileObject => _tileObject;

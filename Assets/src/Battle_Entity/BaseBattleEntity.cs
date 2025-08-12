@@ -30,7 +30,6 @@ public class BaseBattleEntity : MonoBehaviour
     private Dictionary<ActionType, int> ActionPoints;
     private Dictionary<AbilityName, ActionBase> Abilities = new Dictionary<AbilityName, ActionBase>();
     private Dictionary<Vector2Int, Node> Grid;
-    private List<StatusEffects> StatusEffects;
     private Node CurrentNode;
     private InitalEntityStats initalEntityStats;
     
@@ -48,7 +47,6 @@ public class BaseBattleEntity : MonoBehaviour
     
     void Start()
     {
-        StatusEffects = new List<StatusEffects>();
         ActionPoints = new Dictionary<ActionType, int>
         {
             { ActionType.MovePoint, MovePoint_MaxCount},{ ActionType.ActionPoint, ActionPoint_MaxCount },
@@ -127,9 +125,10 @@ public class BaseBattleEntity : MonoBehaviour
             ActionPoints[ActionType.MovePoint] = MovePoint_MaxCount;
             ActionPoints[ActionType.ActionPoint] = ActionPoint_MaxCount;
         }
+
+        public InitalEntityStats GetIntialStats => initalEntityStats;
+        public void SetDefence(float value) => Defence = value;
         
-        public void AddStatusEffect(StatusEffects statusEffect) => StatusEffects.Add(statusEffect);
-        public List<StatusEffects> GetStatusEffects() => StatusEffects;
 
         public UnitOwnership GetUnitOwnerShip => UnitOwner;
         public bool isActionPointAvailable(ActionType actionType) => ActionPoints[actionType] > 0;

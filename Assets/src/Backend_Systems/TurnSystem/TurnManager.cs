@@ -9,6 +9,7 @@ public class TurnManager : MonoBehaviour
     private GridManager gridManager;
     private UserInputManager UserInputManager;
     public List<BaseBattleEntity> battleEntities;
+    private List<StatusEffects> statusEffects = new List<StatusEffects>();
     public bool isPlayersTurn = true;
     public int currentTurn = 0;
     
@@ -61,6 +62,22 @@ public class TurnManager : MonoBehaviour
         currentTurn++;
         Debug.Log($"Current Turn cycle: {currentTurn}");
     }
+    
+    public void AddStatusEffect(StatusEffects statusEffect) => statusEffects.Add(statusEffect);
+
+    private void ApplyStatusEffect()
+    {
+        foreach (var statusEffect in statusEffects)
+        {
+            if (!statusEffect.IsActive)
+            {
+                statusEffects.Remove(statusEffect);                
+                return;
+            }
+            
+            statusEffect.tickDown();
+        }
+    }
 
     private void ManageTurns()
     {
@@ -89,5 +106,7 @@ public class TurnManager : MonoBehaviour
                 battleEntity.ResetActionPoints();
         }
     }
+    
+    public GridManager GetGridManager => gridManager;
 
 }
