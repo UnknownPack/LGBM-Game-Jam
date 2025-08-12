@@ -467,6 +467,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       insertIndex: 1
       addedObject: {fileID: 72246251}
+    - targetCorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 506246913}
   m_SourcePrefab: {fileID: 100100000, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
 --- !u!1 &72246248 stripped
 GameObject:
@@ -520,6 +523,7 @@ MonoBehaviour:
   DamageTxt: {fileID: 72246250}
   HealTxt: {fileID: 72246249}
   Healthbar: {fileID: 0}
+  Animator: {fileID: 0}
   AttackRange: 1
   DamageAmount: 1
 --- !u!1 &73088861
@@ -1015,6 +1019,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       insertIndex: 1
       addedObject: {fileID: 202073891}
+    - targetCorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1131887683}
   m_SourcePrefab: {fileID: 100100000, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
 --- !u!1 &202073888 stripped
 GameObject:
@@ -1068,6 +1075,7 @@ MonoBehaviour:
   DamageTxt: {fileID: 202073890}
   HealTxt: {fileID: 202073889}
   Healthbar: {fileID: 0}
+  Animator: {fileID: 0}
   AttackRange: 1
   DamageAmount: 1
 --- !u!1 &207202050
@@ -1617,6 +1625,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &337012473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 495745920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &337012476
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337012473}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fb8ed289b7273d43b31399ab869799f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &355759590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,6 +2389,7 @@ MonoBehaviour:
   DamageTxt: {fileID: 1252313322}
   HealTxt: {fileID: 75062613}
   Healthbar: {fileID: 0}
+  Animator: {fileID: 0}
   AttackRange: 1
   grenadeRange: 3
   DamageAmount: 1
@@ -2437,6 +2473,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       insertIndex: 1
       addedObject: {fileID: 495745924}
+    - targetCorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 337012476}
   m_SourcePrefab: {fileID: 100100000, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
 --- !u!1 &495745921 stripped
 GameObject:
@@ -2490,8 +2529,36 @@ MonoBehaviour:
   DamageTxt: {fileID: 495745923}
   HealTxt: {fileID: 495745922}
   Healthbar: {fileID: 0}
+  Animator: {fileID: 0}
   AttackRange: 1
   DamageAmount: 1
+--- !u!1 &506246910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 72246247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &506246913
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506246910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fb8ed289b7273d43b31399ab869799f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &512746682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
@@ -2522,6 +2589,7 @@ MonoBehaviour:
   DamageTxt: {fileID: 887046618}
   HealTxt: {fileID: 312231360}
   Healthbar: {fileID: 0}
+  Animator: {fileID: 0}
   AttackRange: 1
   DamageAmount: 1
 --- !u!1 &519420028
@@ -4179,6 +4247,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &805766630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5839494463804045482, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+  m_PrefabInstance: {fileID: 951968459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &805766633
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805766630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b6628b1cc5d0954a9815b9a6798c0cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &846657456
 GameObject:
   m_ObjectHideFlags: 0
@@ -4692,6 +4787,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
+    - target: {fileID: 7796216450546539275, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8253535330062550017, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4707,6 +4806,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7757181343623978147, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       insertIndex: -1
       addedObject: {fileID: 951968461}
+    - targetCorrespondingSourceObject: {fileID: 5839494463804045482, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 805766633}
   m_SourcePrefab: {fileID: 100100000, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
 --- !u!1 &951968460 stripped
 GameObject:
@@ -4775,6 +4877,7 @@ MonoBehaviour:
   DamageTxt: {fileID: 1160598022}
   HealTxt: {fileID: 1959861657}
   Healthbar: {fileID: 0}
+  Animator: {fileID: 0}
   HealingRange: 3
   HealingAmount: 2
   BaricadeSummonRange: 3
@@ -5315,6 +5418,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1060488583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5839494463804045482, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+  m_PrefabInstance: {fileID: 2057821935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1060488586
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060488583}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a9a22e929fb9ad40b104ade3cdf2f53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1065165879
 GameObject:
   m_ObjectHideFlags: 0
@@ -5583,6 +5713,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1131887680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 202073887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1131887683
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131887680}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fb8ed289b7273d43b31399ab869799f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1150309070
 GameObject:
   m_ObjectHideFlags: 0
@@ -6007,6 +6164,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1284802387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 9200433361112879197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1284802390
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284802387}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fb8ed289b7273d43b31399ab869799f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1286796330
 GameObject:
   m_ObjectHideFlags: 0
@@ -6355,6 +6539,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1313394853}
+    - targetCorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1491084819}
   m_SourcePrefab: {fileID: 100100000, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
 --- !u!1 &1313394850 stripped
 GameObject:
@@ -6408,6 +6595,7 @@ MonoBehaviour:
   DamageTxt: {fileID: 1313394852}
   HealTxt: {fileID: 1313394851}
   Healthbar: {fileID: 0}
+  Animator: {fileID: 0}
   AttackRange: 1
   DamageAmount: 1
 --- !u!1 &1440091257
@@ -6812,6 +7000,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1481201012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 1647323509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1481201015
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481201012}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fb8ed289b7273d43b31399ab869799f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1491084816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+  m_PrefabInstance: {fileID: 1313394849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1491084819
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491084816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fb8ed289b7273d43b31399ab869799f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1497638623
 GameObject:
   m_ObjectHideFlags: 0
@@ -7831,6 +8073,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1647323513}
+    - targetCorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1481201015}
   m_SourcePrefab: {fileID: 100100000, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
 --- !u!1 &1647323510 stripped
 GameObject:
@@ -7884,6 +8129,7 @@ MonoBehaviour:
   DamageTxt: {fileID: 1647323512}
   HealTxt: {fileID: 1647323511}
   Healthbar: {fileID: 0}
+  Animator: {fileID: 0}
   AttackRange: 1
   DamageAmount: 1
 --- !u!1 &1658736091
@@ -10219,6 +10465,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7757181343623978147, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       insertIndex: -1
       addedObject: {fileID: 485337513}
+    - targetCorrespondingSourceObject: {fileID: 5839494463804045482, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1060488586}
   m_SourcePrefab: {fileID: 100100000, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
 --- !u!1001 &9200433361112879197
 PrefabInstance:
@@ -10300,6 +10549,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       insertIndex: 1
       addedObject: {fileID: 512746686}
+    - targetCorrespondingSourceObject: {fileID: 8649228087411156902, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1284802390}
   m_SourcePrefab: {fileID: 100100000, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

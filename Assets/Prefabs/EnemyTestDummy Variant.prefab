@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3248649256725199192, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248649256725199192, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4240437632891639485, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       propertyPath: m_Color.b
       value: 0.512036
@@ -78,15 +86,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4540545056621026766, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.2783019
       objectReference: {fileID: 0}
     - target: {fileID: 4540545056621026766, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       propertyPath: m_Color.g
-      value: 0.0060821315
+      value: 0.28923672
       objectReference: {fileID: 0}
     - target: {fileID: 4540545056621026766, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       propertyPath: m_Color.r
-      value: 0.5169811
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5839494463804045482, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       propertyPath: m_TagString
@@ -111,6 +119,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7757181343623978147, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3092679007253031341}
+    - targetCorrespondingSourceObject: {fileID: 5839494463804045482, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6539051929331689976}
   m_SourcePrefab: {fileID: 100100000, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
 --- !u!1 &4802311703727555503 stripped
 GameObject:
@@ -154,3 +165,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!1 &8649228087411156902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5839494463804045482, guid: 534b0119fa6ad0043bda9189adb01074, type: 3}
+  m_PrefabInstance: {fileID: 2954984057858907916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6539051929331689976
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8649228087411156902}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fb8ed289b7273d43b31399ab869799f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
