@@ -11,7 +11,6 @@ public class EnemyBaseEntity : BaseBattleEntity
 
     [Header("\nDamage Stats")]
     public float AttackRange = 1f;
-    public float DamageAmount = 1f;
 
 
     public virtual IEnumerator ExecuteTurn()
@@ -116,7 +115,7 @@ public class EnemyBaseEntity : BaseBattleEntity
         // Initialise the actions for the enemy entity
         InitActions(AbilityName.Move, new EnenyMoveAction(), GetMoveSpeed, MovePoint_Cost, ActionType.MovePoint, ActionTargetType.Tile);
         MeleeAttackAction meleeAttackAction = new MeleeAttackAction();
-        meleeAttackAction.SetDamageAmount(DamageAmount);
+        meleeAttackAction.SetDamageAmount(GetDamage());
         meleeAttackAction.SetTargetType(UnitOwnership.Player);
         InitActions(AbilityName.Attack, meleeAttackAction, AttackRange, ActionPoint_Cost, ActionType.ActionPoint,
             ActionTargetType.Unit);
