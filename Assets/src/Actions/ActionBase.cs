@@ -84,7 +84,7 @@ public class ActionBase
     }
 
     public ActionType GetActionType => _actionType;
-    public ActionTargetType GetActionTargetType => _actionTargetType;
+    public virtual ActionTargetType GetActionTargetType => _actionTargetType;
     public BaseBattleEntity GetBaseBattleEntity => _baseBattleEntity;
 
 }
@@ -106,7 +106,7 @@ public enum ActionTargetType
 [System.Serializable]
 public enum AbilityName
 {
-    Move,
+    Move, 
     Attack,
     Heal,
     Grenade,

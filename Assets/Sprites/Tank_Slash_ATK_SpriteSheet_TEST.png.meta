@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 4554d5bd5ba61614ba7262953227e04f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6766834798072396768
+    second: Tank_Slash_ATK_SpriteSheet_TEST_0
+  - first:
+      213: -173769522652654219
+    second: Tank_Slash_ATK_SpriteSheet_TEST_1
+  - first:
+      213: -6118071177757952320
+    second: Tank_Slash_ATK_SpriteSheet_TEST_2
+  - first:
+      213: -7587553544953525655
+    second: Tank_Slash_ATK_SpriteSheet_TEST_3
+  - first:
+      213: 4101507752574712873
+    second: Tank_Slash_ATK_SpriteSheet_TEST_4
+  - first:
+      213: 8352368276440864134
+    second: Tank_Slash_ATK_SpriteSheet_TEST_5
+  - first:
+      213: -6884228132853423366
+    second: Tank_Slash_ATK_SpriteSheet_TEST_6
+  - first:
+      213: 7615594406308519556
+    second: Tank_Slash_ATK_SpriteSheet_TEST_7
+  - first:
+      213: -6093962861565414649
+    second: Tank_Slash_ATK_SpriteSheet_TEST_8
+  - first:
+      213: -4652470530122897105
+    second: Tank_Slash_ATK_SpriteSheet_TEST_9
+  - first:
+      213: 4143772995366438022
+    second: Tank_Slash_ATK_SpriteSheet_TEST_10
+  - first:
+      213: 3412342446821521377
+    second: Tank_Slash_ATK_SpriteSheet_TEST_11
+  - first:
+      213: 4692312061965299324
+    second: Tank_Slash_ATK_SpriteSheet_TEST_12
+  - first:
+      213: -263854484581506129
+    second: Tank_Slash_ATK_SpriteSheet_TEST_13
+  - first:
+      213: -2569390402368800601
+    second: Tank_Slash_ATK_SpriteSheet_TEST_14
+  - first:
+      213: 4598139823113525330
+    second: Tank_Slash_ATK_SpriteSheet_TEST_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 332
+        width: 198
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02484277a9f5712a0800000000000000
+      internalID: -6766834798072396768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_1
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 325
+        width: 228
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 575df713a85a69df0800000000000000
+      internalID: -173769522652654219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_2
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 334
+        width: 177
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c67e23cdae381ba0800000000000000
+      internalID: -6118071177757952320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_3
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 333
+        width: 201
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96a0ace504893b690800000000000000
+      internalID: -7587553544953525655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_4
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 333
+        width: 181
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92cf9bbf19b7be830800000000000000
+      internalID: 4101507752574712873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_5
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 333
+        width: 230
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 685df76d1b299e370800000000000000
+      internalID: 8352368276440864134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_6
+      rect:
+        serializedVersion: 2
+        x: 1832
+        y: 333
+        width: 204
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af26584ccfe4670a0800000000000000
+      internalID: -6884228132853423366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_7
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 333
+        width: 206
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48e987d63c600b960800000000000000
+      internalID: 7615594406308519556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_8
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 33
+        width: 206
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70378f98015ed6ba0800000000000000
+      internalID: -6093962861565414649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_9
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 33
+        width: 206
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f292d04e3ba1f6fb0800000000000000
+      internalID: -4652470530122897105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_10
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 33
+        width: 141
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6844caaa593a18930800000000000000
+      internalID: 4143772995366438022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_11
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 33
+        width: 176
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e7b8c240631b5f20800000000000000
+      internalID: 3412342446821521377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_12
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 34
+        width: 132
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7ee8bc95f07e1140800000000000000
+      internalID: 4692312061965299324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_13
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 32
+        width: 173
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa320268eb9965cf0800000000000000
+      internalID: -263854484581506129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_14
+      rect:
+        serializedVersion: 2
+        x: 1807
+        y: 32
+        width: 188
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a87281da01b75cd0800000000000000
+      internalID: -2569390402368800601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank_Slash_ATK_SpriteSheet_TEST_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 32
+        width: 198
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2585240aecfdfcf30800000000000000
+      internalID: 4598139823113525330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c8bcc202fa6e0c746ba0c3a164259d2f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Tank_Slash_ATK_SpriteSheet_TEST_0: -6766834798072396768
+      Tank_Slash_ATK_SpriteSheet_TEST_1: -173769522652654219
+      Tank_Slash_ATK_SpriteSheet_TEST_10: 4143772995366438022
+      Tank_Slash_ATK_SpriteSheet_TEST_11: 3412342446821521377
+      Tank_Slash_ATK_SpriteSheet_TEST_12: 4692312061965299324
+      Tank_Slash_ATK_SpriteSheet_TEST_13: -263854484581506129
+      Tank_Slash_ATK_SpriteSheet_TEST_14: -2569390402368800601
+      Tank_Slash_ATK_SpriteSheet_TEST_15: 4598139823113525330
+      Tank_Slash_ATK_SpriteSheet_TEST_2: -6118071177757952320
+      Tank_Slash_ATK_SpriteSheet_TEST_3: -7587553544953525655
+      Tank_Slash_ATK_SpriteSheet_TEST_4: 4101507752574712873
+      Tank_Slash_ATK_SpriteSheet_TEST_5: 8352368276440864134
+      Tank_Slash_ATK_SpriteSheet_TEST_6: -6884228132853423366
+      Tank_Slash_ATK_SpriteSheet_TEST_7: 7615594406308519556
+      Tank_Slash_ATK_SpriteSheet_TEST_8: -6093962861565414649
+      Tank_Slash_ATK_SpriteSheet_TEST_9: -4652470530122897105
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

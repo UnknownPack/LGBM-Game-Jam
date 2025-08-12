@@ -8,22 +8,44 @@ public class MoveAction : ActionBase
     private float moveSpeed = 0.15f ;
     public override IEnumerator Action(GameObject target)
     {
+        List<Node> path = CreatePath(target);
+        if(path == null || path.Count == 0)
+        {
+            Debug.LogWarning($"Path is null or empty for {ParentObject.name}!");
+            yield break;
+        }
+        foreach (var node in path)
+        {
+            if (node.CanNavigate)
+                yield return Move(ParentObject.transform.position, node);
+
+            else
+                break;
+        }
+        
+        yield return base.Action(target);
+    }
+    
+    protected virtual List<Node> CreatePath(GameObject target)
+    {
         Node CurrentNode = _gridManager.GetNodeFromPosition(ParentObject.transform.position);
         Node TargetNode = _gridManager.GetNodeFromPosition(target.transform.position); 
 
         List<Node> path = PathFinder.GetPath(CurrentNode, TargetNode);
         
-        if (path == null || path.Count <= 0)
+        if (path == null)
         {
-            Debug.Log($"Start Node Position: {CurrentNode.GetGridPosition} \n Goal Node Position: {TargetNode.GetGridPosition}");
-            Debug.LogError("Path is null or empty!");
-            yield break;
+            Debug.LogError("Path is null!");
+            return null;
         }
-            
-        foreach (var node in path)
-            yield return Move(ParentObject.transform.position, node);
+
+        if (path.Count <= 0)
+        {
+            Debug.LogError("Path is empty!");
+            return null;
+        }
         
-        yield return base.Action(target);
+        return path;
     }
 
     private IEnumerator Move(Vector3 startPosition, Node TargetNode)

@@ -5,19 +5,24 @@ using UnityEngine;
 public class MeleeAttackAction : ActionBase
 {
     //default amount of damage
-    [SerializeField] private float damageAmount = 1f;
+    private float damageAmount = 1f;
+    private UnitOwnership targetOwner = UnitOwnership.Enemy;
 
     public void SetDamageAmount(float value) => damageAmount = value;
+    public void SetTargetType(UnitOwnership owner) => targetOwner = owner;
 
     public override IEnumerator Action(GameObject target)
     {
 
         if (!target.CompareTag("Unit"))
+        {
+            Debug.LogError("Target doesn't have an Unit tag");
             yield break;
+        }
 
         BaseBattleEntity entity = target.GetComponent<BaseBattleEntity>();
 
-        if (entity.GetUnitOwnerShip == UnitOwnership.Player)
+        if (entity.GetUnitOwnerShip != targetOwner)
             yield break;
 
         PlayAbilityAnimation("Attack");

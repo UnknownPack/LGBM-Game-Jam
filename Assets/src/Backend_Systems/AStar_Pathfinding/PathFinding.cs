@@ -21,6 +21,11 @@ public class PathFinding
         
         public List<Node> GetPath(Node startNode, Node goalNode)
         {
+            if (startNode == null || goalNode == null)
+            {
+                Debug.LogError("GetPath: start or goal is null.");
+                return null;
+            }
             Queue<Node> OpenSet = new Queue<Node>(); 
             Queue<Node> ClosedSet = new Queue<Node>();
             
