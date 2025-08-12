@@ -7097,6 +7097,7 @@ GameObject:
   - component: {fileID: 1525577224}
   - component: {fileID: 1525577226}
   - component: {fileID: 1525577225}
+  - component: {fileID: 1525577228}
   m_Layer: 0
   m_Name: CoreManager
   m_TagString: Untagged
@@ -7202,6 +7203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityButtonTemplate: {fileID: 9197481963319205126, guid: e87f37f92ec4aac4298016649467439e, type: 3}
+  pauseMenu: {fileID: 9197481963319205126, guid: c1008e92c008e0f4e8807cd44463b028, type: 3}
+  mainGameUI: {fileID: 9197481963319205126, guid: 31dba4f37a3ab66468b333a73a021238, type: 3}
   movePointColor: {r: 0.15294123, g: 1, b: 0, a: 1}
   actonPointColor: {r: 1, g: 0.91432846, b: 0, a: 1}
   emptyPointColor: {r: 0.36477977, g: 0.36477977, b: 0.36477977, a: 1}
@@ -7215,6 +7218,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f5e1582d6324b54cb8c3b68ce6bcc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1525577228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525577220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c9dd53c52464a40a7f0b0b4316b302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1575773498
