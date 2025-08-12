@@ -6,19 +6,35 @@ using UnityEngine.UIElements;
 public class UIManager : MonoBehaviour
 {
     public VisualTreeAsset abilityButtonTemplate;
+    public VisualTreeAsset pauseMenu;
+    public VisualTreeAsset mainGameUI;
     public Color movePointColor, actonPointColor, emptyPointColor;
     private UIDocument uiDocument;
+    private PauseUIF pauseUI;
+    private bool paused = false;
     private VisualElement abilityButtonContainer, movePoint, actionPoint;
     private UserInputManager userInputManager;
     private Dictionary<string, Button> CurrentAbilityButtons = new Dictionary<string, Button>();
     void Start()
     {
         uiDocument = GetComponent<UIDocument>();
+        pauseUI = GetComponent<PauseUIF>();
         abilityButtonContainer = uiDocument.rootVisualElement.Q<VisualElement>("AbilityList");
         movePoint = uiDocument.rootVisualElement.Q<VisualElement>("movePoint");
         actionPoint = uiDocument.rootVisualElement.Q<VisualElement>("actionPoint");
     }
     
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!paused)
+                Pause();
+            else
+                Unpause();
+
+        }
+    }
 
     public void ShowUnitAbility(BaseBattleEntity SelectedBattleEntity)
     {
@@ -62,6 +78,41 @@ public class UIManager : MonoBehaviour
             CurrentAbilityButtons[ability.Key.ToString()].SetEnabled(isButtonActive);
         }
     }
+    
+    
+    
+    
+    public void Pause()
+    {
+        paused = true;
+        Time.timeScale = 0f;      
+        ShowPauseMenu();       
+    }
+    
+    public void Unpause()
+    {
+        paused = false;
+        Time.timeScale = 1f;
+        ShowGameUI();            
+        
+    }
+    
+    
+    
+    public void ShowGameUI()
+    {
+        uiDocument.visualTreeAsset = mainGameUI;
+        abilityButtonContainer = uiDocument.rootVisualElement.Q<VisualElement>("AbilityList");
+        movePoint = uiDocument.rootVisualElement.Q<VisualElement>("movePoint");
+        actionPoint = uiDocument.rootVisualElement.Q<VisualElement>("actionPoint");
+    }
+    public void ShowPauseMenu()
+    {
+        uiDocument.visualTreeAsset = pauseMenu;
+        pauseUI.PauseMenuFunctionality(uiDocument.rootVisualElement, this);
+    }
+    
+    
     
     public void DeselectUnit()
     {
