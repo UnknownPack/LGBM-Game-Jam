@@ -69,7 +69,7 @@ public class MouseInput : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             GameObject Target = hit.collider.gameObject;
-            
+            Debug.Log($"Action tag: {SelectedAction.GetActionTargetType.ToString()}, target's tag {Target.tag}");
             if (!Target.CompareTag(SelectedAction.GetActionTargetType.ToString()))
             {
                 Debug.LogWarning($"Invalid target type selected.\n Expected: {SelectedAction.GetActionTargetType}, Found: {Target.tag}.");

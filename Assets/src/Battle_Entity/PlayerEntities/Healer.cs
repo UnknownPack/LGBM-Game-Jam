@@ -6,7 +6,8 @@ public class Healer : BaseBattleEntity
     public float HealingRange = 3f;
     public float HealingAmount = 1f;
     public float BaricadeSummonRange = 3f;
-    public float baricadeRadius = 2f;
+    public float barricadeDuration = 2f;
+    public GameObject BaricadePrefab;
     protected override void InitialiseActions()
     {
         base.InitialiseActions();
@@ -16,8 +17,9 @@ public class Healer : BaseBattleEntity
             ActionTargetType.Unit);
         
         RaiseBaricadeAction raiseBaricadeAction = new RaiseBaricadeAction();
-        raiseBaricadeAction.SetBaricadeRadius(baricadeRadius);
-        InitActions(AbilityName.RaiseBaricade, healAction, BaricadeSummonRange, ActionPoint_Cost, ActionType.ActionPoint,
+        raiseBaricadeAction.SetBarricadeDuration(barricadeDuration);
+        raiseBaricadeAction.SetBarricadePrefab(BaricadePrefab);
+        InitActions(AbilityName.RaiseBaricade, raiseBaricadeAction, BaricadeSummonRange, ActionPoint_Cost, ActionType.ActionPoint,
             ActionTargetType.Tile);
     }
 }

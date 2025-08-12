@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -77,42 +78,94 @@ public class GridManager : MonoBehaviour
 
     #region Public Helper Methods
 
-    public List<Node> GetNodesWithinRadius(Vector3 origin, int radius)
+    public Node FindClosestNodeToTarget(Vector2Int targetPosition, float actionRange)
     {
-        List<Node> Output = new List<Node>();
-        Vector2Int OriginGirdPosition = new Vector2Int(Mathf.RoundToInt(origin.x),
-            Mathf.RoundToInt(origin.y));
-        int xCord = OriginGirdPosition.x, yCord = OriginGirdPosition.y;
-        for (int i = xCord - radius; i <= xCord + radius; i++)
+        Debug.Log(targetPosition);
+
+        Node start = Grid_Nodes[GetNodeFromPosition(transform.localPosition).GetGridPosition];
+        if (start == null)
         {
-            for (int j = yCord - radius; j <= yCord + radius; j++)
+            Debug.LogWarning($"FindClosestNodeToTarget: Start node is null at position {transform.position}.");
+            return null;
+        }
+
+        Node end = Grid_Nodes[targetPosition];
+        if (end == null)
+        {
+            Debug.LogWarning($"FindClosestNodeToTarget: End node is null at target position {targetPosition}.");
+            return null;
+        }
+        Debug.Log($"FindClosestNodeToTarget: Start node {start.GetGridPosition}, End node {end.GetGridPosition}.");
+        end.SetWalkableState(true);
+        var path = pathFinding.GetPath(start, end);
+        if (path == null)
+        {
+            Debug.LogWarning("FindClosestNodeToTarget: Path is null.");
+            return null;
+        }
+
+        if (path.Count == 0)
+        {
+            Debug.LogWarning("FindClosestNodeToTarget: Path is empty.");
+            return null;
+        }
+
+        // walk backward from the target until we're within actionRange of the target
+        for (int i = path.Count - 1; i >= 0; i--)
+        {
+            if (Vector2Int.Distance(path[i].GetGridPosition, end.GetGridPosition) <= actionRange)
             {
-                Vector2Int vector = new Vector2Int(i, j);
-                if(Grid_Nodes.TryGetValue(vector, out var node))
-                    Output.Add(node);
+                Debug.Log($"FindClosestNodeToTarget: Found valid node {path[i].GetGridPosition} within range {actionRange}.");
+                return path[i];
             }
         }
-        return Output;
-    }
 
-    public Node FindClosestNodeToTarget(GameObject target, float actionRange)
+        // fallback: first step on the path
+        Debug.LogWarning("FindClosestNodeToTarget: No node found within actionRange, returning first path node.");
+        path[path.Count].SetWalkableState(false);
+        return path[0];
+    }
+    
+    public bool noPathToTarget(Vector3 targetPosition)
     {
-        Vector3 targetPosition = target.transform.position;
-        Vector3 unitPosition = transform.position;
-        float distance = Vector3.Distance(unitPosition, targetPosition);
-        float percentage = actionRange / distance;
-        Vector2Int a = new Vector2Int((int)unitPosition.x, (int)unitPosition.y);
-        Vector2Int b =new Vector2Int((int)targetPosition.x, (int)targetPosition.y);
+        Node start = Grid_Nodes[GetNodeFromPosition(transform.localPosition).GetGridPosition];
+        if (start == null)
+        {
+            Debug.LogWarning($"noPathToTarget: Start node is null at position {transform.position}.");
+            return true;
+        }
 
-        Vector2 lerped = Vector2.Lerp(a, b, percentage);
-        Vector2Int result = Vector2Int.RoundToInt(lerped);
-
-        Node closestNode = Grid_Nodes.ContainsKey(result) ? Grid_Nodes[result] : null;
-        if (closestNode == null)
-            Debug.LogError($"Could not find Node a:{result}!");
-
-        return closestNode;
+        Node end = Grid_Nodes[GetNodeFromPosition(targetPosition).GetGridPosition];
+        if (end == null)
+        {
+            Debug.LogWarning($"noPathToTarget: End node is null at target position {GetNodeFromPosition(targetPosition).GetGridPosition}.");
+            return true;
+        }
+        
+        var path = pathFinding.GetPath(start, end);
+        if (path == null || path.Count == 0)
+        {
+            Debug.LogWarning("noPathToTarget: No path found.");
+            return false;
+        }
+        
+        return true;
     }
+
+    public void UpdateGrid()
+    {
+        foreach (var node in Grid_Nodes)
+        {
+            if(node.Value.ManualUpdate)
+                continue;
+            
+            node.Value.SetWalkableState(true);
+        }
+        
+        foreach (var entity in BattleEntitiesList)
+            Grid_Nodes[GetNodeFromPosition(entity.transform.position).GetGridPosition].SetWalkableState(false);
+    }
+
 
     public Node GetNodeFromPosition(Vector3 position)
     {
@@ -154,13 +207,14 @@ public class GridManager : MonoBehaviour
     }
     public void RemoveEntityFromGrid(BaseBattleEntity entity)
     {
+        Node entityToRemove = GetNodeFromPosition(entity.transform.position);
+        Grid_Nodes[entityToRemove.GetGridPosition].SetWalkableState(true);
         if (entity == null)
         {
             Debug.LogError("Entity is null, cannot remove from grid.");
             return;
         }
         BattleEntitiesList.Remove(entity);
-        turnManager.RemoveEntityFromTurnManager(entity);
     }
 
     public Dictionary<Vector2Int, BaseBattleEntity> GetEntityListToGrid()
@@ -201,6 +255,20 @@ public class GridManager : MonoBehaviour
             parentNode = null;  
         } 
         GenerateMap();
+    }
+    
+    [ContextMenu("Print Walkables")]
+    public void PrintWalkables() => PrintNodes();
+
+    
+    private void PrintNodes()
+    {
+        foreach (var node in Grid_Nodes)
+        {
+            bool walkable = node.Value.CanNavigate;
+            Color color = walkable ? Color.white : Color.red;
+            node.Value.GetTileObject.GetComponent<SpriteRenderer>().color = color;
+        }
     }
     
     

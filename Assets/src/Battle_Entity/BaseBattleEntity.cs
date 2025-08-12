@@ -30,14 +30,15 @@ public class BaseBattleEntity : MonoBehaviour
     private Dictionary<ActionType, int> ActionPoints;
     private Dictionary<AbilityName, ActionBase> Abilities = new Dictionary<AbilityName, ActionBase>();
     private Dictionary<Vector2Int, Node> Grid;
-    private List<StatusEffects> StatusEffects;
     private Node CurrentNode;
     private InitalEntityStats initalEntityStats;
     
     private Animator EntityAnimtor;
-    private GridManager _gridManager;
+    protected GridManager _gridManager;
     private PathFinding _pathFinding;
     private TurnManager _turnManager;
+
+    private const float DefenceReducrtionFactor = 0.25f;
 
     private void Awake()
     {
@@ -46,7 +47,6 @@ public class BaseBattleEntity : MonoBehaviour
     
     void Start()
     {
-        StatusEffects = new List<StatusEffects>();
         ActionPoints = new Dictionary<ActionType, int>
         {
             { ActionType.MovePoint, MovePoint_MaxCount},{ ActionType.ActionPoint, ActionPoint_MaxCount },
@@ -65,17 +65,17 @@ public class BaseBattleEntity : MonoBehaviour
             Debug.LogError("GridManager not found in the scene. Please ensure it is present.");
             return;
         }
-        transform.position = _gridManager.GetNodeFromPosition(transform.position).GetRealPosition;
+        transform.position = _gridManager.GetNodeFromPosition(transform.localPosition).GetRealPosition;
+        Debug.Log(_gridManager.GetNodeFromPosition(transform.position).GetRealPosition + " " + _gridManager.GetNodeFromPosition(transform.position).GetGridPosition);
         _pathFinding = _gridManager.GetPathFinding;
         Grid = _gridManager.GetGridNodes;
 
         InitialiseActions();
     }
 
-    protected virtual void InitialiseActions()
-    {
+    protected virtual void InitialiseActions() =>
         InitActions(AbilityName.Move, new MoveAction(), MoveSpeed, MovePoint_Cost, ActionType.MovePoint, ActionTargetType.Tile);
-    }
+    
     
     public void InitActions(AbilityName name,ActionBase action, float actionRange, int costOfAction, ActionType actionType, ActionTargetType actionTargetType)
     {
@@ -94,15 +94,20 @@ public class BaseBattleEntity : MonoBehaviour
         public float GetHealth => Health;
         public GridManager GetGridManager => _gridManager;
 
-    public void TakeDamage(float damageAmount)
+    public virtual void TakeDamage(float damageAmount)
         {
-            Health -= damageAmount;
+            Health -= damageAmount - (damageAmount * (Defence * DefenceReducrtionFactor));
             Healthbar.UpdateHealthBar(Health, Maxhealth);
             if (Health <= 0)
                 Death();
         }
 
-        public void Heal(float amountToHeal) => Health += amountToHeal;
+        public void Heal(float amountToHeal)
+        {
+            Health += amountToHeal;
+            Health = Mathf.Clamp(Health, 0, Maxhealth);
+            Healthbar.UpdateHealthBar(Health, Maxhealth);
+        }
         
         public float GetDamage => Damage;
         public float GetDefence => Defence;
@@ -120,9 +125,10 @@ public class BaseBattleEntity : MonoBehaviour
             ActionPoints[ActionType.MovePoint] = MovePoint_MaxCount;
             ActionPoints[ActionType.ActionPoint] = ActionPoint_MaxCount;
         }
+
+        public InitalEntityStats GetIntialStats => initalEntityStats;
+        public void SetDefence(float value) => Defence = value;
         
-        public void AddStatusEffect(StatusEffects statusEffect) => StatusEffects.Add(statusEffect);
-        public List<StatusEffects> GetStatusEffects() => StatusEffects;
 
         public UnitOwnership GetUnitOwnerShip => UnitOwner;
         public bool isActionPointAvailable(ActionType actionType) => ActionPoints[actionType] > 0;

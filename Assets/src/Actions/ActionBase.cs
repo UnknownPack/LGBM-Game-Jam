@@ -12,7 +12,7 @@ public class ActionBase
     protected int ActionCost; 
     protected PathFinding PathFinder;
     protected Dictionary<Vector2Int, Node> Grid_Nodes;
-    protected TurnManager TurnManager;
+    protected TurnManager turnManager;
     protected GridManager _gridManager;
     protected BaseBattleEntity _baseBattleEntity;
 
@@ -26,7 +26,7 @@ public class ActionBase
         this._actionTargetType = _actionTargetType;
         
         this._gridManager = _gridManager;
-        this.TurnManager = _gridManager.GetTurnManager;
+        this.turnManager = _gridManager.GetTurnManager;
         this.PathFinder = _gridManager.GetPathFinding;
         this.Grid_Nodes = _gridManager.GetGridNodes;
     }
@@ -78,7 +78,7 @@ public class ActionBase
     }
 
     public ActionType GetActionType => _actionType;
-    public ActionTargetType GetActionTargetType => _actionTargetType;
+    public virtual ActionTargetType GetActionTargetType => _actionTargetType;
     public BaseBattleEntity GetBaseBattleEntity => _baseBattleEntity;
 
 }
@@ -100,10 +100,10 @@ public enum ActionTargetType
 [System.Serializable]
 public enum AbilityName
 {
-    Move,
+    Move, 
     Attack,
     Heal,
     Grenade,
-    Taunt,
+    Insult,
     RaiseBaricade
 }

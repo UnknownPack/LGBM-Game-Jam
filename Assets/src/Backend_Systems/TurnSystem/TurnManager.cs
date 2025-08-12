@@ -9,6 +9,7 @@ public class TurnManager : MonoBehaviour
     private GridManager gridManager;
     private UserInputManager UserInputManager;
     public List<BaseBattleEntity> battleEntities;
+    private List<StatusEffects> statusEffects = new List<StatusEffects>();
     public bool isPlayersTurn = true;
     public int currentTurn = 0;
     
@@ -40,11 +41,18 @@ public class TurnManager : MonoBehaviour
         ResetActionPoints(UnitOwnership.Enemy);
         foreach (var battleEntity in battleEntities)
         {
+            if(battleEntity == null)
+            {
+                Debug.LogWarning("Battle entity is null, skipping...");
+                continue;
+            }
             if (battleEntity is EnemyBaseEntity output)
             {
                 yield return StartCoroutine(output.ExecuteTurn());
+                gridManager.UpdateGrid();
             }
         }
+        battleEntities.RemoveAll(battleEntity => battleEntity == null );
         
         Debug.Log("All Enemy Turns Executed");
         // After enemy turns have been executed, return control back to player and replenish spent action points
@@ -54,6 +62,22 @@ public class TurnManager : MonoBehaviour
         currentTurn++;
         Debug.Log($"Current Turn cycle: {currentTurn}");
     }
+    
+    public void AddStatusEffect(StatusEffects statusEffect) => statusEffects.Add(statusEffect);
+
+    private void ApplyStatusEffect()
+    {
+        foreach (var statusEffect in statusEffects)
+        {
+            if (!statusEffect.IsActive)
+            {
+                statusEffects.Remove(statusEffect);                
+                return;
+            }
+            
+            statusEffect.tickDown();
+        }
+    }
 
     private void ManageTurns()
     {
@@ -61,6 +85,7 @@ public class TurnManager : MonoBehaviour
         {
             Debug.Log("Ending player turn...");
             SetPlayerTurn(false);
+
             StartCoroutine(CycleTurn());
         }
     }
@@ -82,17 +107,6 @@ public class TurnManager : MonoBehaviour
         }
     }
     
-    public void RemoveEntityFromTurnManager(BaseBattleEntity entity)
-    {
-        if (battleEntities.Contains(entity))
-        {
-            battleEntities.Remove(entity);
-            Debug.Log($"{entity.gameObject.name} removed from TurnManager");
-        }
-        else
-        {
-            Debug.LogWarning($"{entity.gameObject.name} not found in TurnManager's list of entities.");
-        }
-    }
+    public GridManager GetGridManager => gridManager;
 
 }
