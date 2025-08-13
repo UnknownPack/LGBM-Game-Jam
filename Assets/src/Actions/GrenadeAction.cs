@@ -18,7 +18,7 @@ public class GrenadeAction : ActionBase
                 EntityGridPostions[nodePosition].TakeDamage(_baseBattleEntity.GetDamage * blastDamageMultiplier);
         }
         //TODO: TRIGGER ANIMATION(S) HERE
-        
+        PlayAbilityAnimation("Throw");
         // Remove action points etc.
         yield return base.Action(target);
     }
