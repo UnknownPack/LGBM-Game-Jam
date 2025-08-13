@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class InsultAction : ActionBase
 {
+    public void SetInsultDuration(int duration) => this.duration = duration;
+    private int duration;
+    
     public override IEnumerator Action(GameObject target)
     {
-        BaseBattleEntity entity = target.GetComponent<BaseBattleEntity>();
-        if (entity == null)
-        {
-            Debug.LogError("Target does not have a BaseBattleEntity component.");
-            yield break;
-        }
-
-        PlayAbilityAnimation("Insult");
-
-        //put functionality here
-        //entity.Insult();
-
+        Insult insult = new Insult();
+        insult.Init(turnManager, target, duration);
+        
+        Debug.Log("Insulted Target!");
+        //TODO: TRIGGER ANIMATION(S) HERE
+        
+        // Remove action points etc.
         yield return base.Action(target);
     }
+    
+    public override ActionTargetType GetActionTargetType => ActionTargetType.Unit;
 }

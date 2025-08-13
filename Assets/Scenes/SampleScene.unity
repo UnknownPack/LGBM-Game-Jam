@@ -2393,6 +2393,7 @@ MonoBehaviour:
   AttackRange: 1
   grenadeRange: 3
   DamageAmount: 1
+  insultDuration: 2
 --- !u!1001 &495745920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4881,7 +4882,8 @@ MonoBehaviour:
   HealingRange: 3
   HealingAmount: 2
   BaricadeSummonRange: 3
-  baricadeRadius: 1
+  barricadeDuration: 2
+  BaricadePrefab: {fileID: 8027335468154664867, guid: 68d89d0b6262de34d90b9a153b4ee97e, type: 3}
 --- !u!1 &969446640
 GameObject:
   m_ObjectHideFlags: 0

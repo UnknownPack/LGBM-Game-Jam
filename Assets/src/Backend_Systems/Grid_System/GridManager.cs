@@ -78,24 +78,6 @@ public class GridManager : MonoBehaviour
 
     #region Public Helper Methods
 
-    public List<Node> GetNodesWithinRadius(Vector3 origin, int radius)
-    {
-        List<Node> Output = new List<Node>();
-        Vector2Int OriginGirdPosition = new Vector2Int(Mathf.RoundToInt(origin.x),
-            Mathf.RoundToInt(origin.y));
-        int xCord = OriginGirdPosition.x, yCord = OriginGirdPosition.y;
-        for (int i = xCord - radius; i <= xCord + radius; i++)
-        {
-            for (int j = yCord - radius; j <= yCord + radius; j++)
-            {
-                Vector2Int vector = new Vector2Int(i, j);
-                if(Grid_Nodes.TryGetValue(vector, out var node))
-                    Output.Add(node);
-            }
-        }
-        return Output;
-    }
-
     public Node FindClosestNodeToTarget(Vector2Int targetPosition, float actionRange)
     {
         Debug.Log(targetPosition);
@@ -173,11 +155,15 @@ public class GridManager : MonoBehaviour
     public void UpdateGrid()
     {
         foreach (var node in Grid_Nodes)
+        {
+            if(node.Value.ManualUpdate)
+                continue;
+            
             node.Value.SetWalkableState(true);
+        }
         
         foreach (var entity in BattleEntitiesList)
             Grid_Nodes[GetNodeFromPosition(entity.transform.position).GetGridPosition].SetWalkableState(false);
-        PrintNodes();
     }
 
 
@@ -205,7 +191,7 @@ public class GridManager : MonoBehaviour
             if (spriteRenderer == null)
                 Debug.LogError("SpriteRender not found");
                 
-            //spriteRenderer.color = Color.gray;
+            spriteRenderer.color = Color.gray;
         }
     }
 
@@ -221,6 +207,8 @@ public class GridManager : MonoBehaviour
     }
     public void RemoveEntityFromGrid(BaseBattleEntity entity)
     {
+        Node entityToRemove = GetNodeFromPosition(entity.transform.position);
+        Grid_Nodes[entityToRemove.GetGridPosition].SetWalkableState(true);
         if (entity == null)
         {
             Debug.LogError("Entity is null, cannot remove from grid.");
