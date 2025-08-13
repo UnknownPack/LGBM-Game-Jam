@@ -13,8 +13,8 @@ public class InsultAction : ActionBase
         insult.Init(turnManager, target, duration);
         
         Debug.Log("Insulted Target!");
-        //TODO: TRIGGER ANIMATION(S) HERE
-        
+
+        PlayAbilityAnimation("Insult");
         // Remove action points etc.
         yield return base.Action(target);
     }

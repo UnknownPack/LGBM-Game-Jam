@@ -2389,11 +2389,12 @@ MonoBehaviour:
   DamageTxt: {fileID: 1252313322}
   HealTxt: {fileID: 75062613}
   Healthbar: {fileID: 0}
-  Animator: {fileID: 0}
+  Animator: {fileID: 1060488586}
   AttackRange: 1
   grenadeRange: 3
   DamageAmount: 1
   insultDuration: 2
+  grenadePrefab: {fileID: 8027335468154664867, guid: 94dd0dfbea5926f489bec63a148e3b95, type: 3}
 --- !u!1001 &495745920
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ public class BaseBattleEntity : MonoBehaviour
     private Dictionary<Vector2Int, Node> Grid;
     private Node CurrentNode;
     private InitalEntityStats initalEntityStats;
+    private GameObject grenadePrefab;
     
     private Animator EntityAnimtor;
     protected GridManager _gridManager;
@@ -131,7 +132,8 @@ public class BaseBattleEntity : MonoBehaviour
         public InitalEntityStats GetIntialStats => initalEntityStats;
         public void SetDefence(float value) => Defence = value;
         
-
+        public void SetGrenadePrefab(GameObject prefab) => grenadePrefab = prefab;
+        public GameObject GetGrenadePrefab() => grenadePrefab;
         public UnitOwnership GetUnitOwnerShip => UnitOwner;
         public bool isActionPointAvailable(ActionType actionType) => ActionPoints[actionType] > 0;
     
