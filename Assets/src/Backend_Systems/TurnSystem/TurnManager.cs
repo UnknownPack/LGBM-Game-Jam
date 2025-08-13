@@ -8,6 +8,7 @@ public class TurnManager : MonoBehaviour
     private MouseInput mouseInput;
     private GridManager gridManager;
     private UserInputManager UserInputManager;
+    private UIManager UIManager;
     public List<BaseBattleEntity> battleEntities;
     private List<StatusEffects> statusEffects = new List<StatusEffects>();
     public bool isPlayersTurn = true;
@@ -18,6 +19,7 @@ public class TurnManager : MonoBehaviour
     {
         mouseInput = GetComponent<MouseInput>();
         gridManager = GetComponent<GridManager>();
+        UIManager = GetComponent<UIManager>();
         gridManager.InjectTurnManager(this);
         UserInputManager = GetComponent<UserInputManager>();
         gridManager.InitaliseMap();
@@ -53,7 +55,7 @@ public class TurnManager : MonoBehaviour
             }
         }
         battleEntities.RemoveAll(battleEntity => battleEntity == null );
-        
+        ApplyStatusEffect();
         Debug.Log("All Enemy Turns Executed");
         // After enemy turns have been executed, return control back to player and replenish spent action points
         ResetActionPoints(UnitOwnership.Player);
@@ -62,21 +64,37 @@ public class TurnManager : MonoBehaviour
         currentTurn++;
         Debug.Log($"Current Turn cycle: {currentTurn}");
     }
+
+    private bool IsAreaCleared()
+    {
+        foreach (var battleEntity in battleEntities)
+        {
+            if (battleEntity.GetUnitOwnerShip == UnitOwnership.Enemy)
+                return false;
+        }
+        return true;
+    }
+
+    private bool PlayerFailed()
+    {
+        foreach (var battleEntity in battleEntities)
+        {
+            if (battleEntity.GetUnitOwnerShip == UnitOwnership.Player)
+                return false;
+        }
+        return true;
+    }
     
     public void AddStatusEffect(StatusEffects statusEffect) => statusEffects.Add(statusEffect);
 
     private void ApplyStatusEffect()
     {
-        foreach (var statusEffect in statusEffects)
-        {
-            if (!statusEffect.IsActive)
-            {
-                statusEffects.Remove(statusEffect);                
-                return;
-            }
-            
-            statusEffect.tickDown();
-        }
+        statusEffects.RemoveAll(se => !se.IsActive); // drop inactive first
+
+        foreach (var se in statusEffects)
+            se.tickDown();
+
+        statusEffects.RemoveAll(se => !se.IsActive); // drop any that expired
     }
 
     private void ManageTurns()
@@ -88,6 +106,10 @@ public class TurnManager : MonoBehaviour
 
             StartCoroutine(CycleTurn());
         }
+        if(IsAreaCleared())
+            UIManager.ShowEndScreen("Game Over! You Won!");
+        if(PlayerFailed())
+            UIManager.ShowEndScreen("Game Over! You lost noob!");
     }
     
 
@@ -108,5 +130,5 @@ public class TurnManager : MonoBehaviour
     }
     
     public GridManager GetGridManager => gridManager;
-
+    
 }

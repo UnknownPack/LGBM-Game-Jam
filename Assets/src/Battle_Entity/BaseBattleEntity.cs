@@ -38,7 +38,7 @@ public class BaseBattleEntity : MonoBehaviour
     private PathFinding _pathFinding;
     private TurnManager _turnManager;
 
-    private const float DefenceReducrtionFactor = 0.25f;
+    public const float DefenceReductionFactor = 0.025f;
 
     private void Awake()
     {
@@ -95,12 +95,17 @@ public class BaseBattleEntity : MonoBehaviour
         public GridManager GetGridManager => _gridManager;
 
     public virtual void TakeDamage(float damageAmount)
-        {
-            Health -= damageAmount - (damageAmount * (Defence * DefenceReducrtionFactor));
-            Healthbar.UpdateHealthBar(Health, Maxhealth);
-            if (Health <= 0)
-                Death();
-        }
+    {
+        float r = Defence * DefenceReductionFactor;     // % reduction (can be negative)
+        float multiplier = Mathf.Max(0f, 1f - r);       // never less than 0
+        float finalDamage = damageAmount * multiplier;  // can be > damageAmount if r < 0
+        Debug.Log($"Taking damage: {finalDamage} (original: {damageAmount}, defence: {Defence}, reduction factor: {DefenceReductionFactor})");
+        Health -= finalDamage;
+        Debug.Log($"Health: {Health}");
+        Healthbar.UpdateHealthBar(Health, Maxhealth);
+        if (Health <= 0)
+            Death();
+    }
 
         public void Heal(float amountToHeal)
         {
@@ -109,7 +114,7 @@ public class BaseBattleEntity : MonoBehaviour
             Healthbar.UpdateHealthBar(Health, Maxhealth);
         }
         
-        public float GetDamage => Damage;
+        public virtual float GetDamage () => Damage;
         public float GetDefence => Defence;
         public float GetMoveSpeed => MoveSpeed;
         public Animator GetAnimator => EntityAnimtor;

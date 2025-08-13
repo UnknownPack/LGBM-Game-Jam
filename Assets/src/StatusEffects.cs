@@ -15,7 +15,6 @@ public class StatusEffects
         AppyStatusEffect();
     }
     
-    public void Update() => duration--;
     public int GetDuration => duration;
     public bool IsActive => isActive;
     public void tickDown()
@@ -39,6 +38,46 @@ public class StatusEffects
     {
     }
 }
+
+public class DefenceBoost : StatusEffects
+{
+    public override void AppyStatusEffect()
+    {
+        if (target == null)
+        {
+            Debug.LogError("Target is null");
+            return;
+        }
+        
+        BaseBattleEntity entity = target.GetComponent<BaseBattleEntity>();
+        if(entity == null)
+        {
+            Debug.LogError("Target does not have a BaseBattleEntity component.");
+            return;
+        }
+        
+        entity.SetDefence(6f);
+    }
+    
+    public override void DeactivateStatusEffect()
+    {
+        if (target == null)
+        {
+            Debug.LogError("Target is null");
+            return;
+        }
+        
+        BaseBattleEntity entity = target.GetComponent<BaseBattleEntity>();
+        if(entity == null)
+        {
+            Debug.LogError("Target does not have a BaseBattleEntity component.");
+            return;
+        }
+        
+        entity.SetDefence(entity.GetIntialStats.Defence);
+    }
+}
+
 
 public class Insult : StatusEffects
 {
