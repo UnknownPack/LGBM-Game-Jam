@@ -42,14 +42,12 @@ public class BaseBattleEntity : MonoBehaviour
 
     public const float DefenceReductionFactor = 0.025f;
 
-    private void Awake()
-    {
-        Healthbar = GetComponentInChildren<HealthBar>(); 
-        Animator = GetComponentInChildren<Animator>();
-    }
-    
     void Start()
     {
+        
+        Healthbar = GetComponentInChildren<HealthBar>();
+        if (Healthbar == null) Debug.LogWarning($"{name}: HealthBar not found in children.");
+        Animator = GetComponentInChildren<Animator>();
         ActionPoints = new Dictionary<ActionType, int>
         {
             { ActionType.MovePoint, MovePoint_MaxCount},{ ActionType.ActionPoint, ActionPoint_MaxCount },

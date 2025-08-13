@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
         restart.clickable.clicked += () => SceneManager.LoadScene("MainGame");
         
         MainMenu = uiDocument.rootVisualElement.Q<Button>("MainMenu");
-        //TODO: Implement logic to load Main Menu
+        MainMenu.clickable.clicked += () => SceneManager.LoadScene("MainMenuScene");
         
         MainText = uiDocument.rootVisualElement.Q<Label>("Text");
         pauseContainer.style.display = DisplayStyle.None;

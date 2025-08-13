@@ -1,6 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20stuff/Stylesheets/MenuStylesheet.uss?fileID=7433441132597879392&amp;guid=e28a05b09f55abd4dbdfc2e0fa28f1a2&amp;type=3#MenuStylesheet" />
-    <ui:VisualElement style="flex-grow: 1; align-self: center; align-content: stretch; justify-content: flex-end;">
-        <ui:Button text="Start!" name="StartGameButton" class="button" style="align-content: flex-start; justify-content: flex-start; align-items: center; bottom: 0; margin-bottom: 102px;" />
+    <Style src="project://database/Assets/UI%20stuff/Stylesheets/buttonStyle.uss?fileID=7433441132597879392&amp;guid=a56b7370f0ce6a94dae3e33ba25e6fb4&amp;type=3#buttonStyle" />
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/image.png?fileID=2800000&amp;guid=30ced3384ac1d374bb2c6c7f5f58a1c9&amp;type=3#image&quot;);">
+        <ui:VisualElement style="flex-grow: 1; align-self: flex-start; align-content: stretch; justify-content: flex-end; padding-left: 223px; padding-bottom: 0;">
+            <ui:Button text="Start" name="StartGameButton" class="button" style="align-content: flex-start; justify-content: flex-start; align-items: center; bottom: 0; margin-bottom: -45px;" />
+            <ui:Button text="Exit Game" name="ExitGameButton" class="button" style="align-content: flex-start; justify-content: flex-start; align-items: center; bottom: 0; margin-bottom: 102px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
