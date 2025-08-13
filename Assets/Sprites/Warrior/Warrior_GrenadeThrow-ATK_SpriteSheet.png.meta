@@ -1,0 +1,613 @@
+fileFormatVersion: 2
+guid: 9cc8ee89c9d27204baea9a020f275cdc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1637153929793639076
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_0
+  - first:
+      213: 2633107197037312805
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_1
+  - first:
+      213: 3416658863758422943
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_2
+  - first:
+      213: -8735045136777765254
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_3
+  - first:
+      213: 5169024304091258652
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_4
+  - first:
+      213: 2067191188850577970
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_5
+  - first:
+      213: -50558355671104315
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_6
+  - first:
+      213: -6249834064333648317
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_7
+  - first:
+      213: 8111038276113922638
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_8
+  - first:
+      213: 5700978648477239666
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_9
+  - first:
+      213: 8007816226310443543
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_10
+  - first:
+      213: 3761328334699669996
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_11
+  - first:
+      213: 2879678336983660079
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_12
+  - first:
+      213: -194728005169674776
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_13
+  - first:
+      213: -8468224326249559668
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_14
+  - first:
+      213: -685845814955335040
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_15
+  - first:
+      213: 6921755683652351505
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_16
+  - first:
+      213: -3172054437385728559
+    second: Warrior_GrenadeThrow-ATK_SpriteSheet_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5de304cc29a749e0800000000000000
+      internalID: -1637153929793639076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52bfeee7b0daa8420800000000000000
+      internalID: 2633107197037312805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f93b20562296a6f20800000000000000
+      internalID: 3416658863758422943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7e9b557ab2e6c680800000000000000
+      internalID: -8735045136777765254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1f58b8c7301cb740800000000000000
+      internalID: 5169024304091258652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 232914e0f6320bc10800000000000000
+      internalID: 2067191188850577970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c4cbc181716c4ff0800000000000000
+      internalID: -50558355671104315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ec14218012449a0800000000000000
+      internalID: -6249834064333648317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4afd578652309070800000000000000
+      internalID: 8111038276113922638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 279829e20e1fd1f40800000000000000
+      internalID: 5700978648477239666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712d7db3e6a712f60800000000000000
+      internalID: 8007816226310443543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce9a269213ce23430800000000000000
+      internalID: 3761328334699669996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f267c47b03ca6f720800000000000000
+      internalID: 2879678336983660079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e58a0839ef2c4df0800000000000000
+      internalID: -194728005169674776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c89c29387d2da7a80800000000000000
+      internalID: -8468224326249559668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08226e47dd26b76f0800000000000000
+      internalID: -685845814955335040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 116b32a0f140f0060800000000000000
+      internalID: 6921755683652351505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warrior_GrenadeThrow-ATK_SpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dd0c63ab499af3d0800000000000000
+      internalID: -3172054437385728559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 55921571311698541998d9544d3bbd84
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Warrior_GrenadeThrow-ATK_SpriteSheet_0: -1637153929793639076
+      Warrior_GrenadeThrow-ATK_SpriteSheet_1: 2633107197037312805
+      Warrior_GrenadeThrow-ATK_SpriteSheet_10: 8007816226310443543
+      Warrior_GrenadeThrow-ATK_SpriteSheet_11: 3761328334699669996
+      Warrior_GrenadeThrow-ATK_SpriteSheet_12: 2879678336983660079
+      Warrior_GrenadeThrow-ATK_SpriteSheet_13: -194728005169674776
+      Warrior_GrenadeThrow-ATK_SpriteSheet_14: -8468224326249559668
+      Warrior_GrenadeThrow-ATK_SpriteSheet_15: -685845814955335040
+      Warrior_GrenadeThrow-ATK_SpriteSheet_16: 6921755683652351505
+      Warrior_GrenadeThrow-ATK_SpriteSheet_17: -3172054437385728559
+      Warrior_GrenadeThrow-ATK_SpriteSheet_2: 3416658863758422943
+      Warrior_GrenadeThrow-ATK_SpriteSheet_3: -8735045136777765254
+      Warrior_GrenadeThrow-ATK_SpriteSheet_4: 5169024304091258652
+      Warrior_GrenadeThrow-ATK_SpriteSheet_5: 2067191188850577970
+      Warrior_GrenadeThrow-ATK_SpriteSheet_6: -50558355671104315
+      Warrior_GrenadeThrow-ATK_SpriteSheet_7: -6249834064333648317
+      Warrior_GrenadeThrow-ATK_SpriteSheet_8: 8111038276113922638
+      Warrior_GrenadeThrow-ATK_SpriteSheet_9: 5700978648477239666
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

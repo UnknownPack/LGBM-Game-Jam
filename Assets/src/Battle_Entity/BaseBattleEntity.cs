@@ -25,6 +25,7 @@ public class BaseBattleEntity : MonoBehaviour
     [SerializeField] private TextMeshProUGUI DamageTxt;
     [SerializeField] private TextMeshProUGUI HealTxt;
     [SerializeField] private HealthBar Healthbar;
+    [SerializeField] private Animator Animator;
     
 
     private Dictionary<ActionType, int> ActionPoints;
@@ -32,6 +33,7 @@ public class BaseBattleEntity : MonoBehaviour
     private Dictionary<Vector2Int, Node> Grid;
     private Node CurrentNode;
     private InitalEntityStats initalEntityStats;
+    private GameObject grenadePrefab;
     
     private Animator EntityAnimtor;
     protected GridManager _gridManager;
@@ -42,7 +44,8 @@ public class BaseBattleEntity : MonoBehaviour
 
     private void Awake()
     {
-        Healthbar = GetComponentInChildren<HealthBar>();    
+        Healthbar = GetComponentInChildren<HealthBar>(); 
+        Animator = GetComponentInChildren<Animator>();
     }
     
     void Start()
@@ -117,7 +120,7 @@ public class BaseBattleEntity : MonoBehaviour
         public virtual float GetDamage () => Damage;
         public float GetDefence => Defence;
         public float GetMoveSpeed => MoveSpeed;
-        public Animator GetAnimator => EntityAnimtor;
+        public Animator GetAnimator => Animator;
         public void SetCurrentNode(Node node) => CurrentNode = node;
         public Dictionary<AbilityName, ActionBase> GetAbilityList => Abilities;
         public Dictionary<ActionType, int> GetActionPoints => ActionPoints;
@@ -134,7 +137,8 @@ public class BaseBattleEntity : MonoBehaviour
         public InitalEntityStats GetIntialStats => initalEntityStats;
         public void SetDefence(float value) => Defence = value;
         
-
+        public void SetGrenadePrefab(GameObject prefab) => grenadePrefab = prefab;
+        public GameObject GetGrenadePrefab() => grenadePrefab;
         public UnitOwnership GetUnitOwnerShip => UnitOwner;
         public bool isActionPointAvailable(ActionType actionType) => ActionPoints[actionType] > 0;
     

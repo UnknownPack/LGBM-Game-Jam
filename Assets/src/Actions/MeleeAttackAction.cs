@@ -25,6 +25,7 @@ public class MeleeAttackAction : ActionBase
         if (entity.GetUnitOwnerShip != targetOwner)
             yield break;
 
+        PlayAbilityAnimation("Attack");
         entity.TakeDamage(damageAmount);
 
         yield return base.Action(target);

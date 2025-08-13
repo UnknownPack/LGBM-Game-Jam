@@ -6,6 +6,12 @@ public class DamageGuy : BaseBattleEntity
     public float AttackRange = 1f;
     public float grenadeRange = 2f;
     public int insultDuration = 2;
+    public GameObject grenadePrefab;
+
+    private void Awake()
+    {
+        SetGrenadePrefab(grenadePrefab);
+    }
     protected override void InitialiseActions()
     {
         base.InitialiseActions();
@@ -22,4 +28,5 @@ public class DamageGuy : BaseBattleEntity
         insultAction.SetInsultDuration(insultDuration);
         InitActions(AbilityName.Insult, insultAction, grenadeRange, ActionPoint_Cost, ActionType.ActionPoint, ActionTargetType.Unit);
     }
+
 }
