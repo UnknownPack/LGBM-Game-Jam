@@ -104,6 +104,7 @@ public class BaseBattleEntity : MonoBehaviour
         Health -= finalDamage;
         Debug.Log($"Health: {Health}");
         Healthbar.UpdateHealthBar(Health, Maxhealth);
+        Animator.Play("Stagger");
         if (Health <= 0)
             Death();
     }

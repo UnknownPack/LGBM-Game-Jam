@@ -56,7 +56,7 @@ public class DefenceBoost : StatusEffects
             return;
         }
         
-        entity.SetDefence(6f);
+        entity.SetDefence(entity.GetIntialStats.Defence+3);
     }
     
     public override void DeactivateStatusEffect()
