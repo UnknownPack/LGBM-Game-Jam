@@ -19,6 +19,9 @@ public class StatusEffects
     public bool IsActive => isActive;
     public void tickDown()
     {
+        if(!isActive)
+            return;
+        
         Debug.Log(" Applying status effect");
         AppyStatusEffect();
         duration--;
