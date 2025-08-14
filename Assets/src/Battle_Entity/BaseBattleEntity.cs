@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
@@ -97,6 +98,13 @@ public class BaseBattleEntity : MonoBehaviour
 
     public virtual void TakeDamage(float damageAmount)
     {
+        StartCoroutine(DamageAnimationDelay(damageAmount));
+    }
+
+    private IEnumerator DamageAnimationDelay(float damageAmount)
+    {
+        Animator.Play("Stagger");
+        yield return new WaitForSeconds(0.66f);
         float r = Defence * DefenceReductionFactor;     // % reduction (can be negative)
         float multiplier = Mathf.Max(0f, 1f - r);       // never less than 0
         float finalDamage = damageAmount * multiplier;  // can be > damageAmount if r < 0
@@ -104,12 +112,11 @@ public class BaseBattleEntity : MonoBehaviour
         Health -= finalDamage;
         Debug.Log($"Health: {Health}");
         Healthbar.UpdateHealthBar(Health, Maxhealth);
-        Animator.Play("Stagger");
         if (Health <= 0)
             Death();
     }
 
-        public void Heal(float amountToHeal)
+    public void Heal(float amountToHeal)
         {
             Health += amountToHeal;
             Health = Mathf.Clamp(Health, 0, Maxhealth);

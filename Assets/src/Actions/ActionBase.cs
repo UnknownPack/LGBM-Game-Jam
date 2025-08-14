@@ -83,6 +83,8 @@ public class ActionBase
         animator.Play(abilityName);
     }
 
+    
+
     public ActionType GetActionType => _actionType;
     public virtual ActionTargetType GetActionTargetType => _actionTargetType;
     public BaseBattleEntity GetBaseBattleEntity => _baseBattleEntity;
