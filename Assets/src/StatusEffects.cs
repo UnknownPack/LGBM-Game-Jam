@@ -12,10 +12,9 @@ public class StatusEffects
         this.turnManager = turnManager;
         this.target = target;
         this.duration = duration;
+        turnManager.AddStatusEffect(this);
         AppyStatusEffect();
     }
-    
-    public int GetDuration => duration;
     public bool IsActive => isActive;
     public void tickDown()
     {

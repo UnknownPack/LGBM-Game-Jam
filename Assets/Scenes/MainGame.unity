@@ -448,6 +448,10 @@ PrefabInstance:
       value: EnemyTestDummy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
@@ -509,7 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 3
+  Damage: 0
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -996,6 +1000,10 @@ PrefabInstance:
       value: EnemyTestDummy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
@@ -1057,7 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 3
+  Damage: 0
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -2343,7 +2351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 3
+  Damage: 1.5
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -2420,6 +2428,10 @@ PrefabInstance:
       value: EnemyTestDummy (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
@@ -2481,7 +2493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 3
+  Damage: 0
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -2513,7 +2525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 3
+  Damage: 0
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -4830,7 +4842,7 @@ MonoBehaviour:
   HealingRange: 3
   HealingAmount: 2
   BaricadeSummonRange: 3
-  barricadeDuration: 2
+  barricadeDuration: 4
   BaricadePrefab: {fileID: 8027335468154664867, guid: 68d89d0b6262de34d90b9a153b4ee97e, type: 3}
 --- !u!1 &969446640
 GameObject:
@@ -6416,6 +6428,10 @@ PrefabInstance:
       value: EnemyTestDummy (5)
       objectReference: {fileID: 0}
     - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
@@ -6477,7 +6493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 3
+  Damage: 0
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -8008,6 +8024,10 @@ PrefabInstance:
       value: EnemyTestDummy (4)
       objectReference: {fileID: 0}
     - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
@@ -8069,7 +8089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 3
+  Damage: 0
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -9287,10 +9307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b3bf97f0fd5c545a1481893e0192aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 99
-  Maxhealth: 99
+  Health: 3
+  Maxhealth: 3
   Damage: 3
-  Defence: 99
+  Defence: 4
   MoveSpeed: 5
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
@@ -10603,6 +10623,10 @@ PrefabInstance:
     - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       propertyPath: m_Name
       value: EnemyTestDummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4802311703727555503, guid: f2d0ab7191ea5404eafff99123325230, type: 3}
       propertyPath: m_TagString

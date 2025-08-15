@@ -96,15 +96,12 @@ public class BaseBattleEntity : MonoBehaviour
         public float GetHealth => Health;
         public GridManager GetGridManager => _gridManager;
 
-    public virtual void TakeDamage(float damageAmount)
-    {
-        StartCoroutine(DamageAnimationDelay(damageAmount));
-    }
+    public virtual void TakeDamage(float damageAmount) => StartCoroutine(DamageAnimationDelay(damageAmount));
 
     private IEnumerator DamageAnimationDelay(float damageAmount)
     {
         Animator.Play("Stagger");
-        yield return new WaitForSeconds(0.66f);
+        yield return new WaitForSeconds(1.5f);
         float r = Defence * DefenceReductionFactor;     // % reduction (can be negative)
         float multiplier = Mathf.Max(0f, 1f - r);       // never less than 0
         float finalDamage = damageAmount * multiplier;  // can be > damageAmount if r < 0
