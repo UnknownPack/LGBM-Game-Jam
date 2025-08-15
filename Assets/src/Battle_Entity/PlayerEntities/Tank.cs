@@ -9,7 +9,7 @@ public class Tank : BaseBattleEntity
     public override float GetDamage()
     { 
         float damage = Damage + (timesHit * 0.5f);
-        timesHit = 0; // Reset hit count after calculating damage
+        timesHit = 0; 
         return damage;
     }
     protected override void InitialiseActions()
@@ -28,7 +28,6 @@ public class Tank : BaseBattleEntity
 
     public override void TakeDamage(float damageAmount)
     {
-        // Calculate effective damage considering defence
         timesHit ++;
         base.TakeDamage(damageAmount);
     }

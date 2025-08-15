@@ -513,7 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 0
+  Damage: 0.5
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 0
+  Damage: 0.5
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -2493,7 +2493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 0
+  Damage: 0.5
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -2525,7 +2525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 0
+  Damage: 1
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -6493,7 +6493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 0
+  Damage: 0.5
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -8089,7 +8089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   Maxhealth: 3
-  Damage: 0
+  Damage: 0.5
   Defence: 3
   MoveSpeed: 3
   MovePoint_MaxCount: 1
@@ -9307,7 +9307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b3bf97f0fd5c545a1481893e0192aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
+  Health: 10
   Maxhealth: 3
   Damage: 3
   Defence: 4

@@ -25,7 +25,10 @@ public class UserInputManager : MonoBehaviour
     private void Update()
     {
         if(showSelectionActionRange)
-            SelectedAction.ShowActionRange(Color.blue);
+        {
+            Color color = (SelectedAction.GetActionType == ActionType.MovePoint)? Color.blue : Color.orange;
+            SelectedAction.ShowActionRange(color);
+        }
         else
             gridManager.ResetColourTiles();
     }

@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     public Color movePointColor, actonPointColor, emptyPointColor;
     private UIDocument uiDocument;
     private VisualElement mainUi, abilityButtonContainer, movePoint, actionPoint, pauseContainer;
-    private Label MainText;
+    private Label MainText, AbilityName;
     private Button resume, restart, MainMenu;
     private UserInputManager userInputManager;
     private Dictionary<string, Button> CurrentAbilityButtons = new Dictionary<string, Button>();
@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
         MainMenu.clickable.clicked += () => SceneManager.LoadScene("MainMenuScene");
         
         MainText = uiDocument.rootVisualElement.Q<Label>("Text");
+        AbilityName = uiDocument.rootVisualElement.Q<Label>("AbilityName");
         pauseContainer.style.display = DisplayStyle.None;
     }
 
@@ -78,6 +79,7 @@ public class UIManager : MonoBehaviour
             abilityButtonContainer.Add(instance);
             string abilityName = ability.Key.ToString();
             btn.name = abilityName;
+            AbilityName.text = abilityName;
             btn.Q<Label>("Name").text = ability.Key.ToString();
             btn.clickable.clicked += () => OnButtonClicked(abilityName, AbilityList[ability.Key]);
             CurrentAbilityButtons.Add(abilityName, btn);

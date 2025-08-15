@@ -16,18 +16,6 @@ public class GridManager : MonoBehaviour
     private TurnManager turnManager;
 
     [SerializeField] private GameObject parentNode;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    { 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
-    
     
     public void InitaliseMap()
     {
@@ -39,20 +27,6 @@ public class GridManager : MonoBehaviour
         } 
         GenerateMap(); 
     }
-    //
-    //
-    // [ContextMenu("Test Grid Nodes")]
-    // public void TestGridNodeFunctinality()
-    // {
-    //     if (parentNode != null)
-    //     {
-    //         DestroyImmediate(parentNode);
-    //         parentNode = null;  
-    //     } 
-    //     GenerateMap();
-    //     TestPathfinding();
-    // }
-    //
     private void GenerateMap()
     { 
         Grid_Nodes = new Dictionary<Vector2Int , Node>(); 
@@ -69,7 +43,6 @@ public class GridManager : MonoBehaviour
                 tile.transform.position = new Vector3(i, p, 10);
                 Grid_Nodes[GridPostion] = new Node(GridPostion, RealPosition, tile, true);
                 yCord++;
-                //Debug.Log($"Tile's Real position: {RealPosition} \n Grid Position: {GridPostion}");
             } 
             xCord++; 
         }
