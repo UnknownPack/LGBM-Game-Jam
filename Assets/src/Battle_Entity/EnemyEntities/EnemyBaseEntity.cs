@@ -33,8 +33,12 @@ public class EnemyBaseEntity : BaseBattleEntity
                 TargetUnit = SelectNearestTarget();
                 if(TargetUnit == null|| _gridManager.noPathToTarget(TargetUnit.transform.position))
                 {
-                    Debug.LogError("Target unit is null, cannot execute action!, Skipping turn!");
-                    continue;
+                    TargetUnit = SelectNearestTarget();
+                    if(TargetUnit == null|| _gridManager.noPathToTarget(TargetUnit.transform.position))
+                    {
+                        Debug.LogError("Target unit is null, cannot execute action!, Skipping turn!");
+                        continue;
+                    } 
                 } 
             }
             yield return StartCoroutine(action.Action(TargetUnit.gameObject));

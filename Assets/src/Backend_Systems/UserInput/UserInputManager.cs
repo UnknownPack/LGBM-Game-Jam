@@ -24,13 +24,12 @@ public class UserInputManager : MonoBehaviour
 
     private void Update()
     {
+        gridManager.ResetColourTiles();
         if(showSelectionActionRange)
         {
             Color color = (SelectedAction.GetActionType == ActionType.MovePoint)? Color.blue : Color.orange;
             SelectedAction.ShowActionRange(color);
         }
-        else
-            gridManager.ResetColourTiles();
     }
 
     public void SelectUnit(BaseBattleEntity unit) 
@@ -38,12 +37,11 @@ public class UserInputManager : MonoBehaviour
         bool UnitSelected = unit !=null;
         mouseInput.SetSelectedUnit(UnitSelected);
         
+        gridManager.ResetColourTiles();
+        uiManager.DeselectUnit();
+        
         if (!UnitSelected)
-        {
-            gridManager.ResetColourTiles();
-            uiManager.DeselectUnit();
             return;
-        }
         
         Debug.Log($"Selected Unit: {unit.name}");
         SelectedUnit = unit;

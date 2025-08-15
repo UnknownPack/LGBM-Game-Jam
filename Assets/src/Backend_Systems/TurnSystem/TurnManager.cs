@@ -12,7 +12,7 @@ public class TurnManager : MonoBehaviour
     private UIManager UIManager;
     public List<BaseBattleEntity> battleEntities;
     private List<StatusEffects> statusEffects = new List<StatusEffects>();
-    public bool isPlayersTurn = true;
+    public bool isPlayersTurn = true, keepChecking = true;
     public int currentTurn = 0;
     
     bool isPlayerTurn = true;
@@ -106,12 +106,9 @@ public class TurnManager : MonoBehaviour
     }
 
     private void CheckEndGame()
-    {
+    { 
         if(EndGameCheck(UnitOwnership.Enemy))
-        {
             UIManager.ShowEndScreen("Game Over! You Won!");
-            GetComponent<AudioSource>().Play();
-        }
         if(EndGameCheck(UnitOwnership.Player))
             UIManager.ShowEndScreen("Game Over! You lost noob!");
     }

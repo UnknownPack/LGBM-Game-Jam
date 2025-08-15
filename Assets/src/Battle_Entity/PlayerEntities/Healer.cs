@@ -21,5 +21,9 @@ public class Healer : BaseBattleEntity
         raiseBaricadeAction.SetBarricadePrefab(BaricadePrefab);
         InitActions(AbilityName.Raise_Baricade, raiseBaricadeAction, BaricadeSummonRange, ActionPoint_Cost, ActionType.ActionPoint,
             ActionTargetType.Tile);
+        
+        CastFireBall castFireBall = new CastFireBall();
+        castFireBall.SetDuration(3);
+        InitActions(AbilityName.FireCast, castFireBall, HealingRange, ActionPoint_Cost, ActionType.ActionPoint, ActionTargetType.Unit);
     }
 }

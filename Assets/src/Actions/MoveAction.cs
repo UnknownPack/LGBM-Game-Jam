@@ -9,6 +9,7 @@ public class MoveAction : ActionBase
     public override IEnumerator Action(GameObject target)
     {
         List<Node> path = CreatePath(target);
+        int currentNodeIndex = 0;
         if(path == null || path.Count == 0)
         {
             Debug.LogWarning($"Path is null or empty for {ParentObject.name}!");
@@ -17,12 +18,15 @@ public class MoveAction : ActionBase
         foreach (var node in path)
         {
             if (node.CanNavigate)
+            {
                 yield return Move(ParentObject.transform.position, node);
-
+                path[currentNodeIndex].SetWalkableState(true);
+                currentNodeIndex++;
+            }
             else
                 break;
         }
-        
+        path[currentNodeIndex-1].SetWalkableState(false);        
         yield return base.Action(target);
     }
     
@@ -61,7 +65,6 @@ public class MoveAction : ActionBase
             yield return null;
         }
         ParentObject.transform.position = EndPosition;
-        TargetNode.SetWalkableState(false);
     }
 }
 

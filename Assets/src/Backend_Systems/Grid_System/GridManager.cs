@@ -208,6 +208,55 @@ public class GridManager : MonoBehaviour
         return entityGrid;
     }
 
+    public BaseBattleEntity GetBattleEntityFromPosition(Vector2Int position)
+    {
+        foreach (var entity in BattleEntitiesList)
+        {
+            if(GetNodeFromPosition(entity.transform.position).GetGridPosition == position)
+                return entity;
+        }
+        return null;
+    }
+    
+    public BaseBattleEntity GetCollateralEntityFromPosition(GameObject target, GameObject caster)
+    {
+        Vector2Int targetPos = GetNodeFromPosition(target.transform.position).GetGridPosition;
+        Vector2Int origin = GetNodeFromPosition(caster.transform.position).GetGridPosition;
+        Vector2Int direction = targetPos - origin;
+        
+        BaseBattleEntity potentialTarget = GetBattleEntityFromPosition(targetPos + direction);
+        
+        string output = potentialTarget != null 
+            ? $"Collateral Entity found: {potentialTarget.name} at position {targetPos + direction}" 
+            : "No collateral entity found in the direction of attack.";
+        
+        Debug.Log(output);
+        return potentialTarget;
+    }
+    
+    public Node GetCollateralNodeFromPosition(GameObject target, GameObject caster)
+    {
+        Vector2Int targetPos = GetNodeFromPosition(target.transform.position).GetGridPosition;
+        Vector2Int origin = GetNodeFromPosition(caster.transform.position).GetGridPosition;
+        Vector2Int direction = targetPos - origin;
+        
+        direction.x = Mathf.Clamp(direction.x, -1, 1);
+        direction.y = Mathf.Clamp(direction.y, -1, 1);
+        
+        Node node = null;
+        if(Grid_Nodes.ContainsKey(targetPos + direction))
+            node = Grid_Nodes[targetPos + direction];
+        
+        string output = node != null 
+            ? $"Collateral Node found at: {node.GetGridPosition} of origin position {targetPos}" 
+            : "No nodeFound.";
+        
+        Debug.Log(output);
+        return node;
+    }
+    
+    
+
     public PathFinding GetPathFinding => pathFinding;
     public void InjectTurnManager(TurnManager turnManager) => this.turnManager = turnManager;
     public TurnManager GetTurnManager => turnManager;

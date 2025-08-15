@@ -111,9 +111,11 @@ public enum AbilityName
 {
     Move, 
     Attack,
+    CollateralAttack,
     Heal,
     Grenade,
     Insult,
     Raise_Baricade,
     Defence_Boost,
+    FireCast
 }

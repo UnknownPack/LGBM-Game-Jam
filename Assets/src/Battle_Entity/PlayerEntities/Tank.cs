@@ -22,6 +22,12 @@ public class Tank : BaseBattleEntity
         DefenceBuffAction defenceBuffAction = new DefenceBuffAction();
         defenceBuffAction.SetDuration(BuffDuration);
         InitActions(AbilityName.Defence_Boost, defenceBuffAction, 0,ActionPoint_Cost, ActionType.ActionPoint, ActionTargetType.None);
+        
+        CollateralAttack collateralAttack = new CollateralAttack();
+        collateralAttack.SetDamageAmount(GetDamage());
+        collateralAttack.SetTargetType(UnitOwnership.Enemy);
+        InitActions(AbilityName.CollateralAttack, collateralAttack, AttackRange, ActionPoint_Cost, ActionType.ActionPoint,
+            ActionTargetType.Unit);
     }
 
     public override void TakeDamage(float damageAmount)

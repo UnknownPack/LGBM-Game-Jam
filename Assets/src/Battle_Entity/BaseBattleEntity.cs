@@ -97,6 +97,8 @@ public class BaseBattleEntity : MonoBehaviour
         public GridManager GetGridManager => _gridManager;
 
     public virtual void TakeDamage(float damageAmount) => StartCoroutine(DamageAnimationDelay(damageAmount));
+    
+    public bool WillDie(float incomingDamage) => Health <= incomingDamage;
 
     private IEnumerator DamageAnimationDelay(float damageAmount)
     {
@@ -121,7 +123,7 @@ public class BaseBattleEntity : MonoBehaviour
         }
         
         public virtual float GetDamage () => Damage;
-        public float GetDefence => Defence;
+        public float GetDefence => Defence; 
         public float GetMoveSpeed => MoveSpeed;
         public Animator GetAnimator => Animator;
         public void SetCurrentNode(Node node) => CurrentNode = node;
