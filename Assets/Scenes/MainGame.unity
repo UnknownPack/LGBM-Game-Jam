@@ -377,10 +377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb2b30a7cdf5b64789c51a3499ca1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  Maxhealth: 3
-  Damage: 1
-  Defence: 2
+  Health: 2.5
+  Maxhealth: 2.5
+  Damage: 0.33
+  Defence: 1.5
   MoveSpeed: 2
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
@@ -527,10 +527,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb2b30a7cdf5b64789c51a3499ca1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  Maxhealth: 3
-  Damage: 1
-  Defence: 2
+  Health: 2.5
+  Maxhealth: 2.5
+  Damage: 0.33
+  Defence: 1.5
   MoveSpeed: 2
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
@@ -1013,7 +1013,7 @@ MonoBehaviour:
   Maxhealth: 4
   Damage: 1.5
   Defence: 2
-  MoveSpeed: 5
+  MoveSpeed: 3
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
   ActionPoint_MaxCount: 1
@@ -1153,10 +1153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb2b30a7cdf5b64789c51a3499ca1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  Maxhealth: 3
-  Damage: 1
-  Defence: 2
+  Health: 2.5
+  Maxhealth: 2.5
+  Damage: 0.33
+  Defence: 1.5
   MoveSpeed: 2
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
@@ -1959,10 +1959,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb2b30a7cdf5b64789c51a3499ca1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  Maxhealth: 3
-  Damage: 1
-  Defence: 2
+  Health: 2.5
+  Maxhealth: 2.5
+  Damage: 0.33
+  Defence: 1.5
   MoveSpeed: 2
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
@@ -2895,10 +2895,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb2b30a7cdf5b64789c51a3499ca1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  Maxhealth: 3
-  Damage: 1
-  Defence: 2
+  Health: 2.5
+  Maxhealth: 2.5
+  Damage: 0.33
+  Defence: 1.5
   MoveSpeed: 2
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
@@ -4489,10 +4489,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb2b30a7cdf5b64789c51a3499ca1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  Maxhealth: 3
-  Damage: 1
-  Defence: 2
+  Health: 2.5
+  Maxhealth: 2.5
+  Damage: 0.33
+  Defence: 1.5
   MoveSpeed: 2
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
@@ -5351,6 +5351,7 @@ MonoBehaviour:
   - {fileID: 740926007}
   - {fileID: 960276785}
   isPlayersTurn: 1
+  keepChecking: 1
   currentTurn: 0
 --- !u!4 &1525577223
 Transform:
@@ -5659,10 +5660,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb2b30a7cdf5b64789c51a3499ca1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  Maxhealth: 3
-  Damage: 1
-  Defence: 2
+  Health: 2.5
+  Maxhealth: 2.5
+  Damage: 0.33
+  Defence: 1.5
   MoveSpeed: 2
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
@@ -6213,7 +6214,7 @@ MonoBehaviour:
   Maxhealth: 6
   Damage: 3
   Defence: 3
-  MoveSpeed: 5
+  MoveSpeed: 2
   MovePoint_MaxCount: 1
   MovePoint_Cost: 1
   ActionPoint_MaxCount: 1
