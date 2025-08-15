@@ -10,9 +10,9 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         _document = GetComponent<UIDocument>();
-        StartButton = _document.rootVisualElement.Q<Button>("StartGameButton");
+        StartButton = _document.rootVisualElement.Q<Button>("Start");
         StartButton.clickable.clicked += () => SceneManager.LoadScene("MainGame");
-        EndApplicationButton = _document.rootVisualElement.Q<Button>("ExitGameButton");
+        EndApplicationButton = _document.rootVisualElement.Q<Button>("Exit");
         EndApplicationButton.clickable.clicked += () => Application.Quit();
     } 
 }

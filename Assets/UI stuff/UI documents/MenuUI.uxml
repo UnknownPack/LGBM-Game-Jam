@@ -3,8 +3,8 @@
     <Style src="project://database/Assets/UI%20stuff/Stylesheets/buttonStyle.uss?fileID=7433441132597879392&amp;guid=a56b7370f0ce6a94dae3e33ba25e6fb4&amp;type=3#buttonStyle" />
     <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/UI/freakin%20cyberpunk%20roguelike.png?fileID=2800000&amp;guid=11f0aea599123f449aaf2e13d5105c58&amp;type=3#freakin cyberpunk roguelike&quot;); background-color: rgb(9, 0, 30); -unity-background-image-tint-color: rgb(178, 255, 0);">
         <ui:VisualElement style="flex-grow: 1; align-self: flex-start; align-content: stretch; justify-content: flex-end; padding-left: 223px; padding-bottom: 0;">
-            <ui:Button text="Start" class="button" />
-            <ui:Button text="Exit" class="button" />
+            <ui:Button text="Start" name="Start" class="button" />
+            <ui:Button text="Exit" name="Exit" class="button" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
