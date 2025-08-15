@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrenadeAction : ActionBase
 {
     private int blastRadius = 2;
-    private int blastDamageMultiplier = 3;
+    private float blastDamageMultiplier = 1.5f;
     private GameObject grenadeInstance;
     private GameObject grenadePrefab;
 

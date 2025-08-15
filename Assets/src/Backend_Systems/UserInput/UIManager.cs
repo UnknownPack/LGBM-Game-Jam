@@ -8,14 +8,14 @@ using UnityEngine.UIElements;
 public class UIManager : MonoBehaviour
 {
     public VisualTreeAsset abilityButtonTemplate;
-    public Color movePointColor, actonPointColor, emptyPointColor;
+    public Color MovePointColor, ActionPointColor, emptyPointColor;
     private UIDocument uiDocument;
-    private VisualElement mainUi, abilityButtonContainer, movePoint, actionPoint, pauseContainer;
-    private Label MainText, AbilityName;
+    private VisualElement mainUi, abilityButtonContainer, movePoint, actionPoint, pauseContainer, enemyTurnContainer;
+    private Label MainText, UnitsText;
     private Button resume, restart, MainMenu;
     private UserInputManager userInputManager;
     private Dictionary<string, Button> CurrentAbilityButtons = new Dictionary<string, Button>();
-    private bool isPaused = false;
+    private bool isPaused = false, enemyTurn = false;
     void Start()
     {
         uiDocument = GetComponent<UIDocument>();
@@ -35,8 +35,12 @@ public class UIManager : MonoBehaviour
         MainMenu.clickable.clicked += () => SceneManager.LoadScene("MainMenuScene");
         
         MainText = uiDocument.rootVisualElement.Q<Label>("Text");
-        AbilityName = uiDocument.rootVisualElement.Q<Label>("AbilityName");
         pauseContainer.style.display = DisplayStyle.None;
+        
+        UnitsText = uiDocument.rootVisualElement.Q<Label>("UnitName");
+        
+        enemyTurnContainer = uiDocument.rootVisualElement.Q<VisualElement>("EnemyTurn");
+        enemyTurnContainer.style.display = DisplayStyle.None;
     }
 
     private void Update()
@@ -46,7 +50,8 @@ public class UIManager : MonoBehaviour
         
         Time.timeScale = !isPaused ? 1f : 0f;
         pauseContainer.style.display = isPaused ? DisplayStyle.Flex : DisplayStyle.None;
-        mainUi.style.display = !isPaused ? DisplayStyle.Flex : DisplayStyle.None;
+        if(!enemyTurn)
+            mainUi.style.display = !isPaused ? DisplayStyle.Flex : DisplayStyle.None;
 
     }
 
@@ -64,6 +69,7 @@ public class UIManager : MonoBehaviour
     {
         CurrentAbilityButtons = new Dictionary<string, Button>();
         abilityButtonContainer.Clear();
+        UnitsText.text = SelectedBattleEntity.gameObject.name;
         Dictionary<AbilityName, ActionBase> AbilityList = SelectedBattleEntity.GetAbilityList;
 
         foreach (var ability in AbilityList)
@@ -79,8 +85,7 @@ public class UIManager : MonoBehaviour
             abilityButtonContainer.Add(instance);
             string abilityName = ability.Key.ToString();
             btn.name = abilityName;
-            AbilityName.text = abilityName;
-            btn.Q<Label>("Name").text = ability.Key.ToString();
+            btn.text = abilityName;
             btn.clickable.clicked += () => OnButtonClicked(abilityName, AbilityList[ability.Key]);
             CurrentAbilityButtons.Add(abilityName, btn);
         }
@@ -92,8 +97,8 @@ public class UIManager : MonoBehaviour
             return;
         
         Dictionary<ActionType, int> ActionPoints = SelectedBattleEntity.GetActionPoints;
-        movePoint.style.backgroundColor = (ActionPoints[ActionType.MovePoint] > 0) ? movePointColor : emptyPointColor;
-        actionPoint.style.backgroundColor = (ActionPoints[ActionType.ActionPoint] > 0) ? actonPointColor : emptyPointColor;
+        movePoint.style.unityBackgroundImageTintColor = (ActionPoints[ActionType.MovePoint] <= 0) ? emptyPointColor : MovePointColor;
+        actionPoint.style.unityBackgroundImageTintColor = (ActionPoints[ActionType.ActionPoint] <= 0) ? emptyPointColor : ActionPointColor;
         
         Dictionary<AbilityName, ActionBase> AbilityList = SelectedBattleEntity.GetAbilityList;
         
@@ -110,6 +115,13 @@ public class UIManager : MonoBehaviour
         abilityButtonContainer.Clear();
         CurrentAbilityButtons.Clear();
     }
+    
+    public void ShowEnemyTurnScreen(bool showScreen)
+    {
+        enemyTurn = showScreen;
+        enemyTurnContainer.style.display = showScreen ? DisplayStyle.Flex : DisplayStyle.None;
+    }
+    
 
     public void InjectUserInputManager(UserInputManager userInputManager) => this.userInputManager = userInputManager;
 

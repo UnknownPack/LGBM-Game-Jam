@@ -24,7 +24,10 @@ public class MeleeAttackAction : ActionBase
 
         if (entity.GetUnitOwnerShip != targetOwner)
             yield break;
-
+        
+        if (_baseBattleEntity is Tank tankEntity)
+            tankEntity.SetHitTimes(0);
+        
         PlayAbilityAnimation("Attack");
         entity.TakeDamage(damageAmount);
 

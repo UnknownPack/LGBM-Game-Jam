@@ -19,7 +19,7 @@ public class Healer : BaseBattleEntity
         RaiseBaricadeAction raiseBaricadeAction = new RaiseBaricadeAction();
         raiseBaricadeAction.SetBarricadeDuration(barricadeDuration);
         raiseBaricadeAction.SetBarricadePrefab(BaricadePrefab);
-        InitActions(AbilityName.RaiseBaricade, raiseBaricadeAction, BaricadeSummonRange, ActionPoint_Cost, ActionType.ActionPoint,
+        InitActions(AbilityName.Raise_Baricade, raiseBaricadeAction, BaricadeSummonRange, ActionPoint_Cost, ActionType.ActionPoint,
             ActionTargetType.Tile);
     }
 }

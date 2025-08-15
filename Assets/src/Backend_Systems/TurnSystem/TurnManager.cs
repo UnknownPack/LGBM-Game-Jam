@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
+    public float timeBetweenTurns = 0.5f;
     private MouseInput mouseInput;
     private GridManager gridManager;
     private UserInputManager UserInputManager;
@@ -33,6 +34,7 @@ public class TurnManager : MonoBehaviour
 
     private void Update()
     {
+        CheckEndGame();
         if (isPlayersTurn)
             ManageTurns();
     }
@@ -40,7 +42,9 @@ public class TurnManager : MonoBehaviour
     private IEnumerator CycleTurn()
     {
         Debug.Log("Executing Enemy's turns...");
+        UIManager.ShowEnemyTurnScreen(true);
         ResetActionPoints(UnitOwnership.Enemy);
+        
         foreach (var battleEntity in battleEntities)
         {
             if(battleEntity == null)
@@ -52,34 +56,27 @@ public class TurnManager : MonoBehaviour
             {
                 yield return StartCoroutine(output.ExecuteTurn());
                 gridManager.UpdateGrid();
+                yield return new WaitForSeconds(timeBetweenTurns);
             }
         }
         battleEntities.RemoveAll(battleEntity => battleEntity == null );
+        
         ApplyStatusEffect();
         Debug.Log("All Enemy Turns Executed");
         // After enemy turns have been executed, return control back to player and replenish spent action points
         ResetActionPoints(UnitOwnership.Player);
         UserInputManager.ResetInputs();
         SetPlayerTurn(true);
+        UIManager.ShowEnemyTurnScreen(false);
         currentTurn++;
         Debug.Log($"Current Turn cycle: {currentTurn}");
     }
 
-    private bool IsAreaCleared()
+    private bool EndGameCheck(UnitOwnership unitOwner)
     {
         foreach (var battleEntity in battleEntities)
         {
-            if (battleEntity.GetUnitOwnerShip == UnitOwnership.Enemy)
-                return false;
-        }
-        return true;
-    }
-
-    private bool PlayerFailed()
-    {
-        foreach (var battleEntity in battleEntities)
-        {
-            if (battleEntity.GetUnitOwnerShip == UnitOwnership.Player)
+            if (battleEntity.GetUnitOwnerShip == unitOwner)
                 return false;
         }
         return true;
@@ -105,10 +102,17 @@ public class TurnManager : MonoBehaviour
             SetPlayerTurn(false);
 
             StartCoroutine(CycleTurn());
-        }
-        if(IsAreaCleared())
+        } 
+    }
+
+    private void CheckEndGame()
+    {
+        if(EndGameCheck(UnitOwnership.Enemy))
+        {
             UIManager.ShowEndScreen("Game Over! You Won!");
-        if(PlayerFailed())
+            GetComponent<AudioSource>().Play();
+        }
+        if(EndGameCheck(UnitOwnership.Player))
             UIManager.ShowEndScreen("Game Over! You lost noob!");
     }
     

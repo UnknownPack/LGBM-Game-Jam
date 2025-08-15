@@ -114,6 +114,6 @@ public enum AbilityName
     Heal,
     Grenade,
     Insult,
-    RaiseBaricade,
-    DefenceBoost,
+    Raise_Baricade,
+    Defence_Boost,
 }

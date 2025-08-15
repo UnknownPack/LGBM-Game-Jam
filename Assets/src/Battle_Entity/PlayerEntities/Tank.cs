@@ -8,9 +8,7 @@ public class Tank : BaseBattleEntity
     
     public override float GetDamage()
     { 
-        float damage = Damage + (timesHit * 0.5f);
-        timesHit = 0; 
-        return damage;
+        return Damage + (timesHit * 0.5f);
     }
     protected override void InitialiseActions()
     {
@@ -23,7 +21,7 @@ public class Tank : BaseBattleEntity
         
         DefenceBuffAction defenceBuffAction = new DefenceBuffAction();
         defenceBuffAction.SetDuration(BuffDuration);
-        InitActions(AbilityName.DefenceBoost, defenceBuffAction, 0,ActionPoint_Cost, ActionType.ActionPoint, ActionTargetType.None);
+        InitActions(AbilityName.Defence_Boost, defenceBuffAction, 0,ActionPoint_Cost, ActionType.ActionPoint, ActionTargetType.None);
     }
 
     public override void TakeDamage(float damageAmount)
@@ -31,4 +29,6 @@ public class Tank : BaseBattleEntity
         timesHit ++;
         base.TakeDamage(damageAmount);
     }
+    
+    public void SetHitTimes(int value) => timesHit = value;
 }

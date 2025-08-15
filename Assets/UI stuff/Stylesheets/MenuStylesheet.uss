@@ -12,8 +12,11 @@
     align-self: center;
     align-content: flex-start;
     font-size: 40px;
-    border-top-left-radius: 13px;
-    border-top-right-radius: 13px;
-    border-bottom-right-radius: 13px;
-    border-bottom-left-radius: 13px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background-image: url("project://database/Assets/Sprites/UI/button%204.png?fileID=2800000&guid=853247f05e053e8468dfde6b65a58be3&type=3#button 4");
+    -unity-background-image-tint-color: rgb(206, 213, 70);
+    background-color: rgba(0, 0, 0, 0);
 }

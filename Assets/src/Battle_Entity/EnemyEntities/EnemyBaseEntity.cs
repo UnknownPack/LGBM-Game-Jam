@@ -5,12 +5,8 @@ using UnityEngine;
 
 public class EnemyBaseEntity : BaseBattleEntity
 {
-    
-
     [Header("\nDamage Stats")]
     public float AttackRange = 1f;
-
-
     public virtual IEnumerator ExecuteTurn()
     {
         Debug.Log($"{gameObject.name}'s Turn is being executed!");
