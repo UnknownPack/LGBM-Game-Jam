@@ -11,37 +11,58 @@ public class GridSystem : MonoBehaviour
     Dictionary<Vector2Int, NewNode> Grid;
     void Start()
     {
+        GameObject previousParent = GameObject.Find("ParentObject");
+        if (previousParent != null)
+            DestroyImmediate(previousParent);
+        
         Dictionary<Vector2Int, NewNode> grid = GenerateMap();
+        Grid = grid;
         pathfinder = new NewPathfinder(grid);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GameObject previousParent = GameObject.Find("PathObject");
-        
-            if(previousParent!= null)
+            GameObject previousParent = GameObject.Find("ParentObject");
+            if (previousParent != null)
                 DestroyImmediate(previousParent);
-            
+
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mouseWorld2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
 
-            Vector3Int cellPos = Tilemap.WorldToCell(mouseWorldPos);
-            Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
+            RaycastHit2D pointCheck = Physics2D.Raycast(mouseWorld2D, Vector2.zero);
 
-            if (Grid.ContainsKey(gridPos))
+            if (pointCheck.collider != null)  
             {
-                List<Vector2Int> keys = new List<Vector2Int>(pathfinder.GetGrid.Keys);
-                Vector2Int randomStartPos = keys[Random.Range(0, keys.Count)];
-                NewNode startNode = pathfinder.GetGrid[randomStartPos];
-                NewNode endNode = pathfinder.GetGrid[gridPos];
-                List<NewNode> path = pathfinder.GetPath(startNode, endNode);
+                Vector3Int cellPos = Tilemap.WorldToCell(pointCheck.point);
 
-                PrintPath(path);
+                if (Tilemap.HasTile(cellPos))
+                    Tilemap.SetColor(cellPos, Color.yellow);
+
+                Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
+
+                if (Grid.ContainsKey(gridPos))
+                {
+                    List<Vector2Int> keys = new List<Vector2Int>(pathfinder.GetGrid.Keys);
+                    Vector2Int randomStartPos = keys[Random.Range(0, keys.Count)];
+
+                    NewNode startNode = pathfinder.GetGrid[randomStartPos];
+                    NewNode endNode = pathfinder.GetGrid[gridPos];
+
+                    List<NewNode> path = pathfinder.GetPath(startNode, endNode);
+
+                    PrintPath(path);
+                }
+                else
+                    Debug.LogWarning("Clicked cell is outside of painted Tilemap!");
             }
+            else
+                Debug.LogWarning("Click did not hit TilemapCollider2D");
         }
     }
+
+
 
     Dictionary<Vector2Int, NewNode> GenerateMap()
     {
@@ -56,7 +77,8 @@ public class GridSystem : MonoBehaviour
             
             if (tile != null)
             {
-                Vector3 realPosition = Tilemap.CellToWorld(pos) + (Vector3)Tilemap.tileAnchor;
+                Vector3 realPosition = Tilemap.CellToWorld(pos) ;
+                //Vector3 realPosition = Tilemap.CellToWorld(pos) + (Vector3)Tilemap.tileAnchor;
                 NewNode newNode = new NewNode(gridPosition, realPosition, tile, true);
                 Grid[gridPosition] = newNode;
                 Debug.Log($"Grid Position: {newNode.GetGridPosition}, Real Position: {newNode.GetRealPosition}, Can Navigate: {newNode.CanNavigate}");
@@ -67,7 +89,7 @@ public class GridSystem : MonoBehaviour
 
     private void PrintPath(List<NewNode> path)
     {
-        GameObject parentObject = new GameObject("PathObject");
+        GameObject parentObject = new GameObject("ParentObject");
         foreach (var node in path)
         {
             var nodeMarker = Instantiate(tilePrefab, node.GetRealPosition, Quaternion.identity, this.transform);
@@ -91,7 +113,7 @@ public class GridSystem : MonoBehaviour
     [ContextMenu("Generate Path")]
     public void GenerateAndShowPath()
     {
-        GameObject previousParent = GameObject.Find("PathObject");
+        GameObject previousParent = GameObject.Find("ParentObject");
         
         if(previousParent!= null)
             DestroyImmediate(previousParent);
