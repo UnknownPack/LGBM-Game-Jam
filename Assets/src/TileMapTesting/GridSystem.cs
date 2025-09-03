@@ -36,10 +36,6 @@ public class GridSystem : MonoBehaviour
             if (pointCheck.collider != null)  
             {
                 Vector3Int cellPos = Tilemap.WorldToCell(pointCheck.point);
-
-                if (Tilemap.HasTile(cellPos))
-                    Tilemap.SetColor(cellPos, Color.yellow);
-
                 Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
 
                 if (Grid.ContainsKey(gridPos))
