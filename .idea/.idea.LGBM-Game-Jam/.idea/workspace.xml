@@ -5,28 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/EnviornmentStatusEffect.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/EnviornmentStatusEffect.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/ListenerManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/ListenerManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewEntityBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewEntityBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/ServiceLocator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/ServiceLocator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffect.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffect.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffectManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffectManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffect_SO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffect_SO.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TickManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TickManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Testing/TestingNewGirdSystem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Testing/TestingNewGirdSystem.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NEW_Entities/NewEntityBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NEW_Entities/NewEntityBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewBackEnd/ListenerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewBackEnd/ListenerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewBackEnd/TickManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewBackEnd/TickManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffects/StatusEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffects/StatusEffect.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/GridSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/GridSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/NewNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/NewNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +138,7 @@
       <workItem from="1756956575142" duration="5000" />
       <workItem from="1756956583110" duration="621000" />
       <workItem from="1757161119345" duration="8196000" />
-      <workItem from="1757172109631" duration="5852000" />
+      <workItem from="1757172109631" duration="6932000" />
     </task>
     <servers />
   </component>

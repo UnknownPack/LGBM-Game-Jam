@@ -26,15 +26,7 @@ namespace src.New_Testing_Scripts.TileMapTesting
             this.tile = tile;
             _canNavigateTo = canNavigateTo;
             Parent = null;
-            
-            var tickManager = ServiceLocator.Get<ListenerManager>();
-            
-            if (tickManager == null)
-            {
-                Debug.LogError("There is no listener manager for status effect.");
-                return;
-            }
-            tickManager.AddListener("Tick", OnTick);
+            ListenerManager.AddListener("Tick", OnTick);
             
         }
         

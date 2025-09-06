@@ -19,14 +19,7 @@ namespace src.New_Testing_Scripts
         {
             this.entity = entity;
             this.scriptableObject = scriptableObject;
-            var tickManager = ServiceLocator.Get<ListenerManager>();
-            
-            if (tickManager == null)
-            {
-                Debug.LogError("There is no listener manager for status effect.");
-                return;
-            }
-            tickManager.AddListener("Tick", OnTick);
+            ListenerManager.AddListener("Tick", OnTick);
             Apply(this.entity.gameObject);
         }
         
@@ -61,7 +54,7 @@ namespace src.New_Testing_Scripts
             {
                 isActive = false;
                 entity = null;
-                ServiceLocator.Get<ListenerManager>().RemoveListener("Tick", OnTick);
+                ListenerManager.RemoveListener("Tick", OnTick);
                 ResetStats();
             }
         }

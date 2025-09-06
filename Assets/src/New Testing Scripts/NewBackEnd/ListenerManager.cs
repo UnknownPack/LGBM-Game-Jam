@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace src.New_Testing_Scripts
 {
-    public class ListenerManager 
+    public static class ListenerManager 
     {
-        private Dictionary<string, Action> listeners = new Dictionary<string, Action>();
+        private static Dictionary<string, Action> listeners = new Dictionary<string, Action>();
 
-        public void AddListener(string listenerId, Action callback)
+        public static void AddListener(string listenerId, Action callback)
         {
             bool exists = listeners.ContainsKey(listenerId);
             listeners[listenerId] = exists? listeners[listenerId] + callback : callback;
         }
 
-        public void RemoveListener(string listenerId, Action callback)
+        public static void RemoveListener(string listenerId, Action callback)
         {
             if (listeners.ContainsKey(listenerId))
             {
@@ -25,7 +25,7 @@ namespace src.New_Testing_Scripts
             }
         }
 
-        public void Notify(string listenerId)
+        public static void Notify(string listenerId)
         {
             if (listeners.ContainsKey(listenerId))
                 listeners[listenerId].Invoke(); 

@@ -17,55 +17,22 @@ namespace src.New_Testing_Scripts.TileMapTesting
         private void Awake()
         {
             ServiceLocator.Register(this);
+            Debug.Log("Added Grid Systen");
+            Dictionary<Vector2Int, NewNode> grid = GenerateMap();
+            Grid = grid;
+            pathfinder = new NewPathfinder(grid);
         }
 
         void Start()
         {
             GameObject previousParent = GameObject.Find("ParentObject");
             if (previousParent != null)
-                DestroyImmediate(previousParent);
-        
-            Dictionary<Vector2Int, NewNode> grid = GenerateMap();
-            Grid = grid;
-            pathfinder = new NewPathfinder(grid);
+                DestroyImmediate(previousParent); 
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                GameObject previousParent = GameObject.Find("ParentObject");
-                if (previousParent != null)
-                    DestroyImmediate(previousParent);
-
-                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 mouseWorld2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
-
-                RaycastHit2D pointCheck = Physics2D.Raycast(mouseWorld2D, Vector2.zero);
-
-                if (pointCheck.collider != null)  
-                {
-                    Vector3Int cellPos = Tilemap.WorldToCell(pointCheck.point);
-                    Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
-
-                    if (Grid.ContainsKey(gridPos))
-                    {
-                        List<Vector2Int> keys = new List<Vector2Int>(pathfinder.GetGrid.Keys);
-                        Vector2Int randomStartPos = keys[Random.Range(0, keys.Count)];
-
-                        NewNode startNode = pathfinder.GetGrid[randomStartPos];
-                        NewNode endNode = pathfinder.GetGrid[gridPos];
-
-                        List<NewNode> path = pathfinder.GetPath(startNode, endNode);
-
-                        PrintPath(path);
-                    }
-                    else
-                        Debug.LogWarning("Clicked cell is outside of painted Tilemap!");
-                }
-                else
-                    Debug.LogWarning("Click did not hit TilemapCollider2D");
-            }
+            
         }
 
 
@@ -87,7 +54,6 @@ namespace src.New_Testing_Scripts.TileMapTesting
                     //Vector3 realPosition = Tilemap.CellToWorld(pos) + (Vector3)Tilemap.tileAnchor;
                     NewNode newNode = new NewNode(gridPosition, realPosition, tile, true);
                     Grid[gridPosition] = newNode;
-                    Debug.Log($"Grid Position: {newNode.GetGridPosition}, Real Position: {newNode.GetRealPosition}, Can Navigate: {newNode.CanNavigate}");
                 }
             }
             return Grid;

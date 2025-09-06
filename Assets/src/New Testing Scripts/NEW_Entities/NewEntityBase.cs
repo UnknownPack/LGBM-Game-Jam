@@ -9,7 +9,7 @@ namespace src.New_Testing_Scripts
 {
     public class NewEntityBase : MonoBehaviour
     {
-        [SerializeField]private List<NewStatusEffect> statusEffects = new List<NewStatusEffect>();
+        [SerializeReference] private List<NewStatusEffect> statusEffects = new List<NewStatusEffect>();
         [SerializeField] private InitialStats initialStats;
 
         public class Entity
@@ -34,14 +34,7 @@ namespace src.New_Testing_Scripts
             Damage = initialStats.Damage;
             
             ActionList.Add(new NEW_Entities.MoveAction(this));
-            
-            var tickManager = ServiceLocator.Get<ListenerManager>();
-            if (tickManager == null)
-            {
-                Debug.LogError("There is no listener manager for status effect.");
-                return;
-            }
-            tickManager.AddListener("Tick", OnTick);
+            ListenerManager.AddListener("Tick", OnTick);
 
             _gridSystem = ServiceLocator.Get<GridSystem>();
             if (_gridSystem == null)
@@ -59,7 +52,40 @@ namespace src.New_Testing_Scripts
         // Update is called once per frame
         void Update()
         {
-        
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                GameObject previousParent = GameObject.Find("ParentObject");
+                if (previousParent != null)
+                    DestroyImmediate(previousParent);
+
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mouseWorld2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+
+                RaycastHit2D pointCheck = Physics2D.Raycast(mouseWorld2D, Vector2.zero);
+
+                if (pointCheck.collider != null)  
+                {
+                    Vector3Int cellPos = Tilemap.WorldToCell(pointCheck.point);
+                    Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
+
+                    if (Grid.ContainsKey(gridPos))
+                    {
+                        List<Vector2Int> keys = new List<Vector2Int>(pathfinder.GetGrid.Keys);
+                        Vector2Int randomStartPos = keys[Random.Range(0, keys.Count)];
+
+                        NewNode startNode = pathfinder.GetGrid[randomStartPos];
+                        NewNode endNode = pathfinder.GetGrid[gridPos];
+
+                        List<NewNode> path = pathfinder.GetPath(startNode, endNode);
+
+                        PrintPath(path);
+                    }
+                    else
+                        Debug.LogWarning("Clicked cell is outside of painted Tilemap!");
+                }
+                else
+                    Debug.LogWarning("Click did not hit TilemapCollider2D");
+            }
         }
 
         private void OnTick()
@@ -82,6 +108,7 @@ namespace src.New_Testing_Scripts
 
         public void AddStatusEffect(NewStatusEffect newStatusEffect)
         {
+            Debug.Log($"{newStatusEffect} applied to{gameObject.name}");
             statusEffects.Add(newStatusEffect);
         }
 
@@ -138,6 +165,7 @@ namespace src.New_Testing_Scripts
     
 }
 
+[Serializable]
 public struct InitialStats
 {
     public float LifePoints;
