@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/TileMapTesting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/TileMapTesting/GridSystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/TileMapTesting/GridSystem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/TileMapTesting/NewNode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/TileMapTesting/NewNode.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/TileMapTesting/NewPathfinder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/TileMapTesting/NewPathfinder.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/GridSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/GridSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/NewNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/NewNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/NewPathfinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/NewPathfinder.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +33,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/src/Actions/CastFireBall.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/src/Actions/EnenyMoveAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/src/Actions/FireCast.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/src/Battle_Entity/BaseBattleEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/src/Battle_Entity/EnemyEntities/EnemyBaseEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/src/New Testing Scripts/EnviornmentStatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/src/New Testing Scripts/ListenerManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffect_SO.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -136,6 +135,7 @@
       <workItem from="1756626866458" duration="4752000" />
       <workItem from="1756956575142" duration="5000" />
       <workItem from="1756956583110" duration="621000" />
+      <workItem from="1757161119345" duration="8196000" />
     </task>
     <servers />
   </component>

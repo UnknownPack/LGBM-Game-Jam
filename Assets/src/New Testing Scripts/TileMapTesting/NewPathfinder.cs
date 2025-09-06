@@ -1,25 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewPathfinder 
+namespace src.New_Testing_Scripts.TileMapTesting
 {
-    public Dictionary<Vector2Int , NewNode> Grid = new Dictionary<Vector2Int , NewNode>();
-    public Vector2 _gridSize;
-    
-    private static readonly Vector2Int[] Directions = {
-        new Vector2Int(1, 0),   // right-down visually
-        new Vector2Int(-1, 0),  // left-up visually
-        new Vector2Int(0, 1),   // left-down visually
-        new Vector2Int(0, -1)   // right-up visually
-    };
-
-    public NewPathfinder(Dictionary<Vector2Int, NewNode> grid)
+    public class NewPathfinder 
     {
-        this.Grid = grid;
-    }
+        public Dictionary<Vector2Int , NewNode> Grid = new Dictionary<Vector2Int , NewNode>();
+        public Vector2 _gridSize;
+    
+        private static readonly Vector2Int[] Directions = {
+            new Vector2Int(1, 0),   // right-down visually
+            new Vector2Int(-1, 0),  // left-up visually
+            new Vector2Int(0, 1),   // left-down visually
+            new Vector2Int(0, -1)   // right-up visually
+        };
+
+        public NewPathfinder(Dictionary<Vector2Int, NewNode> grid)
+        {
+            this.Grid = grid;
+        }
 
 
-    #region Public Methods
+        #region Public Methods
         public Dictionary<Vector2Int , NewNode> GetGrid =>  Grid;
         
         
@@ -74,22 +76,22 @@ public class NewPathfinder
         }
     
 
-    #endregion
+        #endregion
 
-    #region private helper methods
+        #region private helper methods
  
 
-    private List<NewNode> GetNeighbours(NewNode node)
-    {
-        List<NewNode> neighbours = new List<NewNode>();
-        foreach (var dir in Directions)
+        private List<NewNode> GetNeighbours(NewNode node)
         {
-            Vector2Int checkPos = node.GetGridPosition + dir;
-            if (Grid.ContainsKey(checkPos))
-                neighbours.Add(Grid[checkPos]);
+            List<NewNode> neighbours = new List<NewNode>();
+            foreach (var dir in Directions)
+            {
+                Vector2Int checkPos = node.GetGridPosition + dir;
+                if (Grid.ContainsKey(checkPos))
+                    neighbours.Add(Grid[checkPos]);
+            }
+            return neighbours;
         }
-        return neighbours;
-    }
 
         private List<NewNode> ReconstructPath(NewNode startNode, NewNode goalNode)
         {
@@ -116,5 +118,6 @@ public class NewPathfinder
             return Mathf.Abs(currentNode.GetGridPosition.x - goalNode.GetGridPosition.x) + 
                    Mathf.Abs(currentNode.GetGridPosition.y - goalNode.GetGridPosition.y);
         }
-    #endregion
+        #endregion
+    }
 }

@@ -1,133 +1,135 @@
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GridSystem : MonoBehaviour
+namespace src.New_Testing_Scripts.TileMapTesting
 {
-    public GameObject tilePrefab;
-    public Tilemap Tilemap;
-    private NewPathfinder pathfinder;
-    Dictionary<Vector2Int, NewNode> Grid;
-    void Start()
+    public class GridSystem : MonoBehaviour
     {
-        GameObject previousParent = GameObject.Find("ParentObject");
-        if (previousParent != null)
-            DestroyImmediate(previousParent);
-        
-        Dictionary<Vector2Int, NewNode> grid = GenerateMap();
-        Grid = grid;
-        pathfinder = new NewPathfinder(grid);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        public GameObject tilePrefab;
+        public Tilemap Tilemap;
+        private NewPathfinder pathfinder;
+        Dictionary<Vector2Int, NewNode> Grid;
+        void Start()
         {
             GameObject previousParent = GameObject.Find("ParentObject");
             if (previousParent != null)
                 DestroyImmediate(previousParent);
+        
+            Dictionary<Vector2Int, NewNode> grid = GenerateMap();
+            Grid = grid;
+            pathfinder = new NewPathfinder(grid);
+        }
 
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mouseWorld2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
-
-            RaycastHit2D pointCheck = Physics2D.Raycast(mouseWorld2D, Vector2.zero);
-
-            if (pointCheck.collider != null)  
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Vector3Int cellPos = Tilemap.WorldToCell(pointCheck.point);
-                Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
+                GameObject previousParent = GameObject.Find("ParentObject");
+                if (previousParent != null)
+                    DestroyImmediate(previousParent);
 
-                if (Grid.ContainsKey(gridPos))
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mouseWorld2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+
+                RaycastHit2D pointCheck = Physics2D.Raycast(mouseWorld2D, Vector2.zero);
+
+                if (pointCheck.collider != null)  
                 {
-                    List<Vector2Int> keys = new List<Vector2Int>(pathfinder.GetGrid.Keys);
-                    Vector2Int randomStartPos = keys[Random.Range(0, keys.Count)];
+                    Vector3Int cellPos = Tilemap.WorldToCell(pointCheck.point);
+                    Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
 
-                    NewNode startNode = pathfinder.GetGrid[randomStartPos];
-                    NewNode endNode = pathfinder.GetGrid[gridPos];
+                    if (Grid.ContainsKey(gridPos))
+                    {
+                        List<Vector2Int> keys = new List<Vector2Int>(pathfinder.GetGrid.Keys);
+                        Vector2Int randomStartPos = keys[Random.Range(0, keys.Count)];
 
-                    List<NewNode> path = pathfinder.GetPath(startNode, endNode);
+                        NewNode startNode = pathfinder.GetGrid[randomStartPos];
+                        NewNode endNode = pathfinder.GetGrid[gridPos];
 
-                    PrintPath(path);
+                        List<NewNode> path = pathfinder.GetPath(startNode, endNode);
+
+                        PrintPath(path);
+                    }
+                    else
+                        Debug.LogWarning("Clicked cell is outside of painted Tilemap!");
                 }
                 else
-                    Debug.LogWarning("Clicked cell is outside of painted Tilemap!");
+                    Debug.LogWarning("Click did not hit TilemapCollider2D");
             }
-            else
-                Debug.LogWarning("Click did not hit TilemapCollider2D");
         }
-    }
 
 
 
-    Dictionary<Vector2Int, NewNode> GenerateMap()
-    {
-        Dictionary<Vector2Int, NewNode> Grid = new Dictionary<Vector2Int, NewNode>();
-
-        BoundsInt bounds = Tilemap.cellBounds;
-        foreach (var pos in bounds.allPositionsWithin)
+        Dictionary<Vector2Int, NewNode> GenerateMap()
         {
-            TileBase tile = Tilemap.GetTile(pos); 
-            
-            Vector2Int gridPosition = new Vector2Int(pos.x, pos.y);
-            
-            if (tile != null)
+            Dictionary<Vector2Int, NewNode> Grid = new Dictionary<Vector2Int, NewNode>();
+
+            BoundsInt bounds = Tilemap.cellBounds;
+            foreach (var pos in bounds.allPositionsWithin)
             {
-                Vector3 realPosition = Tilemap.CellToWorld(pos) ;
-                //Vector3 realPosition = Tilemap.CellToWorld(pos) + (Vector3)Tilemap.tileAnchor;
-                NewNode newNode = new NewNode(gridPosition, realPosition, tile, true);
-                Grid[gridPosition] = newNode;
-                Debug.Log($"Grid Position: {newNode.GetGridPosition}, Real Position: {newNode.GetRealPosition}, Can Navigate: {newNode.CanNavigate}");
+                TileBase tile = Tilemap.GetTile(pos); 
+            
+                Vector2Int gridPosition = new Vector2Int(pos.x, pos.y);
+            
+                if (tile != null)
+                {
+                    Vector3 realPosition = Tilemap.CellToWorld(pos) ;
+                    //Vector3 realPosition = Tilemap.CellToWorld(pos) + (Vector3)Tilemap.tileAnchor;
+                    NewNode newNode = new NewNode(gridPosition, realPosition, tile, true);
+                    Grid[gridPosition] = newNode;
+                    Debug.Log($"Grid Position: {newNode.GetGridPosition}, Real Position: {newNode.GetRealPosition}, Can Navigate: {newNode.CanNavigate}");
+                }
+            }
+            return Grid;
+        }
+
+        private void PrintPath(List<NewNode> path)
+        {
+            GameObject parentObject = new GameObject("ParentObject");
+            foreach (var node in path)
+            {
+                var nodeMarker = Instantiate(tilePrefab, node.GetRealPosition, Quaternion.identity, this.transform);
+                nodeMarker.transform.SetParent(parentObject.transform);
             }
         }
-        return Grid;
-    }
-
-    private void PrintPath(List<NewNode> path)
-    {
-        GameObject parentObject = new GameObject("ParentObject");
-        foreach (var node in path)
+    
+        [ContextMenu("Generate and print Grid")]
+        public void GenerateAndPrintGrid()
         {
-            var nodeMarker = Instantiate(tilePrefab, node.GetRealPosition, Quaternion.identity, this.transform);
-            nodeMarker.transform.SetParent(parentObject.transform);
+            Dictionary<Vector2Int, NewNode> grid = GenerateMap();
+            pathfinder = new NewPathfinder(grid);
+            GameObject parentObject = new GameObject("ParentObject");
+            foreach (var node in pathfinder.GetGrid)
+            {
+                var nodeMarker = Instantiate(tilePrefab, node.Value.GetRealPosition, Quaternion.identity, this.transform);
+                nodeMarker.transform.SetParent(parentObject.transform);
+            }
         }
-    }
     
-    [ContextMenu("Generate and print Grid")]
-    public void GenerateAndPrintGrid()
-    {
-        Dictionary<Vector2Int, NewNode> grid = GenerateMap();
-        pathfinder = new NewPathfinder(grid);
-        GameObject parentObject = new GameObject("ParentObject");
-        foreach (var node in pathfinder.GetGrid)
+        [ContextMenu("Generate Path")]
+        public void GenerateAndShowPath()
         {
-            var nodeMarker = Instantiate(tilePrefab, node.Value.GetRealPosition, Quaternion.identity, this.transform);
-            nodeMarker.transform.SetParent(parentObject.transform);
-        }
-    }
-    
-    [ContextMenu("Generate Path")]
-    public void GenerateAndShowPath()
-    {
-        GameObject previousParent = GameObject.Find("ParentObject");
+            GameObject previousParent = GameObject.Find("ParentObject");
         
-        if(previousParent!= null)
-            DestroyImmediate(previousParent);
+            if(previousParent!= null)
+                DestroyImmediate(previousParent);
         
-        Dictionary<Vector2Int, NewNode> grid = GenerateMap();
-        pathfinder = new NewPathfinder(grid);
+            Dictionary<Vector2Int, NewNode> grid = GenerateMap();
+            pathfinder = new NewPathfinder(grid);
         
-        List<Vector2Int> keys = new List<Vector2Int>(pathfinder.GetGrid.Keys);
-        Vector2Int randomStartPos = keys[Random.Range(0, keys.Count)];
-        Vector2Int randomEndPos = keys[Random.Range(0, keys.Count)];
+            List<Vector2Int> keys = new List<Vector2Int>(pathfinder.GetGrid.Keys);
+            Vector2Int randomStartPos = keys[Random.Range(0, keys.Count)];
+            Vector2Int randomEndPos = keys[Random.Range(0, keys.Count)];
         
-        NewNode startNode = pathfinder.GetGrid[randomStartPos];
-        NewNode goalNode = pathfinder.GetGrid[randomEndPos];
+            NewNode startNode = pathfinder.GetGrid[randomStartPos];
+            NewNode goalNode = pathfinder.GetGrid[randomEndPos];
         
-        List<NewNode> path = pathfinder.GetPath(startNode, goalNode);
+            List<NewNode> path = pathfinder.GetPath(startNode, goalNode);
 
-        PrintPath(path);
-    }
+            PrintPath(path);
+        }
     
-    public Dictionary<Vector2Int, NewNode> GetGrid => Grid;
+        public Dictionary<Vector2Int, NewNode> GetGrid => Grid;
+    }
 }
