@@ -13,6 +13,7 @@ namespace src.New_Testing_Scripts
         protected StatusEffect_SO scriptableObject;
         protected bool isActive = true;
         protected NewEntityBase entity;
+        protected float originalValue = 0f;
 
         public NewStatusEffect(NewEntityBase entity, StatusEffect_SO scriptableObject)
         {
@@ -26,6 +27,7 @@ namespace src.New_Testing_Scripts
                 return;
             }
             tickManager.AddListener("Tick", OnTick);
+            Apply(this.entity.gameObject);
         }
         
         private void OnTick()
@@ -35,7 +37,7 @@ namespace src.New_Testing_Scripts
                 Debug.LogError($"This status effect {scriptableObject.statusEffectName} is not active!");
                 return;
             }
-            if(scriptableObject.Duration % scriptableObject.TickInterval == 0)
+            if(scriptableObject.DoesTick && scriptableObject.Duration % scriptableObject.TickInterval == 0)
                 Apply(entity.gameObject);
             Tick();                   
         }
@@ -60,8 +62,11 @@ namespace src.New_Testing_Scripts
                 isActive = false;
                 entity = null;
                 ServiceLocator.Get<ListenerManager>().RemoveListener("Tick", OnTick);
+                ResetStats();
             }
         }
+
+        public abstract void ResetStats();
         
         public StatusEffectName GetStatusEffectName => scriptableObject.statusEffectName;
         public bool IsActive => isActive;
@@ -78,6 +83,11 @@ namespace src.New_Testing_Scripts
         
         public override void Apply(GameObject target)
         {
+            entity.GetHealth -= scriptableObject.Value;
+        }
+
+        public override void ResetStats()
+        {
             return;
         }
     }
@@ -87,12 +97,18 @@ namespace src.New_Testing_Scripts
      
         public DamageBoost(NewEntityBase entity, StatusEffect_SO scriptableObject) : base(entity, scriptableObject)
         {
+            originalValue = entity.GetInitialStats.Damage;
         }
 
         
         public override void Apply(GameObject target)
         {
-            return;
+            entity.GetDamage = scriptableObject.Value;
+        }
+
+        public override void ResetStats()
+        {
+            entity.GetDamage = originalValue;
         }
     }
     
@@ -101,12 +117,18 @@ namespace src.New_Testing_Scripts
      
         public Slow(NewEntityBase entity, StatusEffect_SO scriptableObject) : base(entity, scriptableObject)
         {
+            originalValue = entity.GetInitialStats.Damage;
         }
 
         
         public override void Apply(GameObject target)
         {
-            return;
+            entity.GetMovementPoints -= (int)scriptableObject.Value;
+        }
+
+        public override void ResetStats()
+        {
+            entity.GetMovementPoints = (int)originalValue;
         }
     }
 }

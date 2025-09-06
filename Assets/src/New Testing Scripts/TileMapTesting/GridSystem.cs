@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 namespace src.New_Testing_Scripts.TileMapTesting
 {
@@ -8,8 +10,15 @@ namespace src.New_Testing_Scripts.TileMapTesting
     {
         public GameObject tilePrefab;
         public Tilemap Tilemap;
+        private Dictionary<NewEntityBase,Vector2Int> ActiveEntites = new Dictionary< NewEntityBase, Vector2Int>();
         private NewPathfinder pathfinder;
         Dictionary<Vector2Int, NewNode> Grid;
+
+        private void Awake()
+        {
+            ServiceLocator.Register(this);
+        }
+
         void Start()
         {
             GameObject previousParent = GameObject.Find("ParentObject");
@@ -129,7 +138,23 @@ namespace src.New_Testing_Scripts.TileMapTesting
 
             PrintPath(path);
         }
-    
+
+        public NewNode GetNodeAtTarget(GameObject target)
+        {
+            Vector3 mouseWorldPos = target.transform.position;
+            Vector2Int GridPosition = new Vector2Int(Mathf.FloorToInt(mouseWorldPos.x), Mathf.FloorToInt(mouseWorldPos.y));
+            if (Grid.TryGetValue(GridPosition, out var atTarget))
+                return atTarget;
+            return null;
+        }
+
+        public void UpdateEntityPosition(NewEntityBase entityBase, Vector2Int newPos) 
+        {
+            ActiveEntites[entityBase] = newPos;
+            Grid[newPos].GiveTargetStatusEffects(entityBase);
+        }
+        
         public Dictionary<Vector2Int, NewNode> GetGrid => Grid;
+        public List<NewNode> GetPath(NewNode startNode, NewNode goalNode) => pathfinder.GetPath(startNode, goalNode);
     }
 }

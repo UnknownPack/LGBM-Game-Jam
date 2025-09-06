@@ -63,7 +63,11 @@ namespace src.New_Testing_Scripts.TileMapTesting
         public void GiveTargetStatusEffects(NewEntityBase target)
         {
             foreach (EnviornmentStatusEffect statusEffect in statusEffects)
-            { 
+            {
+                StatusEffectName name = statusEffect.StatusEffectName;
+                if(target.ContainsEffeccct(name) && StatusEffectManager.FindByName(name).DoesStack)
+                    continue;
+                    
                 StatusEffectManager.Create(statusEffect.StatusEffectName, target);
             } 
         }

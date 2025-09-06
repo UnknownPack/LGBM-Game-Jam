@@ -28,7 +28,7 @@ namespace src.New_Testing_Scripts
             Debug.LogError($"No status effect registered for {so}");
         }
         
-        private static StatusEffect_SO FindByName(StatusEffectName name)
+        public static StatusEffect_SO FindByName(StatusEffectName name)
         {
             foreach (var statusEffect in StatusEffectsDefinitions)
             {

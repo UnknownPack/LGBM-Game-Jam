@@ -1,6 +1,8 @@
+using UnityEngine;
+
 namespace src.New_Testing_Scripts
 {
-    public class EnviornmentStatusEffect 
+    public class EnviornmentStatusEffect
     {
         private StatusEffectName statusEffectName;
         private int statusEffectNameDuration;
