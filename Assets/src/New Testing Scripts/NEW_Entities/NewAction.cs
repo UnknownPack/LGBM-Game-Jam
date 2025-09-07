@@ -35,8 +35,8 @@ namespace src.New_Testing_Scripts.NEW_Entities
                 yield break;
             }
 
-            NewNode startOfPath = gridSystem.GetNodeAtTarget(ActionOwner.gameObject);
-            NewNode endOfPath = gridSystem.GetNodeAtTarget(target.gameObject);
+            NewNode startOfPath = gridSystem.GetNodeAtWorld(ActionOwner.gameObject.transform.position);
+            NewNode endOfPath = gridSystem.GetNodeAtWorld(target.gameObject.transform.position);
             
             List<NewNode> path = gridSystem.GetPath(startOfPath, endOfPath);
             
@@ -63,31 +63,38 @@ namespace src.New_Testing_Scripts.NEW_Entities
             {
                 if (node.CanNavigate)
                 {
-                    yield return Move(ActionOwner.gameObject.transform.position, node);
+                    yield return Move(ActionOwner.gameObject.transform.position, node, gridSystem);
                     path[currentNodeIndex].SetWalkableState(true);
                     currentNodeIndex++;
                 }
                 else
                     break;
             }        
+            yield break;
         }
         
-        private IEnumerator Move(Vector3 startPosition, NewNode TargetNode)
+        // ✅ FIX: updated to use Tilemap.GetCellCenterWorld
+        private IEnumerator Move(Vector3 startPosition, NewNode TargetNode, GridSystem gridSystem)
         {
             Transform entityTransform = ActionOwner.gameObject.transform;
-            float duration = 0.15f, elapsedTIme = 0;
-            Vector3 StartPosition = startPosition,
-                EndPosition = TargetNode.GetRealPosition;
-        
-            while (elapsedTIme<duration)
+            float duration = 0.15f, elapsedTime = 0;
+            Vector3 StartPosition = startPosition;
+
+            // ✅ FIX: use tile center, not TargetNode.GetRealPosition
+            Vector3 EndPosition = gridSystem.Tilemap.GetCellCenterWorld(
+                new Vector3Int(TargetNode.GetGridPosition.x, TargetNode.GetGridPosition.y, 0)
+            );
+
+            while (elapsedTime < duration)
             {
-                entityTransform.position = Vector3.Lerp(StartPosition, EndPosition, elapsedTIme / duration);
-                elapsedTIme += Time.deltaTime;
+                entityTransform.position = Vector3.Lerp(StartPosition, EndPosition, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
                 yield return null;
             }
+
             ActionOwner.GetMovementPoints--;
-            ActionOwner.GridPosition = new Vector2Int(Mathf.FloorToInt(EndPosition.x), Mathf.FloorToInt(EndPosition.y));
-            entityTransform.position = EndPosition;
+            ActionOwner.GridPosition = TargetNode.GetGridPosition; // ✅ FIX: set logical grid position directly
+            entityTransform.position = EndPosition; // ✅ FIX: snap to cell center
         }
     }
 }

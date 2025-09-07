@@ -50,8 +50,8 @@ namespace src.New_Testing_Scripts.TileMapTesting
             
                 if (tile != null)
                 {
-                    Vector3 realPosition = Tilemap.CellToWorld(pos) ;
-                    //Vector3 realPosition = Tilemap.CellToWorld(pos) + (Vector3)Tilemap.tileAnchor;
+                    // ✅ FIX: use the cell center, not bottom-left corner
+                    Vector3 realPosition = Tilemap.GetCellCenterWorld(pos);
                     NewNode newNode = new NewNode(gridPosition, realPosition, tile, true);
                     Grid[gridPosition] = newNode;
                 }
@@ -105,13 +105,11 @@ namespace src.New_Testing_Scripts.TileMapTesting
             PrintPath(path);
         }
 
-        public NewNode GetNodeAtTarget(GameObject target)
+        public NewNode GetNodeAtWorld(Vector3 worldPos)
         {
-            Vector3 mouseWorldPos = target.transform.position;
-            Vector2Int GridPosition = new Vector2Int(Mathf.FloorToInt(mouseWorldPos.x), Mathf.FloorToInt(mouseWorldPos.y));
-            if (Grid.TryGetValue(GridPosition, out var atTarget))
-                return atTarget;
-            return null;
+            Vector3Int cell = Tilemap.WorldToCell(worldPos);                 // ✅ use the tilemap for conversion
+            var key = new Vector2Int(cell.x, cell.y);
+            return GetGrid.TryGetValue(key, out var node) ? node : null;
         }
 
         public void UpdateEntityPosition(NewEntityBase entityBase, Vector2Int newPos) 

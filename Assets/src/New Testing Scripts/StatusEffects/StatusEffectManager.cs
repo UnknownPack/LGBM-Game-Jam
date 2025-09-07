@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace src.New_Testing_Scripts
 {
-    public static class StatusEffectManager
+    public class StatusEffectManager: MonoBehaviour
     {
-        public static List<StatusEffect_SO> StatusEffectsDefinitions = new List<StatusEffect_SO>();
+        public List<StatusEffect_SO> StatusEffectsDefinitions = new List<StatusEffect_SO>();
 
-        private static Dictionary<StatusEffectName, Func<NewEntityBase, StatusEffect_SO, NewStatusEffect>>
+        private Dictionary<StatusEffectName, Func<NewEntityBase, StatusEffect_SO, NewStatusEffect>>
             StatusEffectCreators
                 = new Dictionary<StatusEffectName, Func<NewEntityBase, StatusEffect_SO, NewStatusEffect>>
                 {
@@ -17,7 +17,12 @@ namespace src.New_Testing_Scripts
                     { StatusEffectName.DamageBoost, (entity, so) => new DamageBoost(entity, so) },
                 };
 
-        public static void Create(StatusEffectName so, NewEntityBase entity)
+        private void Awake()
+        {
+            ServiceLocator.Register(this);
+        }
+
+        public  void Create(StatusEffectName so, NewEntityBase entity)
         {
             if (StatusEffectCreators.ContainsKey(so))
             {
@@ -28,7 +33,7 @@ namespace src.New_Testing_Scripts
             Debug.LogError($"No status effect registered for {so}");
         }
         
-        public static StatusEffect_SO FindByName(StatusEffectName name)
+        public StatusEffect_SO FindByName(StatusEffectName name)
         {
             foreach (var statusEffect in StatusEffectsDefinitions)
             {

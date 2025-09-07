@@ -9,6 +9,7 @@ namespace src.New_Testing_Scripts.TileMapTesting
     {
         private Vector2Int gridPosition;
         private Vector3 realPosition;
+        private GameObject NodeObject;
         private TileBase tile;
         private bool _canNavigateTo;
         private List<EnviornmentStatusEffect> statusEffects= new List<EnviornmentStatusEffect>();
@@ -23,6 +24,8 @@ namespace src.New_Testing_Scripts.TileMapTesting
         {
             this.gridPosition = gridPosition;
             this.realPosition = realPosition;
+            NodeObject = new GameObject();
+            NodeObject.transform.position = realPosition;
             this.tile = tile;
             _canNavigateTo = canNavigateTo;
             Parent = null;
@@ -54,13 +57,14 @@ namespace src.New_Testing_Scripts.TileMapTesting
         
         public void GiveTargetStatusEffects(NewEntityBase target)
         {
+            StatusEffectManager sm = ServiceLocator.Get<StatusEffectManager>();
             foreach (EnviornmentStatusEffect statusEffect in statusEffects)
             {
                 StatusEffectName name = statusEffect.StatusEffectName;
-                if(target.ContainsEffeccct(name) && StatusEffectManager.FindByName(name).DoesStack)
+                if(target.ContainsEffeccct(name) && sm.FindByName(name).DoesStack)
                     continue;
                     
-                StatusEffectManager.Create(statusEffect.StatusEffectName, target);
+                sm.Create(statusEffect.StatusEffectName, target);
             } 
         }
 
@@ -69,5 +73,6 @@ namespace src.New_Testing_Scripts.TileMapTesting
         public Vector3 GetRealPosition => realPosition;
         public Vector2Int GetGridPosition => gridPosition;
         public bool CanNavigate => _canNavigateTo;
+        public GameObject GetNodeObject => NodeObject;
     }
 }
