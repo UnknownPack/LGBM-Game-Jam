@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NEW_Entities/NewAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NEW_Entities/NewAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Testing/TestingNewGirdSystem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Testing/TestingNewGirdSystem.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Damage.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Damage.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Empower.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Empower.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Slow.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Slow.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NEW_Entities/NewEntityBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NEW_Entities/NewEntityBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffects/StatusEffectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffects/StatusEffectManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewBackEnd/ListenerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewBackEnd/ListenerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewBackEnd/TickManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/NewBackEnd/TickManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffects/StatusEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/StatusEffects/StatusEffect.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/GridSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/GridSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/NewNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/TileMapTesting/NewNode.cs" afterDir="false" />
     </list>
@@ -137,7 +142,7 @@
       <workItem from="1756956583110" duration="621000" />
       <workItem from="1757161119345" duration="8196000" />
       <workItem from="1757172109631" duration="6932000" />
-      <workItem from="1757212794666" duration="5553000" />
+      <workItem from="1757212794666" duration="7827000" />
     </task>
     <servers />
   </component>

@@ -28,7 +28,10 @@ namespace src.New_Testing_Scripts
         public static void Notify(string listenerId)
         {
             if (listeners.ContainsKey(listenerId))
-                listeners[listenerId].Invoke(); 
+            {
+                listeners[listenerId].Invoke();
+                Debug.LogWarning($"{listenerId} called !");
+            }
             else
                 Debug.LogWarning($"Listener {listenerId} not found!");
         }

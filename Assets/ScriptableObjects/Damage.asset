@@ -15,6 +15,6 @@ MonoBehaviour:
   statusEffectName: 0
   DoesTick: 1
   DoesStack: 1
-  Duration: 3
+  Duration: 4
   TickInterval: 1
   Value: 0.5

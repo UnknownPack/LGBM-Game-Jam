@@ -12,16 +12,10 @@ namespace src.New_Testing_Scripts
     public class NewEntityBase : MonoBehaviour
     {
         [SerializeReference] private List<NewStatusEffect> statusEffects = new List<NewStatusEffect>();
+        [Header("Initial Stats")]
         [SerializeField] private InitialStats initialStats;
-
-        public class Entity
-        {
-            private Vector2Int gridPosition;
- 
-        }
-
         private List<NewAction> ActionList = new List<NewAction>();
-        
+        [Header("Current Stats")]
         [SerializeField]float LifePoints, Damage;
         [SerializeField]private int MovementPoints;
         [SerializeField]private int ActionPoints;
@@ -129,6 +123,7 @@ namespace src.New_Testing_Scripts
         private void OnTick()
         {
             ManageStatusEffects();
+            Debug.LogWarning($"{statusEffects.Count} stacks of status effects applied to {gameObject.transform.name}");
         }
         
         private void ManageStatusEffects()
@@ -146,7 +141,6 @@ namespace src.New_Testing_Scripts
 
         public void AddStatusEffect(NewStatusEffect newStatusEffect)
         {
-            Debug.Log($"{newStatusEffect} applied to{gameObject.name}");
             statusEffects.Add(newStatusEffect);
         }
 

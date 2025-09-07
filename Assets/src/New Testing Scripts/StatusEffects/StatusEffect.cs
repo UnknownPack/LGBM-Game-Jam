@@ -32,7 +32,9 @@ namespace src.New_Testing_Scripts
             }
             if(scriptableObject.DoesTick && scriptableObject.Duration % scriptableObject.TickInterval == 0)
                 Apply(entity.gameObject);
-            Tick();                   
+            Debug.Log($"{this} applied status affected to {entity.gameObject.name}! \n {scriptableObject.Duration} ticks left!");
+            Tick(); 
+            
         }
         
         public virtual void Apply(GameObject target)
@@ -52,10 +54,10 @@ namespace src.New_Testing_Scripts
             scriptableObject.Duration -= 1;
             if (scriptableObject.Duration <= 0)
             {
+                ResetStats();
                 isActive = false;
                 entity = null;
-                ListenerManager.RemoveListener("Tick", OnTick);
-                ResetStats();
+                ListenerManager.RemoveListener("Tick", OnTick); 
             }
         }
 
@@ -76,7 +78,8 @@ namespace src.New_Testing_Scripts
         
         public override void Apply(GameObject target)
         {
-            entity.GetHealth -= scriptableObject.Value;
+            float newValue = entity.GetHealth - scriptableObject.Value;
+            entity.GetHealth = Mathf.Clamp(entity.GetHealth, 0, newValue);
         }
 
         public override void ResetStats()
@@ -96,7 +99,8 @@ namespace src.New_Testing_Scripts
         
         public override void Apply(GameObject target)
         {
-            entity.GetDamage = scriptableObject.Value;
+            float newValue = entity.GetDamage - scriptableObject.Value;
+            entity.GetDamage = Mathf.Clamp(entity.GetDamage, 0, newValue);
         }
 
         public override void ResetStats()
@@ -116,7 +120,8 @@ namespace src.New_Testing_Scripts
         
         public override void Apply(GameObject target)
         {
-            entity.GetMovementPoints -= (int)scriptableObject.Value;
+            int newValue = entity.GetMovementPoints - (int)scriptableObject.Value;
+            entity.GetMovementPoints = Mathf.Clamp(entity.GetMovementPoints, 0, newValue);
         }
 
         public override void ResetStats()

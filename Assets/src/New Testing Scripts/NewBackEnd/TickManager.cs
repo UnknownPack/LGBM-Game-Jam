@@ -12,7 +12,6 @@ public class TickManager : MonoBehaviour
 
    void Start()
    {
-       ListenerManager.Notify("Tick");
    }
 
     // Update is called once per frame

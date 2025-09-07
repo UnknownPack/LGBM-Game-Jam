@@ -65,6 +65,8 @@ namespace src.New_Testing_Scripts.TileMapTesting
                     continue;
                     
                 sm.Create(statusEffect.StatusEffectName, target);
+                
+                Debug.Log($"{name} applied to {target.gameObject.name}");
             } 
         }
 
