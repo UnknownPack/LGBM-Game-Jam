@@ -73,14 +73,12 @@ namespace src.New_Testing_Scripts.NEW_Entities
             yield break;
         }
         
-        // ✅ FIX: updated to use Tilemap.GetCellCenterWorld
         private IEnumerator Move(Vector3 startPosition, NewNode TargetNode, GridSystem gridSystem)
         {
             Transform entityTransform = ActionOwner.gameObject.transform;
             float duration = 0.15f, elapsedTime = 0;
             Vector3 StartPosition = startPosition;
 
-            // ✅ FIX: use tile center, not TargetNode.GetRealPosition
             Vector3 EndPosition = gridSystem.Tilemap.GetCellCenterWorld(
                 new Vector3Int(TargetNode.GetGridPosition.x, TargetNode.GetGridPosition.y, 0)
             );
@@ -93,8 +91,8 @@ namespace src.New_Testing_Scripts.NEW_Entities
             }
 
             ActionOwner.GetMovementPoints--;
-            ActionOwner.GridPosition = TargetNode.GetGridPosition; // ✅ FIX: set logical grid position directly
-            entityTransform.position = EndPosition; // ✅ FIX: snap to cell center
+            ActionOwner.GridPosition = TargetNode.GetGridPosition;  
+            entityTransform.position = EndPosition;  
         }
     }
 }

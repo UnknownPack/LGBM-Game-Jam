@@ -90,8 +90,8 @@ namespace src.New_Testing_Scripts
                     return;
                 }
                 
-                Debug.Log($"Starting at Node {startNode.GetGridPosition} at {startNode.GetRealPosition} \n" +
-                          $"Ending at Node {endNode.GetGridPosition} at {endNode.GetRealPosition}");
+                // Debug.Log($"Starting at Node {startNode.GetGridPosition} at {startNode.GetRealPosition} \n" +
+                //           $"Ending at Node {endNode.GetGridPosition} at {endNode.GetRealPosition}");
 
                 if (currentCoroutine == null)
                 {
@@ -133,7 +133,7 @@ namespace src.New_Testing_Scripts
                 NewStatusEffect effect = statusEffects[i];
                 if (!effect.IsActive)
                 {
-                    Debug.Log($"Removing inactive status effect: {effect.GetStatusEffectName} from {gameObject.name}");
+                    Debug.Log($"Removing inactive status effect: {effect.GetStatusEffectName} from {gameObject.name} who now has {statusEffects.Count - 1} status effects.");
                     statusEffects.RemoveAt(i);
                 }
             }
@@ -191,6 +191,7 @@ namespace src.New_Testing_Scripts
         }
 
         public InitialStats GetInitialStats => initialStats;
+        public int GetStatusEffectCount => statusEffects.Count;
 
     }
     

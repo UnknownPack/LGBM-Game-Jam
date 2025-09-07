@@ -11,6 +11,7 @@ namespace src.New_Testing_Scripts.TileMapTesting
         public GameObject tilePrefab;
         public Tilemap Tilemap;
         public bool ApplyStatusEffectsToAllNodes = false;
+        public int StatusEffects_LifeTime = 2;
         private Dictionary<NewEntityBase,Vector2Int> ActiveEntites = new Dictionary< NewEntityBase, Vector2Int>();
         private NewPathfinder pathfinder;
         Dictionary<Vector2Int, NewNode> Grid;
@@ -58,8 +59,8 @@ namespace src.New_Testing_Scripts.TileMapTesting
                     if (ApplyStatusEffectsToAllNodes)
                     {
                        // newNode.AddStatusEffect(new EnviornmentStatusEffect(StatusEffectName.Slow, 4));
-                        newNode.AddStatusEffect(new EnviornmentStatusEffect(StatusEffectName.DamageTarget, 4));
-                        newNode.AddStatusEffect(new EnviornmentStatusEffect(StatusEffectName.DamageBoost, 4));
+                        newNode.AddStatusEffect(new EnviornmentStatusEffect(StatusEffectName.DamageTarget, StatusEffects_LifeTime));
+                        newNode.AddStatusEffect(new EnviornmentStatusEffect(StatusEffectName.DamageBoost, StatusEffects_LifeTime));
                     }
                 }
             }

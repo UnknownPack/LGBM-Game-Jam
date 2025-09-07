@@ -61,12 +61,12 @@ namespace src.New_Testing_Scripts.TileMapTesting
             foreach (EnviornmentStatusEffect statusEffect in statusEffects)
             {
                 StatusEffectName name = statusEffect.StatusEffectName;
-                if(target.ContainsEffeccct(name) && sm.FindByName(name).DoesStack)
+                if(target.ContainsEffeccct(name) && sm.FindByName(name).DoesStack == false)
                     continue;
                     
                 sm.Create(statusEffect.StatusEffectName, target);
                 
-                Debug.Log($"{name} applied to {target.gameObject.name}");
+                Debug.Log($"{name} applied to {target.gameObject.name} who now has {target.GetStatusEffectCount} status effects stacked on itself.");
             } 
         }
 

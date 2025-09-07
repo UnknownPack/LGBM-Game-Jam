@@ -79,7 +79,7 @@ namespace src.New_Testing_Scripts
         public override void Apply(GameObject target)
         {
             float newValue = entity.GetHealth - scriptableObject.Value;
-            entity.GetHealth = Mathf.Clamp(entity.GetHealth, 0, newValue);
+            entity.GetHealth = Mathf.Clamp(newValue, 0, entity.GetHealth);
         }
 
         public override void ResetStats()
@@ -99,8 +99,8 @@ namespace src.New_Testing_Scripts
         
         public override void Apply(GameObject target)
         {
-            float newValue = entity.GetDamage - scriptableObject.Value;
-            entity.GetDamage = Mathf.Clamp(entity.GetDamage, 0, newValue);
+            float newValue = entity.GetDamage + scriptableObject.Value;
+            entity.GetDamage = Mathf.Clamp(newValue, entity.GetDamage, newValue);
         }
 
         public override void ResetStats()
@@ -119,9 +119,9 @@ namespace src.New_Testing_Scripts
 
         
         public override void Apply(GameObject target)
-        {
+        { 
             int newValue = entity.GetMovementPoints - (int)scriptableObject.Value;
-            entity.GetMovementPoints = Mathf.Clamp(entity.GetMovementPoints, 0, newValue);
+            entity.GetMovementPoints = Mathf.Clamp(newValue, 0, entity.GetMovementPoints);
         }
 
         public override void ResetStats()

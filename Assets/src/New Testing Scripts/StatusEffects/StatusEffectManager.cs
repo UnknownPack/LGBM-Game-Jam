@@ -26,7 +26,10 @@ namespace src.New_Testing_Scripts
         {
             if (StatusEffectCreators.ContainsKey(so))
             {
-                entity.AddStatusEffect(StatusEffectCreators[so](entity, FindByName(so)));
+                StatusEffect_SO original = FindByName(so);
+                StatusEffect_SO instance = ScriptableObject.Instantiate(original);
+
+                entity.AddStatusEffect(StatusEffectCreators[so](entity, instance));
                 return;
             }
                 
