@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialStats:
     LifePoints: 4
-    Damage: 4
+    Damage: 12
     MovementPoints: 8
     ActionPoints: 4
   LifePoints: 0
@@ -399,6 +399,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 3364500529239584874, guid: 2bbf972cc7fe87f48a0dc3b1c49e7a01, type: 3}
   Tilemap: {fileID: 1328787686}
   ApplyStatusEffectsToAllNodes: 1
+  StatusEffects_LifeTime: 2
 --- !u!4 &1036076829
 Transform:
   m_ObjectHideFlags: 0
