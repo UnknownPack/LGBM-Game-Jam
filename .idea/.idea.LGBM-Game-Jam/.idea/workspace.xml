@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="" />
+    <list default="true" id="c98b43be-16e8-4e4b-9006-40699f11bb1b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LGBM-Game-Jam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/EditorGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/EditorGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/src/New Testing Scripts/GridBlackList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/src/New Testing Scripts/GridBlackList.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +135,8 @@
       <workItem from="1757172109631" duration="6932000" />
       <workItem from="1757212794666" duration="7827000" />
       <workItem from="1757225574065" duration="1572000" />
-      <workItem from="1758301801911" duration="342000" />
+      <workItem from="1758301801911" duration="806000" />
+      <workItem from="1758443342568" duration="3094000" />
     </task>
     <servers />
   </component>
