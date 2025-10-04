@@ -20,11 +20,16 @@ namespace src
         void DebugOne() => Debug.Log("Hey mama, I'm famous!");
 
 
-        private static void CreateGameObject(String name, Vector2 position)
+        private void CreateGameObject(String objectName, Vector2 position)
         {
-            GameObject circle = new GameObject(name);
-            circle.transform.position = new Vector3(position.x, position.y, 0f);
-            Debug.Log($"GameObject named: {name} placed in {position}");
+            GameObject circle = new GameObject(objectName)
+            {
+                transform =
+                {
+                    position = new Vector3(position.x, position.y, 0f)
+                }
+            };
+            Debug.Log($"GameObject named: {objectName} placed in {position}");
         }
 
         private void ErrorMessages()
